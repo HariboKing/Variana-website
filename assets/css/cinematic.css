@@ -1,0 +1,86 @@
+/* Homepage only. Original image proportions are preserved by background-size: cover. */
+.cinematic-hero {
+  --hero-nav-height: 89px;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - var(--hero-nav-height));
+  min-height: calc(100svh - var(--hero-nav-height));
+  background-color: #0d1d30;
+  background-image: url('../images/variana-city-hero.webp');
+  background-size: cover;
+  background-position: 68% center;
+  background-repeat: no-repeat;
+}
+.cinematic-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(0deg, #0d1d30 0%, rgba(13,29,48,.35) 12%, rgba(13,29,48,0) 32%),
+    linear-gradient(90deg, rgba(5,14,26,.94) 0%, rgba(5,14,26,.79) 32%, rgba(5,14,26,.48) 51%, rgba(5,14,26,.08) 76%, rgba(5,14,26,.02) 100%);
+}
+.cinematic-hero-inner { position: relative; padding-block: clamp(56px,7vh,96px); }
+.cinematic-hero .hero-copy { max-width: 760px; }
+.cinematic-hero .eyebrow { font-size: 12px; color: var(--teal-bright); letter-spacing: .12em; margin-bottom: 24px; }
+.cinematic-hero h1 { font-size: clamp(54px,4.5vw,82px); line-height: 1.06; letter-spacing: -.045em; margin-bottom: 28px; color: #fff; font-weight: 600; }
+.cinematic-hero h1 span { color: #fff; }
+.cinematic-hero .hero-description { max-width: 620px; font-size: 19px; line-height: 1.75; color: #d6e1ea; margin: 0 0 31px; }
+.cinematic-hero .button-row { margin-top: 0; gap: 14px; }
+.cinematic-hero .button { min-height: 52px; padding: 14px 21px; font-size: 14px; }
+.cinematic-hero .button.secondary { background: rgba(8,19,34,.35); border-color: #7f9aaa; color: #f2f6fa; }
+.cinematic-hero .button.secondary:hover { background: rgba(23,48,70,.8); border-color: #c0dce4; }
+.cinematic-hero .hero-pricing-link { color: var(--teal-bright); font-size: 14px; margin-top: 23px; }
+.cinematic-hero .hero-pricing-link:hover { color: #fff; }
+.cinematic-hero .hero-footnote { display: block; max-width: 470px; font-size: 12px; color: #b6c8d6; line-height: 1.75; margin-top: 23px; margin-bottom: 0; }
+.home #systeem { border-top: 0; }
+.relocated-product { max-width: 520px; margin: 32px 0 0; }
+.relocated-product .product-screen-label { font-size: 14px; }
+.relocated-product figcaption { margin-top: 12px; font-size: 13px; }
+
+@media (min-width: 1600px) {
+  .cinematic-hero .hero-copy { max-width: 800px; }
+}
+@media (max-width: 1190px) {
+  .cinematic-hero { --hero-nav-height: 77px; }
+}
+@media (max-width: 1100px) {
+  .cinematic-hero .hero-copy { max-width: 620px; }
+  .cinematic-hero h1 { font-size: clamp(51px,6.5vw,66px); }
+  .cinematic-hero .hero-description { max-width: 550px; font-size: 18px; }
+  .cinematic-hero::before {
+    background:
+      linear-gradient(0deg, #0d1d30 0%, rgba(13,29,48,0) 30%),
+      linear-gradient(90deg, rgba(5,14,26,.94) 0%, rgba(5,14,26,.8) 40%, rgba(5,14,26,.3) 77%, rgba(5,14,26,.12) 100%);
+  }
+}
+@media (max-width: 800px) {
+  .cinematic-hero { background-position: 74% center; }
+  .cinematic-hero-inner { padding-block: 62px; }
+  .cinematic-hero .hero-copy { max-width: 480px; }
+  .cinematic-hero .hero-description { max-width: 420px; }
+  .relocated-product { max-width: 560px; }
+}
+@media (max-width: 500px) {
+  .cinematic-hero { --hero-nav-height: 71px; background-position: 67% center; }
+  .cinematic-hero-inner { padding-block: 47px 56px; }
+  .cinematic-hero .hero-copy { max-width: 100%; }
+  .cinematic-hero .eyebrow { font-size: 12px; letter-spacing: .06em; line-height: 1.8; margin-bottom: 22px; max-width: 300px; }
+  .cinematic-hero h1 { font-size: clamp(39px,10.7vw,48px); line-height: 1.1; margin-bottom: 24px; }
+  .cinematic-hero .hero-description { font-size: 16px; line-height: 1.75; max-width: calc(100% - 72px); margin-bottom: 26px; }
+  .cinematic-hero .button-row { gap: 11px; }
+  .cinematic-hero .button { width: 100%; min-height: 50px; padding-inline: 18px; }
+  .cinematic-hero .hero-pricing-link { font-size: 14px; margin-top: 21px; }
+  .cinematic-hero .hero-footnote { font-size: 12px; margin-top: 20px; max-width: 320px; }
+  .cinematic-hero::before {
+    background:
+      linear-gradient(0deg, #0d1d30 0%, rgba(13,29,48,.24) 18%, rgba(13,29,48,0) 45%),
+      linear-gradient(90deg, rgba(5,14,26,.91) 0%, rgba(5,14,26,.76) 55%, rgba(5,14,26,.32) 100%);
+  }
+}
+@media (max-width: 360px) {
+  .cinematic-hero { background-position: 70% center; }
+}

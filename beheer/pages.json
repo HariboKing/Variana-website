@@ -1,0 +1,72 @@
+{
+  "toepassingen.html": {
+    "title": "Analyses, advies en organisatieblauwdrukken | Variana",
+    "description": "Verken analyse, advies, organisatieblauwdrukken en bedrijfsuitvoeringsplannen. Van strategie en beleid tot ontwikkeling en onderbouwde besluitvorming.",
+    "body_file": "paginas/toepassingen.html"
+  },
+  "voor-wie.html": {
+    "title": "Voor groter MKB, enterprise en adviseurs | Variana",
+    "description": "Variana voor Enterprise, Groot-MKB, Klein-MKB en vergelijkbare organisaties zoals stichtingen, en overheidsorganisaties zoals ministeries en gemeenten.",
+    "body_file": "paginas/voor-wie.html"
+  },
+  "voorbeelden.html": {
+    "title": "Ontdek Variana in de praktijk | Interactieve onderzoeksverkenning",
+    "description": "Verken een fictieve groeivraag, bijbehorende deelvragen en mogelijke koppelingen tussen analyses. Een onderzoeksopzet; echte onderzoeksresultaten volgen later.",
+    "body_file": "paginas/voorbeelden.html"
+  },
+  "samenwerken.html": {
+    "title": "Tarieven voor analyse, blauwdruk en uitvoeringsplan | Variana",
+    "description": "Bekijk de tarieven per Variana-onderzoeksopdracht en richtprijzen voor Klein-MKB en individuen. Toekomstige offline jaarlicenties staan apart; alle prijzen exclusief btw.",
+    "body_file": "paginas/samenwerken.html"
+  },
+  "hoe-het-werkt.html": {
+    "title": "Hoe Variana werkt | Gespecialiseerd onderzoek in samenhang",
+    "description": "Variana maakt een organisatiebrede blauwdruk als basis voor analyses, scenario’s en uitvoering. Ontdek de werkwijze en vraag een demo aan.",
+    "body_file": "paginas/hoe-het-werkt.html"
+  },
+  "analyse.html": {
+    "title": "Analyse laten uitvoeren | Vraagstukken onderzoeken | Variana",
+    "description": "Laat een markt-, strategie- of operationeel vraagstuk onderzoeken. Bekijk mogelijke rapportopbouw, benodigde input en afspraken vooraf.",
+    "body_file": "paginas/analyse.html"
+  },
+  "adviesrapport.html": {
+    "title": "Adviesrapport laten uitwerken | Onderbouwde keuzes | Variana",
+    "description": "Van een zakelijke keuze naar een adviesrapport met afwegingen, een mogelijke handelingsrichting en voorwaarden voor vervolgstappen.",
+    "body_file": "paginas/adviesrapport.html"
+  },
+  "bedrijfsplan.html": {
+    "title": "Organisatieblauwdruk en bedrijfsuitvoeringsplan | Variana",
+    "description": "Breng strategie, markt, mensen, processen en middelen samen in een organisatieblauwdruk. Werk vanuit die basis je plannen en uitvoering uit.",
+    "body_file": "paginas/bedrijfsplan.html"
+  },
+  "kennisbank.html": {
+    "title": "Kennisbank | Je analyse, advies of bedrijfsplan voorbereiden | Variana",
+    "description": "Praktische checklists voor een analyseopdracht, een scenariovergelijking en de beoordeling van onderbouwing in een zakelijk rapport.",
+    "body_file": "paginas/kennisbank.html"
+  },
+  "kennis-van-vraag-naar-onderzoek.html": {
+    "title": "Wat aanleveren voor een zakelijke analyse? | Variana Kennisbank",
+    "description": "Bereid een analyseopdracht voor met een briefing in zes onderdelen: vraag, gebruik, scope, informatie, aannames en gewenste uitwerking.",
+    "body_file": "paginas/kennis-van-vraag-naar-onderzoek.html"
+  },
+  "kennis-scenarios-vergelijken.html": {
+    "title": "Strategische scenario’s vergelijkbaar maken | Variana Kennisbank",
+    "description": "Een praktische checklist om strategische alternatieven op dezelfde uitgangspunten te vergelijken en belangrijke aannames zichtbaar te houden.",
+    "body_file": "paginas/kennis-scenarios-vergelijken.html"
+  },
+  "kennis-ai-en-onderbouwing.html": {
+    "title": "Onderbouwing van een AI-ondersteund rapport beoordelen | Variana",
+    "description": "Vijf concrete controles voor de bronnen, aannames, samenhang en conclusies van een AI-ondersteund zakelijk rapport.",
+    "body_file": "paginas/kennis-ai-en-onderbouwing.html"
+  },
+  "index.html": {
+    "title": "Variana | Eén AI-onderzoeksomgeving voor complexe keuzes",
+    "description": "Variana verbindt strategie, markt, organisatie en uitvoering in één organisatiebrede blauwdruk. Ontdek het systeem en vraag een demo aan.",
+    "body_file": "paginas/index.html"
+  },
+  "contact.html": {
+    "title": "Dien je vraag in of vraag een demo aan | Variana",
+    "description": "Dien je organisatievraag in of vraag een demo van Variana aan. Bereid een aanvraag voor analyse, advies, organisatieblauwdruk of bedrijfsuitvoeringsplan voor.",
+    "body_file": "paginas/contact.html"
+  }
+}

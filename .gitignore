@@ -1,0 +1,15 @@
+# Keep the public repository limited to website source and safe assets.
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+node_modules/
+work/
+references/
+private/
+.private/
+*.pdf
+*.docx
+*.log
+variana-aanvraag*.txt
+__pycache__/
