@@ -1,6 +1,6 @@
-# Variana — lokaal bekijken, aanpassen en delen
+# Variana — websitebron, bekijken en onderhouden
 
-Bijgewerkt op **30 oktober 2026**: cinematische homepage met beeldvullende foto, lichtere blauw-teal huisstijl (`#3BB3BE`), productverhaal en leesbaarheid. De homepage introduceert Variana als geïntegreerd AI-systeem en koppelt het onderzoeksschema aan de interactieve verkenner. Huidige onderzoeksopdrachten en toekomstige offline licenties staan afzonderlijk op de tarievenpagina. Het controleverslag staat in `beheer/CONTROLE.md`.
+Bijgewerkt op **30 oktober 2026**: Home is ingekort en bevat de drie tegels Analyses, Blauwdruk en Specialistische modules en een onderdeel Praktijkervaring. Toepassingen begint met vijf soorten vraagstukken en de verplaatste samenhangsectie; het klikbare schema verwijst naar de systeemopbouw op Hoe het werkt. Van vraag naar besluitvorming staat nu in de Kennisbank. Het nieuwe interactieve scherm wordt eerst besproken en is niet gebouwd. Zie beheer/CONTROLE.md voor de controles.
 
 Deze Nederlandstalige website bestaat uit 14 HTML-pagina’s: acht hoofdpagina’s, drie kennisartikelen en drie dienstenpagina’s. De site gebruikt lokale HTML-, CSS-, JavaScript- en afbeeldingsbestanden. Bekijken vereist geen installatie, build, Python of internetverbinding.
 
@@ -80,9 +80,9 @@ De geplande offline jaarlicenties staan hiervan los: Groot-MKB €15.000, Enterp
 
 De huidige dienstverlening gebruikt een werkend, online ondersteund prototype. De echte prototypebeelden op de site zijn geselecteerd voor openbare presentatie en blijven herkenbaar als ontwikkelversie. Ze zijn geen bewijs dat de offline software productierijp is.
 
-## Later publiceren via GitHub Pages
+## Publicatie via GitHub Pages
 
-Er is met dit project niets gepubliceerd. Voor latere publicatie:
+De actuele bron staat in https://github.com/HariboKing/Variana-website op branch main. De bestaande CNAME koppelt de site aan variana.nl. GitHub Pages publiceert vanuit main en de hoofdmap; de status staat onder Actions. Voor beheer of herinrichting:
 
 1. Gebruik een repository met uitsluitend de website-map. Neem geen interne bron-PDF’s of bovenliggende werkmappen op.
 2. Regeneer de pagina’s als de beheerbron is gewijzigd en controleer de site lokaal.
@@ -105,3 +105,10 @@ De werkwijze vertrekt vanuit een organisatiebrede blauwdruk. De vier focusgroepe
 De prijzen zijn ongewijzigd. Groot-MKB en Enterprise krijgen het label ‘Organisatieblauwdruk’; bij Klein-MKB en individuele gebruikers staat ‘Bedrijfsuitvoeringsplan’. De procesuitleg over het ontstaan van een opdracht is van de tarievenpagina verwijderd; de contactpagina beschrijft hoe je een aanvraag voorbereidt.
 
 De voorbeeldenpagina legt uit wat de bezoeker nu kan verkennen: fictieve input, deelvragen en mogelijke koppelingen. De onderzoeksdata bevat nog steeds geen echte of verzonnen onderzoeksresultaten. Voeg alleen daadwerkelijk uitgevoerde, gecontroleerde en voor publicatie vrijgegeven output toe.
+
+
+## Herindeling van 30 oktober — GitHub-versie
+
+De huidige hoofdlijn is analyses → organisatiebrede blauwdruk → specialistische verdieping. De vijf invalshoeken op Toepassingen zijn strategisch, analytisch, bedrijfs- en organisatieontwikkeling, marketing en evaluatie. Links in het samenhangschema verwijzen naar openbare uitleg op Hoe het werkt. De interne stappen en prompts worden niet getoond.
+
+Bij tekstwijzigingen moeten zowel de beheerbronnen als de gegenereerde HTML naar GitHub. Wijzigingen op main kunnen direct via GitHub Pages worden gepubliceerd. Bewaar bij updates de CNAME. De oude lokale ZIP is geen bron voor deze GitHub-wijzigingsronde.

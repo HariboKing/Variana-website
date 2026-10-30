@@ -1,7 +1,7 @@
 {
   "toepassingen.html": {
-    "title": "Analyses, advies en organisatieblauwdrukken | Variana",
-    "description": "Verken analyse, advies, organisatieblauwdrukken en bedrijfsuitvoeringsplannen. Van strategie en beleid tot ontwikkeling en onderbouwde besluitvorming.",
+    "title": "Toepassingen | Strategie, analyse en organisatieontwikkeling | Variana",
+    "description": "Verken strategische en analytische vraagstukken, bedrijfs- en organisatieontwikkeling, marketing en evaluatie. Zie hoe analyses, blauwdruk en modules samenhangen.",
     "body_file": "paginas/toepassingen.html"
   },
   "voor-wie.html": {
@@ -21,7 +21,7 @@
   },
   "hoe-het-werkt.html": {
     "title": "Hoe Variana werkt | Gespecialiseerd onderzoek in samenhang",
-    "description": "Variana maakt een organisatiebrede blauwdruk als basis voor analyses, scenario’s en uitvoering. Ontdek de werkwijze en vraag een demo aan.",
+    "description": "Ontdek hoe analyses, een organisatiebrede blauwdruk en specialistische modules elkaar versterken. Een heldere uitleg van de samenhang in Variana.",
     "body_file": "paginas/hoe-het-werkt.html"
   },
   "analyse.html": {
@@ -41,7 +41,7 @@
   },
   "kennisbank.html": {
     "title": "Kennisbank | Je analyse, advies of bedrijfsplan voorbereiden | Variana",
-    "description": "Praktische checklists voor een analyseopdracht, een scenariovergelijking en de beoordeling van onderbouwing in een zakelijk rapport.",
+    "description": "Bereid onderzoek en besluitvorming voor met praktische artikelen en het overzicht van vraag naar besluit. Vergelijk scenario’s en beoordeel onderbouwing.",
     "body_file": "paginas/kennisbank.html"
   },
   "kennis-van-vraag-naar-onderzoek.html": {

@@ -1,34 +1,31 @@
 # Controle Variana — 30 oktober 2026
 
-De lokale testmap en ZIP bevatten de actuele website. Er is niets gepubliceerd of verstuurd.
+Dit verslag betreft de herindeling van Home, Toepassingen, Hoe het werkt en Kennisbank in de GitHub-bron. De publicatiestatus is te volgen bij GitHub Actions in HariboKing/Variana-website.
 
-## Huidige inhoud
+## Verwerkte wijzigingen
 
-- De persoonlijke teamsectie en de verwijzingen ernaartoe zijn uit alle pagina’s en de beheerbron verwijderd.
-- De primaire acties zijn ‘Vraag nu een demo aan’ en ‘Dien je vraag in’. Op de tarievenpagina staat ‘Vraag een offerte aan’.
-- De organisatieblauwdruk omvat strategie, markt, aanbod, mensen, processen, middelen en uitvoering. De werkwijze is uitgelegd als vraag → blauwdruk → gericht onderzoek → beslissing. Nieuwe relevante informatie wordt in de blauwdruk en geraakte analyses of plannen verwerkt.
-- De vier bevestigde focusgroepen zijn Enterprise, Groot-MKB, Klein-MKB en vergelijkbare organisaties (waaronder stichtingen), en overheidsorganisaties. Ministeries, gemeenten, beleidsmakers en bestuurders zijn expliciet genoemd.
-- Analyse-uitwerkingen maken duidelijk welke informatie nog ontbreekt voor een onderbouwd besluit. Aannames en onzekerheden blijven herkenbaar.
-- De evaluatietekst benoemt doelbijdrage, uitvoerbaarheid, middelen en risico’s. Toekomstige softwaremodules blijven herkenbaar in ontwikkeling.
-- De tarieven en dienstpagina onderscheiden een organisatieblauwdruk voor Groot-MKB/Enterprise en een bedrijfsuitvoeringsplan voor Klein-MKB/individuen. De bedragen zijn gelijk gebleven en exclusief btw. De procesuitleg over het ontstaan van een opdracht is van de tarievenpagina verwijderd; praktische aanvraaguitleg staat bij Contact.
-- De voorbeeldenpagina toont één volledig fictieve vraag, negen voorgenomen onderzoeksmodules, mogelijke afhankelijkheden en terugkoppelingen. Zij is een navigeerbare onderzoeksopzet, geen bewijs van uitgevoerd onderzoek. Er zijn geen onderzoeksbevindingen, bronnen, berekeningen of rapporten toegevoegd.
-- De cinematische homepage en laatst gekozen lichtere blauw-teal (#3BB3BE) zijn behouden. De originele achtergrond-PNG en geoptimaliseerde WebP blijven beschikbaar. Echte prototypebeelden zijn niet inhoudelijk aangepast.
+- Home behoudt de cinematische opening en drie tegels: Analyses, Blauwdruk en Specialistische modules. Praktijkervaring beschrijft de door de opdrachtgever opgegeven professionele achtergrond, zonder namen, aantallen jaren of onbevestigde resultaten.
+- De samenhangsectie staat op Toepassingen, als tweede inhoudelijke onderdeel na de ongewijzigde pagina-intro. Het eerste inhoudelijke onderdeel bevat vijf invalshoeken: strategisch, analytisch, bedrijfs- en organisatieontwikkeling, marketing en evaluatie.
+- Het schema toont analyses → organisatieblauwdruk → specialistische modules. Alle negen onderdelen en terugkoppelingen zijn gewone links naar uitleg op Hoe het werkt. De blauwdruk heeft een neutrale donkerblauwe achtergrond.
+- Hoe het werkt begint na de intro met de publieke systeemopbouw. Eerste analyses voeden de organisatiebrede blauwdruk; gerichte verdieping bouwt daarop voort. Er zijn geen interne prompts, selectieprocedures of uitvoeringsstappen openbaar gemaakt.
+- Van vraag naar besluitvorming staat nu in de Kennisbank. De oude ankers op Hoe het werkt blijven bereikbaar.
+- Het bestaande blok De software in beeld en de producttour zijn behouden. Een nieuw interactief scherm is uitsluitend onderwerp van overleg en is niet geïmplementeerd.
+- De onderzoeksverkenner, fictieve input en lege onderzoeksresultaten zijn ongewijzigd. Er zijn geen bevindingen, bronnen of rapporten verzonnen.
+- Tarieven, contactroute, doelgroepen, kleuren en beeldbestanden zijn behouden. De bestaande CNAME voor variana.nl blijft ongewijzigd.
 
-## Controles
+## Uitgevoerde controles
 
-- Alle veertien pagina’s statisch gecontroleerd: bestanden, ankers, unieke metadata, één H1, labels, knoppen en ARIA-verwijzingen.
-- Alle veertien pagina’s op 320 en 1440 pixels gecontroleerd: geen horizontale pagina-overloop, ontbrekende beelden of persoonlijke teaminhoud.
-- Demo- en vraagknoppen, offerteknop en de onderwerpkeuze op Contact gecontroleerd. De bezoeker verstuurt zelf vanuit het eigen e-mailprogramma; er is geen automatische verzending.
-- Onderzoektabs met toetsenbord gecontroleerd; resultaten blijven niet beschikbaar en bevatten geen rapport- of downloadknoppen. Geen JavaScript-fouten of waarschuwingen in de browsercontrole.
-- De eerdere bedragen zijn vergeleken met de vorige ZIP. De onderzoeksdata, scripts, stijlbestanden en bronafbeeldingen zijn ongewijzigd.
-- De complete ZIP wordt na uitpakken vanuit de meegeleverde beheerbron identiek opgebouwd.
+- De generator bouwt alle 14 HTML-pagina’s.
+- Alle 14 pagina’s gecontroleerd op interne bestanden en ankers, dubbele IDs, één H1 en een metabeschrijving.
+- De vier gewijzigde pagina’s in Chromium gecontroleerd op 320, 768 en 1440 pixels: geen horizontale pagina-overloop of ontbrekende afbeeldingen.
+- De vijf vraagstukcategorieën, sectievolgorde en alle doelankers gecontroleerd. De blauwdruklink opent de juiste uitleg op Hoe het werkt.
+- De blauwdrukachtergrond is rgb(26, 42, 66). Toepassingen is ook visueel op desktop gecontroleerd.
+- Het bestaande softwareblok is met de vorige bron vergeleken en is inhoudelijk identiek. Geen nieuwe JavaScript-interacties toegevoegd; geen browserfouten of waarschuwingen waargenomen.
 
-## Beheer en vervolgstap
+## Beheer
 
-Bewerk teksten in beheer/paginas/ en metadata in beheer/pages.json. Navigatie, footer en producttour staan centraal in beheer/build.py. Regeneer vanuit de website-map met python beheer/build.py. De gebruiker hoeft voor bekijken geen build uit te voeren.
+Bewerk inhoud in beheer/paginas/ en metadata in beheer/pages.json. Regeneer daarna met python beheer/build.py en werk de gegenereerde rootpagina’s tegelijk bij. GitHub main is de actuele bron voor deze wijzigingsronde.
 
-Voor een overtuigende inhoudelijke demonstratie blijft een daadwerkelijk met Variana uitgevoerd, gecontroleerd en voor publicatie vrijgegeven onderzoek nodig. Voeg pas daarna echte analysefragmenten, bronnen, conclusies en rapporten toe. Zie DEMONSTRATIES.md.
+De website gebruikt statische bestanden. Het contactformulier opent een e-mailconcept of maakt een lokale tekstdownload; de bezoeker verstuurt zelf. De zelfstandige offline software en de marketing- en evaluatiemodules zijn nog in ontwikkeling.
 
-De contactroute blijft geschikt voor een offline voorbeeld: een e-mailconcept of lokale aanvraagdownload. De zelfstandige offline Variana-software is nog in ontwikkeling. De marketingwebsite zelf bestaat volledig uit lokale bestanden.
-
-Getest via lokale HTTP in Chromium. De testbrowser blokkeert file://; direct dubbelklikken kon daarin niet worden getest. Er is geen volledige toegankelijkheidsaudit of test op fysieke apparaten en andere browsers uitgevoerd. Voorvertoningen in beheer/voorvertoning/ zijn controlebeelden en geen runtime-afhankelijkheden.
+De controle is geen volledige toegankelijkheidsaudit of fysieke apparaattest. Eerdere beelden in beheer/voorvertoning/ zijn geen runtime-afhankelijkheden.
