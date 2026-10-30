@@ -112,3 +112,8 @@ De voorbeeldenpagina legt uit wat de bezoeker nu kan verkennen: fictieve input, 
 De huidige hoofdlijn is analyses → organisatiebrede blauwdruk → specialistische verdieping. De vijf invalshoeken op Toepassingen zijn strategisch, analytisch, bedrijfs- en organisatieontwikkeling, marketing en evaluatie. Links in het samenhangschema verwijzen naar openbare uitleg op Hoe het werkt. De interne stappen en prompts worden niet getoond.
 
 Bij tekstwijzigingen moeten zowel de beheerbronnen als de gegenereerde HTML naar GitHub. Wijzigingen op main kunnen direct via GitHub Pages worden gepubliceerd. Bewaar bij updates de CNAME. De oude lokale ZIP is geen bron voor deze GitHub-wijzigingsronde.
+
+
+## Correctie: dubbele uitleg op Hoe het werkt
+
+Het eerste blok bevat uitsluitend twee korte alinea’s over waarom samenhang helpt. De drie basiskaarten en vijf modulekaarten zijn verwijderd. De bestaande interactieve producttour blijft behouden; de nieuwe verkenner is nog niet gebouwd. Bestaande componentankers blijven bereikbaar. De vijf moduleankers leiden voorlopig naar de bestaande verkenner, waar de onderdelen te bekijken zijn.

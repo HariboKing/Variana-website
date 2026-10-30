@@ -31,3 +31,8 @@ Bewerk inhoud in beheer/paginas/ en metadata in beheer/pages.json. Regeneer daar
 De website gebruikt statische bestanden. Het contactformulier opent een e-mailconcept of maakt een lokale tekstdownload; de bezoeker verstuurt zelf. De zelfstandige offline software en de marketing- en evaluatiemodules zijn nog in ontwikkeling.
 
 De controle is geen volledige toegankelijkheidsaudit of fysieke apparaattest. Eerdere beelden in beheer/voorvertoning/ zijn geen runtime-afhankelijkheden.
+
+
+## Correctie na feedback: geen dubbele opsomming
+
+Op Hoe het werkt zijn de drie basiskaarten en vijf modulekaarten uit het eerste blok verwijderd. Twee korte alinea’s leggen de waarde van gedeelde context en samenhang uit. Het bestaande interactieve scherm blijft behouden. De vijf moduleankers staan bij dat scherm en blijven bereikbaar vanaf Toepassingen; de overige ankers horen bij de korte uitleg. Er is geen nieuwe interactie toegevoegd.
