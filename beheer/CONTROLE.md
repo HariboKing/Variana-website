@@ -22,6 +22,8 @@ Dit verslag betreft de herindeling van Home, Toepassingen, Hoe het werkt en Kenn
 - De blauwdrukachtergrond is rgb(26, 42, 66). Toepassingen is ook visueel op desktop gecontroleerd.
 - Het bestaande softwareblok is met de vorige bron vergeleken en is inhoudelijk identiek. Geen nieuwe JavaScript-interacties toegevoegd; geen browserfouten of waarschuwingen waargenomen.
 
+- De gedeelde stylesheet krijgt automatisch een inhoudshash in de URL, zodat browsers na een vormgevingswijziging de nieuwe versie ophalen. De noodzaak hiervan bleek bij de livecontrole na publicatie.
+
 ## Beheer
 
 Bewerk inhoud in beheer/paginas/ en metadata in beheer/pages.json. Regeneer daarna met python beheer/build.py en werk de gegenereerde rootpagina’s tegelijk bij. GitHub main is de actuele bron voor deze wijzigingsronde.

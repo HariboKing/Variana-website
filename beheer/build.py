@@ -6,6 +6,7 @@ Edit page fragments in beheer/paginas; metadata is in beheer/pages.json. The sha
 from pathlib import Path
 import json
 import html
+import hashlib
 from research_renderer import load_research, render_explorer, render_teaser
 
 BASE = Path(__file__).resolve().parent
@@ -35,6 +36,7 @@ def viewer():
     return '''<dialog id="image-viewer" class="image-viewer" aria-label="Vergrote productweergave"><div class="viewer-heading"><p id="viewer-caption">Productweergave van het prototype</p><button type="button" data-close-viewer>Sluiten <span aria-hidden="true">×</span></button></div><img src="assets/images/variana-prototype-home.webp" alt="" width="1151" height="611"></dialog>'''
 
 research_data=load_research(BASE,SITE)
+style_version=hashlib.sha256((SITE/'assets/css/styles.css').read_bytes()).hexdigest()[:12]
 
 for filename, page in pages.items():
     source_body = page.get('body')
@@ -51,7 +53,7 @@ for filename, page in pages.items():
     extra_scripts='<link rel="stylesheet" href="assets/css/research.css"><script src="assets/js/research-data.js" defer></script><script src="assets/js/research.js" defer></script>' if filename=='voorbeelden.html' else ''
     if filename=='index.html':
         extra_scripts='<link rel="preload" as="image" href="assets/images/variana-city-hero.webp" type="image/webp" fetchpriority="high"><link rel="stylesheet" href="assets/css/cinematic.css">'
-    content = f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><meta name="theme-color" content="#081322"><title>{title}</title><meta name="description" content="{description}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:type" content="{'article' if filename.startswith('kennis-') else 'website'}"><meta property="og:locale" content="nl_NL"><link rel="icon" href="assets/images/variana-mark.png" type="image/png"><link rel="stylesheet" href="assets/css/styles.css"><script type="application/ld+json">{json.dumps(schema,ensure_ascii=False)}</script><script src="assets/js/config.js" defer></script><script src="assets/js/main.js" defer></script>{extra_scripts}</head><body class="{body_class}">{header(filename)}<main id="main">{body}</main>{footer()}{viewer() if 'data-image-zoom' in body else ''}<noscript><div class="noscript-note">Alle inhoud en links zijn beschikbaar. Voor de producttabs, het mobiele menu en het lokale aanvraagbestand is JavaScript nodig. Productafbeeldingen kun je ook via de afbeeldingslinks vergroten.</div></noscript></body></html>'''
+    content = f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><meta name="theme-color" content="#081322"><title>{title}</title><meta name="description" content="{description}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:type" content="{'article' if filename.startswith('kennis-') else 'website'}"><meta property="og:locale" content="nl_NL"><link rel="icon" href="assets/images/variana-mark.png" type="image/png"><link rel="stylesheet" href="assets/css/styles.css?v={style_version}"><script type="application/ld+json">{json.dumps(schema,ensure_ascii=False)}</script><script src="assets/js/config.js" defer></script><script src="assets/js/main.js" defer></script>{extra_scripts}</head><body class="{body_class}">{header(filename)}<main id="main">{body}</main>{footer()}{viewer() if 'data-image-zoom' in body else ''}<noscript><div class="noscript-note">Alle inhoud en links zijn beschikbaar. Voor de producttabs, het mobiele menu en het lokale aanvraagbestand is JavaScript nodig. Productafbeeldingen kun je ook via de afbeeldingslinks vergroten.</div></noscript></body></html>'''
     if '<!--' in body:
         raise ValueError(f'Unfilled marker in {filename}')
     (SITE/filename).write_text(content,encoding='utf-8')
