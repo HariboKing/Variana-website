@@ -4,7 +4,7 @@ Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub
 
 ## Huidige indeling
 
-- Toepassingen begint met vier soorten vraagstukken. De interactieve keuzehulp daaronder verbindt een keuze in kolom A met output in kolom B. Kolom C heeft een titel en is verder leeg.
+- Toepassingen begint met vier soorten vraagstukken. De interactieve keuzehulp daaronder heeft drie tabbladen. A toont de vragen, B de bijpassende output en C blijft voorlopig leeg. Er is steeds één onderdeel zichtbaar.
 - Hoe het werkt bevat het systeemschema met links naar eigen uitlegpagina’s en de vierfasenuitleg.
 - Voorbeelden bevat ruimte voor praktijkcases en daaronder de interactieve producttour.
 - Contact, tarieven, doelgroepen en kennisbank behouden hun functie. Verwijzingen naar de keuzehulp zijn bijgewerkt.
@@ -31,9 +31,11 @@ De huidige koppelingen zijn:
 - Overzicht van product, doelgroep of organisatie → Blauwdruk.
 - Een specifiek verslag, advies of stappenplan → Specialistische modules.
 
-De eerste vraag is standaard gekozen. Klikken of de pijltjestoetsen, Home en End selecteren een vraag. De gekozen vraag en de bijbehorende output lichten op; de vorige selectie vervalt. B-tegels linken naar hun uitlegpagina.
+A is standaard geopend en de eerste vraag is gekozen. Klik op A, B of C om uitsluitend de inhoud van dat onderdeel te bekijken. De gekozen vraag blijft bewaard bij het wisselen. Open je B, dan is de bijpassende output al gemarkeerd. Een keuze bij A opent B niet automatisch. B-tegels linken naar hun uitlegpagina.
 
-Kolom C bevat momenteel geen modules, onderzoeken of zichtbare placeholdertekst. In het gegevensbestand is modules leeg en heeft iedere route een lege moduleIds-lijst. Voeg later de bedoelde modules toe aan modules en verbind ze via moduleIds met de juiste routes; dezelfde selectiecode markeert ze dan automatisch.
+De pijltjestoetsen, Home en End werken op de tabbladen en afzonderlijk binnen de vragen van A. Oude fragmentlinks openen het passende onderdeel: vraagstuk toont A, onderzoek toont B en samenhang/resultaten toont C. De demo-link opent A. Een vraag-query kan een route vooraf selecteren.
+
+Onderdeel C bevat momenteel geen modules, onderzoeken of zichtbare placeholdertekst. In het gegevensbestand is modules leeg en heeft iedere route een lege moduleIds-lijst. Voeg later de bedoelde modules toe aan modules en verbind ze via moduleIds met de juiste routes; dezelfde selectiecode markeert ze dan automatisch.
 
 De oude onderzoeksverkenner en fictieve gegevens zijn in de bron bewaard, maar worden niet op Toepassingen geladen of getoond. De bijbehorende oude fragmentankers blijven bereikbaar als verwijzingen naar de nieuwe interface.
 
