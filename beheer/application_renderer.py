@@ -62,6 +62,9 @@ def load_application_routes(base):
         text(item, 'question', 'routes')
         if 'governmentQuestion' in item:
             text(item, 'governmentQuestion', 'routes')
+        for field in ('resultLabel', 'resultDescription'):
+            if field in item:
+                text(item, field, 'routes')
         refs(item.get('outputIds'), outputs, 'routes/outputIds')
     for item in list(outputs.values()) + list(tasks.values()):
         for field in ('description', 'href'):
@@ -91,8 +94,8 @@ def load_application_routes(base):
         if 'overheid' in item['organizations']:
             if item['id'] in forbidden_government_tasks or item.get('businessOnly'):
                 raise ValueError('Deze specialistische uitwerking is uitgesloten voor de overheid.')
-            if any(steps[step_id].get('businessOnly') for step_id in item['stepIds']):
-                raise ValueError('Een overheidsuitwerking bevat een uitsluitend bedrijfsmatige stap.')
+            # Shared blueprint definitions contain business-only stages. The
+            # resolver excludes those stages from every public-sector route.
     for goal in goals.values():
         for organization in goal['organizations']:
             options = [item for item in tasks.values()
@@ -106,6 +109,12 @@ def load_application_routes(base):
         if route_id not in routes:
             raise ValueError('Een onderzoeksroute verwijst naar een onbekende vraag.')
         refs(step_ids, steps, 'flows')
+    if flows['overzicht'][-1] != 'blauwdruk' or 'blauwdruk' in flows['inzicht']:
+        raise ValueError('Een organisatie-uitwerking vereist een blauwdruk; een losse analyse niet.')
+    if any(item['stepIds'] != flows['overzicht'] for item in tasks.values()):
+        raise ValueError('Iedere specialistische module moet op de gedeelde blauwdruk voortbouwen.')
+    if any(not steps[item].get('businessOnly') for item in ('product', 'marketing')):
+        raise ValueError('Productontwikkeling en marketing moeten voor overheid uitgesloten blijven.')
     return data
 
 
@@ -192,6 +201,7 @@ def render_application_matcher(base, site=None):
 <div class="matcher-panel-heading"><p class="eyebrow">C / Modules en onderzoeken</p><h3 id="matcher-modules-title">Welke onderdelen dragen bij aan je antwoord?</h3><p class="matcher-context" data-matcher-context hidden></p></div>
 {_pending()}
 <div data-matcher-flow-content hidden><p class="matcher-scope matcher-flow-intro">Een mogelijke route op hoofdlijnen. Welke onderdelen nodig zijn en hoe diep ze worden uitgewerkt, hangt af van je vraag en de beschikbare informatie.</p>
+<p class="matcher-blueprint-note" data-matcher-flow-explanation></p>
 <ol class="matcher-flow-list" data-matcher-modules aria-labelledby="matcher-modules-title"></ol>
 <aside class="matcher-feedback" aria-labelledby="matcher-feedback-title"><h4 id="matcher-feedback-title">Intern aangescherpt vóór de eerste oplevering</h4><p>Vóór de eerste oplevering doorloopt de uitwerking uitgebreide interne terugkoppelingen. Onderzoeksuitkomsten worden aan bronnen en aan elkaar getoetst; nieuwe inzichten worden in eerdere onderdelen verwerkt.</p><p>De eerste versie die je ontvangt, is daardoor intern al herzien en aangescherpt. Feedback van jou of externe betrokkenen is daarin nog niet verwerkt.</p></aside></div>
 </section>

@@ -54,6 +54,8 @@ for filename, page in pages.items():
         body = body.replace('<!-- RESEARCH_EXPLORER -->', render_explorer(research_data))
     if '<!-- APPLICATION_MATCHER -->' in body:
         body = body.replace('<!-- APPLICATION_MATCHER -->', render_application_matcher(BASE,SITE))
+    if '<!-- SYSTEM_EXPLORER -->' in body:
+        body = body.replace('<!-- SYSTEM_EXPLORER -->', '')
     title = html.escape(page['title'])
     description = html.escape(page['description'], quote=True)
     schema = {'@context':'https://schema.org','@type':'Article' if filename.startswith('kennis-') else 'WebPage','name':page['title'],'description':page['description'],'inLanguage':'nl-NL'}
@@ -72,6 +74,10 @@ for filename, page in pages.items():
         matcher_css_version=hashlib.sha256((SITE/'assets/css/application-matcher.css').read_bytes()).hexdigest()[:12]
         matcher_js_version=hashlib.sha256((SITE/'assets/js/application-matcher.js').read_bytes()).hexdigest()[:12]
         extra_scripts=f'<link rel="stylesheet" href="assets/css/application-matcher.css?v={matcher_css_version}"><script src="assets/js/application-matcher.js?v={matcher_js_version}" defer></script>'
+    if '<!-- SYSTEM_EXPLORER -->' in source_body:
+        system_css_version=hashlib.sha256((SITE/'assets/css/system-explorer.css').read_bytes()).hexdigest()[:12]
+        system_js_version=hashlib.sha256((SITE/'assets/js/system-explorer.js').read_bytes()).hexdigest()[:12]
+        extra_scripts+=f'<link rel="stylesheet" href="assets/css/system-explorer.css?v={system_css_version}"><script src="assets/js/system-explorer.js?v={system_js_version}" defer></script>'
     if filename=='index.html':
         extra_scripts='<link rel="preload" as="image" href="assets/images/variana-city-hero.webp" type="image/webp" fetchpriority="high"><link rel="stylesheet" href="assets/css/cinematic.css">'
     content = f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><meta name="theme-color" content="#081322"><title>{title}</title><meta name="description" content="{description}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:type" content="{'article' if filename.startswith('kennis-') else 'website'}"><meta property="og:locale" content="nl_NL"><link rel="icon" href="assets/images/variana-mark.png" type="image/png"><link rel="stylesheet" href="assets/css/styles.css?v={style_version}"><script type="application/ld+json">{json.dumps(schema,ensure_ascii=False)}</script><script src="assets/js/config.js" defer></script><script src="assets/js/main.js" defer></script>{extra_scripts}</head><body class="{body_class}">{header(filename)}<main id="main">{body}</main>{footer()}{viewer() if 'data-image-zoom' in body else ''}<noscript><div class="noscript-note">Alle inhoud en links zijn beschikbaar. Voor de interactieve schermen, het mobiele menu en het lokale aanvraagbestand is JavaScript nodig. Productafbeeldingen kun je ook via de afbeeldingslinks vergroten.</div></noscript></body></html>'''

@@ -18,7 +18,7 @@
     const category = complete ? data.outputs.find(item => item.id === route.outputIds[0]) : null;
     const result = complete ? (route.id === 'uitwerking'
       ? { id: task.id, label: task.outputLabel, description: task.description, href: task.href }
-      : { id: category.id, label: category.label, description: category.description, href: category.href }) : null;
+      : { id: category.id, label: route.resultLabel || category.label, description: route.resultDescription || category.description, href: category.href }) : null;
     const stepIds = complete ? (route.id === 'uitwerking' ? task.stepIds : data.flows[route.id]) : [];
     const steps = stepIds.map(id => data.steps.find(item => item.id === id))
       .filter(item => item && !(organization.id === 'overheid' && item.businessOnly));
@@ -73,10 +73,17 @@
 
     function drawFlow() {
       const fragment = document.createDocumentFragment();
-      const items = [...selection.steps, { id: 'output', label: selection.result.label, description: 'De passende uitwerking van je gekozen vraag.', final: true }];
+      const items = selection.steps.map(step => ({ ...step, blueprint: step.id === 'blauwdruk' }));
+      if (selection.route.id === 'overzicht') {
+        Object.assign(items[items.length - 1], { label: selection.result.label, description: selection.result.description, final: true });
+      } else {
+        items.push({ id: 'output', label: selection.result.label, description: selection.route.id === 'uitwerking'
+          ? 'Deze specialistische uitwerking bouwt voort op de interne blauwdruk en beantwoordt je concrete vraag.'
+          : 'Een onderbouwde uitwerking van je gekozen onderzoeksvraag.', final: true });
+      }
       items.forEach((step, index) => {
         const item = document.createElement('li');
-        item.className = 'matcher-flow-step' + (step.final ? ' is-result' : '');
+        item.className = 'matcher-flow-step' + (step.blueprint ? ' is-blueprint' : '') + (step.final ? ' is-result' : '');
         item.dataset.matcherModule = step.id;
         const number = document.createElement('span');
         number.className = 'matcher-flow-number';
@@ -153,6 +160,10 @@
       root.querySelector('[data-matcher-result-title]').textContent = selection.result?.label || '';
       root.querySelector('[data-matcher-result-description]').textContent = selection.result?.description || '';
       root.querySelector('[data-matcher-result-link]').setAttribute('href', selection.result?.href || 'specialistische-modules.html');
+      root.querySelector('[data-matcher-flow-explanation]').textContent = !selection.complete ? ''
+        : selection.route.id === 'inzicht' ? 'Een analyse kan zelfstandig worden uitgevoerd en geeft inzicht in je onderwerp.'
+        : selection.route.id === 'overzicht' ? 'De blauwdruk brengt de opbouw en inrichting samen. Van daaruit werken we het plan van aanpak of stappenplan uit.'
+        : 'Voor een specialistische uitwerking wordt altijd eerst intern een blauwdruk opgebouwd. De specialistische module komt daarna en gebruikt die samenhang als basis.';
       flow.replaceChildren();
       if (selection.complete) drawFlow();
       root.dataset.selectedOrganization = selection.organization?.id || '';

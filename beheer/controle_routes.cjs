@@ -17,6 +17,8 @@ for (const organization of ['bedrijf', 'overheid']) {
     assert(result.complete);
     assert.equal(result.outputIds.length, 1);
     assert.equal(result.result.id, routeId === 'inzicht' ? 'analyses' : 'blauwdruk');
+    assert.equal(result.steps.some(item => item.id === 'blauwdruk'), routeId === 'overzicht');
+    if (routeId === 'overzicht') assert.equal(result.steps.at(-1).id, 'blauwdruk');
     if (organization === 'overheid' || routeId === 'inzicht') {
       assert(!result.steps.some(item => commercialSteps.includes(item.id)));
     } else {
@@ -30,6 +32,8 @@ for (const organization of ['bedrijf', 'overheid']) {
     assert.equal(result.result.id, task.id);
     assert.deepEqual(result.outputIds, ['specialistische-modules']);
     assert(result.steps.length > 0);
+    assert.equal(result.steps.at(-1).id, 'blauwdruk', `${organization}/${task.id} must first complete the blueprint`);
+    assert.equal(result.steps.filter(item => item.id === 'blauwdruk').length, 1);
     if (organization === 'overheid') {
       assert(!forbidden.includes(result.result.id));
       assert(!result.steps.some(item => item.businessOnly || commercialSteps.includes(item.id)));
@@ -54,9 +58,9 @@ for (const state of [
   {}, { organization: 'bedrijf' }, { organization: 'onbekend', routeId: 'overzicht' },
   { organization: 'overheid', routeId: 'niet-bestaand' },
   { organization: 'bedrijf', routeId: 'uitwerking' },
-  { organization: 'bedrijf', routeId: 'uitwerking', goalId: 'besluit' },
+  { organization: 'bedrijf', routeId: 'uitwerking', goalId: 'strategie' },
   { organization: 'overheid', routeId: 'uitwerking', goalId: 'financiering', taskId: 'pitchdeck' },
-  { organization: 'bedrijf', routeId: 'uitwerking', goalId: 'uitvoering', taskId: 'memorandum' }
+  { organization: 'bedrijf', routeId: 'uitwerking', goalId: 'beoordeling', taskId: 'memorandum' }
 ]) {
   const result = resolve(state);
   assert.equal(result.complete, false);
@@ -66,12 +70,11 @@ for (const state of [
   cases++;
 }
 
-// Government's single relevant audience-use case needs no redundant fourth question.
-const journey = resolve({ organization: 'overheid', routeId: 'uitwerking', goalId: 'doelgroep' });
-assert.equal(journey.result.id, 'journey');
-assert.equal(journey.tasks.length, 1);
+// Four specialist directions exist, with the commercial directions excluded for government.
+assert.deepEqual(resolve({ organization: 'bedrijf' }).goals.map(item => item.id), ['strategie', 'marketing', 'financiering', 'beoordeling']);
+assert.deepEqual(resolve({ organization: 'overheid' }).goals.map(item => item.id), ['strategie', 'beoordeling']);
 const overview = resolve({ organization: 'bedrijf', routeId: 'overzicht', goalId: 'financiering', taskId: 'memorandum' });
 assert.equal(overview.goal, null);
 assert.equal(overview.result.id, 'blauwdruk');
 cases += 2;
-console.log(`${cases} routing cases passed: allowed outputs, government exclusions, incomplete choices and relevant flows.`);
+console.log(`${cases} routing cases passed: allowed outputs, government exclusions and a blueprint before every specialist output.`);

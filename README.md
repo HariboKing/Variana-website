@@ -4,10 +4,10 @@ Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub
 
 ## Huidige indeling
 
-- Toepassingen begint met vier soorten vraagstukken. De interactieve keuzehulp daaronder heeft drie tabbladen. A vraagt naar de organisatie en het beoogde gebruik, B toont de passende output en C de bijbehorende route op hoofdlijnen. Er is steeds één onderdeel zichtbaar.
-- Hoe het werkt bevat het systeemschema met links naar eigen uitlegpagina’s en de vierfasenuitleg.
+- Hoe het werkt bevat de bestaande opening, één interactieve systeemverkenner en de bestaande contactoproep. De oude screenshotpresentatie en afzonderlijke vierfasenuitleg zijn van deze pagina verwijderd.
+- Toepassingen bevat de opening, vier invalshoeken, de A/B/C-keuzehulp, Van klantvraag naar uitwerking en de contactoproep. De losse operationele sectie is verwijderd.
 - Voorbeelden bevat ruimte voor praktijkcases en daaronder de interactieve producttour.
-- Contact, tarieven, doelgroepen en kennisbank behouden hun functie. Verwijzingen naar de keuzehulp zijn bijgewerkt.
+- Contact, tarieven, doelgroepen en kennisbank behouden hun functie.
 
 ## Onderhouden en bouwen
 
@@ -19,35 +19,56 @@ Voer vanuit de website-map uit:
 
 De generator schrijft de HTML in de hoofdmap. Werk beheerbronnen en gegenereerde HTML samen bij in GitHub. Voor bekijken of hosten zijn geen Python, Node, database of extra bouwstappen nodig.
 
-De algemene vormgeving staat in assets/css/styles.css. De homepage gebruikt ook cinematic.css. Stylesheets en interactieve code krijgen waar nodig een inhoudshash in de URL tegen verouderde browsercache.
+De algemene vormgeving staat in assets/css/styles.css. De homepage gebruikt ook cinematic.css. De build voegt de bestanden van een interactief scherm alleen toe aan de pagina met de bijbehorende markering. De CSS- en JavaScript-URL’s krijgen een inhoudshash tegen verouderde browsercache.
 
-## Interactieve A/B/C-keuzehulp
+## Interactief systeem op Hoe het werkt
 
-De markering APPLICATION_MATCHER plaatst de keuzehulp op Toepassingen. beheer/application_renderer.py leest beheer/toepassingsroutes.json en maakt de statische HTML met veilige ingebedde JSON. De browser gebruikt application-matcher.css en application-matcher.js; er is geen fetch of externe bibliotheek nodig.
+De bron van Hoe het werkt bevat de markering SYSTEM_EXPLORER en het element data-system-explorer. De build verwijdert de markering en laadt system-explorer.css en system-explorer.js uitsluitend op deze pagina. De teksten staan als veilige, vaste JSON in de paginabron. Er is geen fetch of externe bibliotheek nodig.
 
-De hoofdkoppelingen zijn:
+Het scherm bevat vier hoofdbouwstenen:
 
-- Inzicht over een onderwerp → Analyses.
-- Overzicht van product, doelgroep of organisatie → Blauwdruk. Voor een overheid spreekt de vraag over een vraagstuk, doelgroep of organisatie.
-- Een specifiek verslag, advies of stappenplan → Specialistische modules, met een gerichte uitwerking op basis van aanvullende antwoorden.
+- Input: de vraag, context en beschikbare informatie.
+- Analyse: inzicht in het onderwerp.
+- Blauwdruk: de opbouw en inrichting van organisatie of opgave.
+- Specialistische modules: concrete toepassingen en antwoorden vanuit de blauwdruk.
 
-A is standaard geopend; organisatie en hoofdvraag zijn nog niet gekozen. Kies eerst Bedrijf of andere organisatie (waaronder stichtingen) of Overheidsorganisatie, en daarna wat je wilt bereiken. Voor Analyses en Blauwdruk zijn die twee keuzes voldoende. Bij een specialistische uitwerking volgt eerst een doel en daarna een bijbehorende intentie. Per doel worden maximaal drie passende intenties getoond. Bij overheid en het doel rond doelgroepen wordt de enige passende uitwerking, Customer journey, automatisch gekozen. De volledige modulelijst verschijnt nergens als één catalogus.
+Onder de specialistische modules staan vier toepassingen: Strategie, bestuur en beleid; Ontwikkeling en inrichting; Marketing; Beoordeling & evaluatie. Elke keuze opent een toelichting in hetzelfde scherm, met een link naar de bestaande uitlegpagina. Er staat één toelichting tegelijk in beeld. De analyse kan zelfstandig worden opgeleverd; een specialistische uitwerking bouwt altijd voort op een interne blauwdruk.
 
-Klik op A, B of C om uitsluitend de inhoud van dat onderdeel te bekijken. Wisselen van tabblad behoudt de antwoorden; kiezen bij A opent B niet automatisch. Wisselen van organisatie of hoofdvraag wist het specialistische doel en de gekozen uitwerking, zodat geen eerdere, ongeschikte selectie blijft gelden. B behoudt de drie hoofdcategorieën en toont daarnaast de gekozen output met een korte toelichting en een link naar de uitlegpagina.
+De knoppen werken met muis, Enter en spatie. Pijltjestoetsen, Home en End verplaatsen de selectie. Bestaande fragmentankers verwijzen naar de passende hoofdbouwsteen of toepassing. De opening en contactoproep blijven gelijk aan de vorige versie.
 
-De pijltjestoetsen, Home en End werken op de tabbladen en afzonderlijk binnen de keuzegroepen van A. Oude fragmentlinks openen het passende onderdeel: vraagstuk toont A, onderzoek toont B en samenhang/resultaten toont C. De demo-link opent A. Een vraag-query kan alleen de hoofdvraag vooraf selecteren; een organisatie moet de bezoeker nog zelf kiezen.
+## Interactieve A/B/C-keuzehulp op Toepassingen
 
-Onderdeel C toont na een complete keuze een genummerde route op hoofdlijnen, met als laatste onderdeel de passende output. Een losse analyse krijgt een beperkte onderzoeksroute; de blauwdruk geeft een breder organisatieoverzicht en specialistische uitwerkingen krijgen hun relevante deelroute. Niet iedere aanvraag doorloopt dus automatisch de hele keten. Literatuuronderzoek verschijnt op de relevante momenten. De toelichting op interne feedbacklussen maakt duidelijk dat eerdere onderdelen intern opnieuw worden getoetst en aangescherpt voordat de klant een eerste oplevering krijgt. Feedback van de klant volgt daarna.
+De vier invalshoeken boven de keuzehulp zijn Strategie, bestuur & beleid; Ontwikkeling en inrichting; Marketing; Beoordeling en evaluatie.
 
-beheer/toepassingsroutes.json bevat de organisaties (organizations), hoofdvragen (routes), hoofdcategorieën (outputs), doelen (goals), gerichte uitwerkingen (tasks), globale stappen (steps) en hoofdroutes (flows). organizations op doelen en uitwerkingen bepaalt wie de optie mag zien. Iedere uitwerking verwijst via stepIds naar de benodigde bouwstenen. Stappen met businessOnly worden voor overheden uitgesloten. De brede overzichtsroute bevat deze stappen wel voor bedrijven.
+De markering APPLICATION_MATCHER plaatst de keuzehulp. beheer/application_renderer.py leest beheer/toepassingsroutes.json en maakt de statische HTML met veilige ingebedde JSON. De browser gebruikt application-matcher.css en application-matcher.js.
 
-Voor overheden worden productontwikkeling en marketingmatrix uitgesloten. Ook financieringsaanvraag, pitchdeck, informatiememorandum, target list en investeringsbeoordeling worden niet aangeboden. Overheidsuitwerkingen zijn Adviesrapport, Scenariovergelijking, Plan van aanpak, Customer journey en KPI’s en managementcriteria. Houd deze beperkingen ook bij toekomstige wijzigingen aan de gegevens en selectiecode in stand.
+A opent zonder gekozen organisatie of hoofdvraag. Kies Bedrijf of andere organisatie (waaronder stichtingen) of Overheidsorganisatie, en daarna één van drie hoofdvragen:
 
-Controleer wijzigingen in de routegegevens met `node beheer/controle_routes.cjs`. Deze controle gebruikt dezelfde resolver als de browser en test ook onvolledige en uitgesloten combinaties. De build valideert de structuur en verwijzingen van het gegevensbestand.
+- Geef inzicht in een onderwerp → Analyses.
+- Geef overzicht en een plan van aanpak of stappenplan → Blauwdruk, met als gerichte uitwerking Blauwdruk & plan van aanpak.
+- Geen van beide: ik heb een specialistische vraag → een gerichte specialistische uitwerking.
 
-De keuzehulp verduidelijkt vaste koppelingen en mogelijke routes. Zij voert geen onderzoek uit, raadpleegt geen bronnen en presenteert geen onderzoeksresultaten. De openbare route is een samenvatting; interne bronstukken, instructies en gedetailleerde afhankelijkheden worden niet gepubliceerd. De keuzehulp wijzigt niets aan de beschikbaarheid van zelfstandige software.
+Bij de derde hoofdvraag volgen maximaal vier richtingen: Strategisch advies en afweging; Marketing opzetten; Investering en financiering voorbereiden; Andere plannen en ontwikkelingen beoordelen. Alleen passende richtingen verschijnen. Per richting volgen maximaal drie concrete intenties; de volledige modulelijst verschijnt nergens als één catalogus.
 
-De oude onderzoeksverkenner en fictieve gegevens zijn in de bron bewaard, maar worden niet op Toepassingen geladen of getoond. De bijbehorende oude fragmentankers blijven bereikbaar als verwijzingen naar de nieuwe interface.
+B behoudt de drie hoofdcategorieën Analyses, Blauwdruk en Specialistische modules. De passende categorie wordt gemarkeerd en de gerichte output krijgt een korte toelichting en een link naar de uitlegpagina.
+
+C toont na een complete keuze een genummerde route op hoofdlijnen. Alleen een losse analyse heeft een korte route zonder blauwdruk. Iedere andere route bouwt eerst de interne blauwdruk op. Bij de overzichtsvraag is die blauwdruk met plan van aanpak de einduitwerking en wordt zij niet tweemaal getoond. Bij een specialistische vraag komt de gekozen module ná de interne blauwdruk. De toelichting op interne feedbacklussen beschrijft de toetsing en aanscherping vóór de eerste oplevering; klantfeedback volgt daarna.
+
+A, B en C blijven afzonderlijke tabbladen met steeds één zichtbaar paneel. Wisselen van tabblad behoudt de antwoorden; kiezen bij A opent B niet automatisch. Wisselen van organisatie of hoofdvraag wist het specialistische doel en de gekozen uitwerking. De pijltjestoetsen, Home en End werken op de tabbladen en afzonderlijk binnen de keuzegroepen van A. Een onvolledige keuze toont bij B en C welke vraag nog ontbreekt.
+
+Oude fragmentlinks blijven bereikbaar: vraagstuk opent A, onderzoek B en samenhang/resultaten C. De demo-link opent A. Een vraag-query kan alleen de hoofdvraag vooraf selecteren; de bezoeker moet de organisatie zelf kiezen.
+
+beheer/toepassingsroutes.json bevat organizations, routes, outputs, goals, tasks, steps en flows. De organisatieverwijzingen op doelen en taken bepalen welke mogelijkheden beschikbaar zijn. Alle specialistische stepIds volgen dezelfde basisroute als flows.overzicht, die eindigt met blauwdruk. De browser sluit stappen met businessOnly uit voor overheden. De build controleert deze structuur en verwijzingen.
+
+Voor overheden verschijnen de specialistische richtingen strategie en beoordeling. Productontwikkeling en marketingmatrix worden uit C gefilterd. Financieringsaanvraag, pitchdeck, informatiememorandum, target list en investeringsbeoordeling zijn uitgesloten. De gerichte overheidsuitwerkingen zijn Adviesrapport, Scenariovergelijking, Beoordelingsrapport en KPI’s en managementcriteria. De overzichtsvraag biedt ook voor overheid een blauwdruk met plan van aanpak.
+
+Controleer wijzigingen met:
+
+    node beheer/controle_routes.cjs
+
+Deze controle gebruikt dezelfde resolver als de browser en test ook onvolledige keuzes, overheidsuitsluitingen en de blauwdruk als basis vóór iedere specialistische uitwerking.
+
+Beide interactieve schermen beschrijven de samenhang en vaste koppelingen. Zij voeren geen onderzoek uit, raadplegen geen bronnen en presenteren geen onderzoeksresultaten. Interne bronstukken, instructies en gedetailleerde afhankelijkheden worden niet gepubliceerd. De oude onderzoeksverkenner en fictieve gegevens blijven in de bron bewaard, maar worden niet op Toepassingen geladen of getoond.
 
 ## Praktijkvoorbeelden
 
@@ -59,7 +80,7 @@ Prototypebeelden tonen de werkomgeving en vormen geen bewijs van uitgevoerde ond
 
 Het bevestigde publieke adres is info@variana.nl. Het formulier opent een e-mailconcept of maakt een lokale TXT-download; de bezoeker verstuurt zelf. Er is geen automatische verzending.
 
-De tarieven staan in beheer/paginas/samenwerken.html. De huidige wijzigingen veranderen geen bedragen of btw-vermelding. Huidige dienstverlening gebruikt een online ondersteund prototype. Zelfstandige offline software en de zelfstandige marketing- en evaluatiemodules zijn nog in ontwikkeling.
+De tarieven staan in beheer/paginas/samenwerken.html. Deze wijziging verandert geen bedragen of btw-vermelding. De huidige dienstverlening gebruikt een online ondersteund prototype. Zelfstandige offline software en de zelfstandige marketing- en evaluatiemodules zijn nog in ontwikkeling; de keuzehulpen wijzigen die beschikbaarheid niet.
 
 Bewaar de CNAME. Interne bron-PDF’s, Worddocumenten, geëxtraheerde brontekst, werkmappen, back-ups en aanvraagbestanden horen niet in de websitebron. Oudere ZIP-bestanden zijn geen bron voor deze GitHub-wijzigingen.
 

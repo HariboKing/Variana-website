@@ -89,6 +89,8 @@
 .matcher-feedback h4 { font-size: 21px; line-height: 1.5; margin: 0 0 13px; }
 .matcher-feedback p { margin: 0; max-width: 900px; font-size: 15px; line-height: 1.85; color: #bed0de; }
 .matcher-feedback p + p { margin-top: 12px; }
+.matcher-blueprint-note { margin: 0 0 24px; padding: 18px 20px; border-left: 3px solid #587b98; background: #122b40; color: #cfdee9; font-size: 16px; line-height: 1.75; }
+.matcher-flow-step.is-blueprint:not(.is-result) { border-color: #587b98; background: #152d43; }
 @media (max-width: 1100px) {
  .matcher-choice-list .matcher-question { padding: 19px 16px; }
  .matcher-flow-step { padding: 19px 17px; }

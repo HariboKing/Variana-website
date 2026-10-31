@@ -15,22 +15,24 @@
   "routes": [
     {
       "id": "inzicht",
-      "question": "Geef inzicht over een onderwerp.",
+      "question": "Geef inzicht in een onderwerp.",
       "outputIds": [
         "analyses"
       ]
     },
     {
       "id": "overzicht",
-      "question": "Geef een overzicht van mijn product, doelgroep of organisatie.",
-      "governmentQuestion": "Geef een overzicht van mijn vraagstuk, doelgroep of organisatie.",
+      "question": "Geef overzicht en een plan van aanpak of stappenplan.",
+      "governmentQuestion": "Geef overzicht en een plan van aanpak of stappenplan.",
       "outputIds": [
         "blauwdruk"
-      ]
+      ],
+      "resultLabel": "Blauwdruk & plan van aanpak",
+      "resultDescription": "Een samenhangende uitwerking van de opbouw en inrichting van je organisatie of opgave, met een plan van aanpak voor de uitvoering."
     },
     {
       "id": "uitwerking",
-      "question": "Geef een specifiek verslag, advies of stappenplan om over te kunnen dragen naar uitvoering en uitwerking.",
+      "question": "Geen van beide: ik heb een specialistische vraag.",
       "outputIds": [
         "specialistische-modules"
       ]
@@ -47,7 +49,7 @@
       "id": "blauwdruk",
       "label": "Blauwdruk",
       "href": "blauwdruk.html",
-      "description": "Een samenhangend overzicht van je organisatie, de onderliggende behoeften, oplossingen en benodigde inrichting."
+      "description": "Een samenhangend overzicht van je organisatie of opgave, met de benodigde inrichting en stappen naar uitvoering."
     },
     {
       "id": "specialistische-modules",
@@ -58,41 +60,40 @@
   ],
   "goals": [
     {
-      "id": "besluit",
-      "label": "Een keuze onderbouwen",
+      "id": "strategie",
+      "label": "Strategisch advies en afweging",
       "organizations": [
         "bedrijf",
         "overheid"
       ]
     },
     {
-      "id": "uitvoering",
-      "label": "De uitvoering organiseren en volgen",
+      "id": "marketing",
+      "label": "Marketing opzetten",
       "organizations": [
-        "bedrijf",
-        "overheid"
-      ]
-    },
-    {
-      "id": "doelgroep",
-      "label": "Doelgroepen beter bereiken of bedienen",
-      "organizations": [
-        "bedrijf",
-        "overheid"
+        "bedrijf"
       ]
     },
     {
       "id": "financiering",
-      "label": "Financiering voorbereiden of mijn plan presenteren",
+      "label": "Investering en financiering voorbereiden",
       "organizations": [
         "bedrijf"
+      ]
+    },
+    {
+      "id": "beoordeling",
+      "label": "Andere plannen en ontwikkelingen beoordelen",
+      "organizations": [
+        "bedrijf",
+        "overheid"
       ]
     }
   ],
   "tasks": [
     {
       "id": "advies",
-      "goalId": "besluit",
+      "goalId": "strategie",
       "organizations": [
         "bedrijf",
         "overheid"
@@ -108,12 +109,18 @@
         "probleem",
         "onderzoek-probleem",
         "oplossing",
-        "onderzoek-oplossing"
+        "onderzoek-oplossing",
+        "product",
+        "doelgroepen",
+        "marketing",
+        "werkpakketten",
+        "begroting",
+        "blauwdruk"
       ]
     },
     {
       "id": "scenarios",
-      "goalId": "besluit",
+      "goalId": "strategie",
       "organizations": [
         "bedrijf",
         "overheid"
@@ -129,19 +136,25 @@
         "probleem",
         "onderzoek-probleem",
         "oplossing",
-        "onderzoek-oplossing"
+        "onderzoek-oplossing",
+        "product",
+        "doelgroepen",
+        "marketing",
+        "werkpakketten",
+        "begroting",
+        "blauwdruk"
       ]
     },
     {
-      "id": "investering",
-      "goalId": "besluit",
+      "id": "marketingplan",
+      "goalId": "marketing",
       "organizations": [
         "bedrijf"
       ],
-      "label": "Een investeringsvoorstel beoordelen.",
-      "outputLabel": "Investeringsbeoordeling",
-      "description": "Een onderbouwde beoordeling van een voorstel aan de hand van relevante criteria, aannames en risico’s.",
-      "href": "specialistische-modules.html",
+      "label": "Een onderbouwde marketingaanpak opstellen.",
+      "outputLabel": "Marketingplan",
+      "description": "Een onderbouwde marktbenadering met keuzes voor doelgroepen, positionering en de relevante P’s van marketing.",
+      "href": "marketing.html",
       "stepIds": [
         "concept",
         "onderzoek-concept",
@@ -150,62 +163,19 @@
         "onderzoek-probleem",
         "oplossing",
         "onderzoek-oplossing",
+        "product",
         "doelgroepen",
-        "begroting"
-      ]
-    },
-    {
-      "id": "plan",
-      "goalId": "uitvoering",
-      "organizations": [
-        "bedrijf",
-        "overheid"
-      ],
-      "label": "Een concreet stappenplan voor de uitvoering uitwerken.",
-      "outputLabel": "Plan van aanpak",
-      "description": "Een uitwerking van de benodigde werkzaamheden, rollen, afhankelijkheden en middelen om tot uitvoering te komen.",
-      "href": "plan-van-aanpak.html",
-      "stepIds": [
-        "concept",
-        "onderzoek-concept",
-        "analyses",
-        "probleem",
-        "onderzoek-probleem",
-        "oplossing",
-        "onderzoek-oplossing",
-        "doelgroepen",
+        "marketing",
         "werkpakketten",
-        "begroting"
-      ]
-    },
-    {
-      "id": "kpis",
-      "goalId": "uitvoering",
-      "organizations": [
-        "bedrijf",
-        "overheid"
-      ],
-      "label": "Doelen vertalen naar meetbare prestaties en beoordelingscriteria.",
-      "outputLabel": "KPI’s en managementcriteria",
-      "description": "Passende indicatoren en criteria om voortgang en resultaten te volgen en te beoordelen.",
-      "href": "specialistische-modules.html",
-      "stepIds": [
-        "concept",
-        "onderzoek-concept",
-        "analyses",
-        "probleem",
-        "onderzoek-probleem",
-        "oplossing",
-        "onderzoek-oplossing",
-        "werkpakketten"
+        "begroting",
+        "blauwdruk"
       ]
     },
     {
       "id": "journey",
-      "goalId": "doelgroep",
+      "goalId": "marketing",
       "organizations": [
-        "bedrijf",
-        "overheid"
+        "bedrijf"
       ],
       "label": "De ervaringen en contactmomenten van gebruikers in kaart brengen.",
       "outputLabel": "Customer journey",
@@ -219,12 +189,17 @@
         "onderzoek-probleem",
         "oplossing",
         "onderzoek-oplossing",
-        "doelgroepen"
+        "product",
+        "doelgroepen",
+        "marketing",
+        "werkpakketten",
+        "begroting",
+        "blauwdruk"
       ]
     },
     {
       "id": "targetlist",
-      "goalId": "doelgroep",
+      "goalId": "marketing",
       "organizations": [
         "bedrijf"
       ],
@@ -236,7 +211,16 @@
         "concept",
         "onderzoek-concept",
         "analyses",
-        "doelgroepen"
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing",
+        "product",
+        "doelgroepen",
+        "marketing",
+        "werkpakketten",
+        "begroting",
+        "blauwdruk"
       ]
     },
     {
@@ -261,7 +245,8 @@
         "doelgroepen",
         "marketing",
         "werkpakketten",
-        "begroting"
+        "begroting",
+        "blauwdruk"
       ]
     },
     {
@@ -286,7 +271,8 @@
         "doelgroepen",
         "marketing",
         "werkpakketten",
-        "begroting"
+        "begroting",
+        "blauwdruk"
       ]
     },
     {
@@ -311,7 +297,88 @@
         "doelgroepen",
         "marketing",
         "werkpakketten",
-        "begroting"
+        "begroting",
+        "blauwdruk"
+      ]
+    },
+    {
+      "id": "beoordeling",
+      "goalId": "beoordeling",
+      "organizations": [
+        "bedrijf",
+        "overheid"
+      ],
+      "label": "Een plan of ontwikkeling inhoudelijk beoordelen.",
+      "outputLabel": "Beoordelingsrapport",
+      "description": "Een onderbouwde beoordeling van een plan of ontwikkeling, met expliciete criteria, aannames, risico’s en aandachtspunten.",
+      "href": "evaluatie.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing",
+        "product",
+        "doelgroepen",
+        "marketing",
+        "werkpakketten",
+        "begroting",
+        "blauwdruk"
+      ]
+    },
+    {
+      "id": "investering",
+      "goalId": "beoordeling",
+      "organizations": [
+        "bedrijf"
+      ],
+      "label": "Een investeringsvoorstel beoordelen.",
+      "outputLabel": "Investeringsbeoordeling",
+      "description": "Een onderbouwde beoordeling van een voorstel aan de hand van relevante criteria, aannames en risico’s.",
+      "href": "specialistische-modules.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing",
+        "product",
+        "doelgroepen",
+        "marketing",
+        "werkpakketten",
+        "begroting",
+        "blauwdruk"
+      ]
+    },
+    {
+      "id": "kpis",
+      "goalId": "beoordeling",
+      "organizations": [
+        "bedrijf",
+        "overheid"
+      ],
+      "label": "Criteria en KPI’s vaststellen om plannen en ontwikkelingen te beoordelen.",
+      "outputLabel": "KPI’s en managementcriteria",
+      "description": "Passende indicatoren en criteria om voortgang en resultaten te volgen en te beoordelen.",
+      "href": "specialistische-modules.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing",
+        "product",
+        "doelgroepen",
+        "marketing",
+        "werkpakketten",
+        "begroting",
+        "blauwdruk"
       ]
     }
   ],
@@ -377,6 +444,11 @@
       "id": "begroting",
       "label": "Begroting opstellen",
       "description": "Kosten, benodigde inzet en financiële aannames worden in samenhang uitgewerkt."
+    },
+    {
+      "id": "blauwdruk",
+      "label": "Interne blauwdruk",
+      "description": "Analyses, oplossingen en de benodigde inrichting worden verbonden in een samenhangende blauwdruk van de organisatie of opgave. Deze basis voedt de specialistische uitwerking."
     }
   ],
   "flows": {
@@ -397,7 +469,8 @@
       "doelgroepen",
       "marketing",
       "werkpakketten",
-      "begroting"
+      "begroting",
+      "blauwdruk"
     ]
   }
 }
