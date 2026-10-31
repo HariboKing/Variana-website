@@ -1,0 +1,77 @@
+/* Product presentation shared by Home, Software and How it works. */
+.desktop-presentation { scroll-margin-top: 105px; }
+.desktop-presentation-grid { display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1.25fr); align-items: center; gap: 48px; }
+.desktop-presentation-copy h2 { font-size: clamp(32px,3.2vw,47px); line-height: 1.16; letter-spacing: -.035em; margin: 22px 0; }
+.desktop-presentation-copy > p:not(.eyebrow):not(.product-note) { font-size: 18px; line-height: 1.8; color: #c3d3df; }
+.product-status, .product-badge { display: inline-flex; align-items: center; width: fit-content; padding: 6px 10px; border: 1px solid #466a7b; border-radius: 3px; color: #add7de; background: #142d3e; font-size: 12px; line-height: 1.6; font-weight: 500; }
+.product-status::before { content: ''; width: 6px; height: 6px; margin-right: 8px; border-radius: 50%; background: #70bdc6; }
+.product-frame { min-width: 0; margin: 0; border: 1px solid #3a5872; border-radius: 8px; overflow: hidden; background: #091524; box-shadow: 0 22px 60px #0004; }
+.product-frame-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 13px 17px; color: #c4d7e4; background: #14283c; font: 12px/1.7 var(--mono); border-bottom: 1px solid #2c435c; }
+.product-frame img { display: block; width: 100%; height: auto; }
+.product-frame .zoom-image { display: block; }
+.product-caption { padding: 14px 17px; color: #a6bed1; font-size: 13px; line-height: 1.75; margin: 0; border-top: 1px solid #233a50; }
+.product-note { color: #9fb8cc; font-size: 14px; line-height: 1.75; margin: 18px 0 0; }
+.desktop-presentation-copy .button { margin-top: 10px; }
+.proposition-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
+.desktop-presentation > .proposition-grid { margin-top: 46px; }
+.proposition-card { min-width: 0; border: 1px solid #34516a; border-radius: 7px; padding: 27px 29px; background: #102438; }
+.proposition-card .eyebrow { margin-bottom: 12px; }
+.proposition-card h3 { font-size: 26px; line-height: 1.35; letter-spacing: -.02em; margin: 0 0 13px; }
+.proposition-card p:not(.eyebrow) { font-size: 16px; line-height: 1.8; color: #b7ccdc; margin: 17px 0; }
+.proposition-card.is-service { border-top: 2px solid #8db9cb; }
+.proposition-card.is-software { border-top: 2px solid #3bb3be; }
+.proposition-card.is-service .product-status { background: #163648; color: #d1e8f0; }
+.service-software-section { padding-top: 24px; }
+.software-hero { padding-bottom: 40px; }
+.software-hero-copy { max-width: 950px; margin-bottom: 44px; }
+.software-hero-copy h1 { margin-top: 22px; }
+.software-hero > .product-frame { max-width: 1180px; }
+.software-split { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 50px; align-items: start; }
+.product-section-heading { max-width: 940px; margin-bottom: 34px; }
+.product-section-heading h2 { margin-bottom: 20px; }
+.product-section-heading > p:not(.eyebrow) { max-width: 780px; font-size: 17px; line-height: 1.8; color: #b9cedd; }
+.software-split > .product-section-heading { margin: 0; }
+.software-feature-list { list-style: none; margin: 0; padding: 0; }
+.software-feature-list > li { margin: 0 0 24px; padding-bottom: 21px; border-bottom: 1px solid #30465e; }
+.software-feature-list h3 { font-size: 22px; margin: 0 0 11px; line-height: 1.4; }
+.software-feature-list p { margin: 0; color: #b5cbdc; font-size: 16px; line-height: 1.8; }
+.software-gallery { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; margin-top: 34px; }
+.software-gallery .product-frame:first-child { grid-column: 1 / -1; }
+.software-status-table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.8; }
+.software-status-table caption { text-align: left; color: #a8c3d7; margin-bottom: 17px; }
+.software-status-table th, .software-status-table td { padding: 20px 17px; border-bottom: 1px solid #34516a; text-align: left; vertical-align: top; }
+.software-status-table thead { color: #d8e6ef; background: #12283b; }
+.software-status-table tbody th { width: 25%; color: #e0ebf3; font-weight: 500; }
+.software-status-table td:nth-child(2) { width: 23%; }
+.software-status-table td { color: #b7cddc; }
+.software-availability { padding-top: 38px; }
+.software-availability .product-status { margin: 0 0 20px; }
+@media (max-width: 1100px) {
+ .desktop-presentation-grid { gap: 30px; grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); }
+ .software-split { gap: 30px; }
+ .proposition-card { padding: 25px; }
+}
+@media (max-width: 900px) {
+ .desktop-presentation-grid, .software-split { grid-template-columns: 1fr; }
+ .desktop-presentation-copy { max-width: 700px; }
+ .desktop-presentation-copy h2 { max-width: 650px; }
+ .software-status-table th, .software-status-table td { padding-inline: 12px; }
+ .software-gallery { gap: 22px; }
+}
+@media (max-width: 600px) {
+ .proposition-grid, .software-gallery { grid-template-columns: 1fr; }
+ .desktop-presentation-grid { gap: 26px; }
+ .desktop-presentation > .proposition-grid { margin-top: 32px; }
+ .desktop-presentation-copy h2 { font-size: 33px; }
+ .desktop-presentation-copy > p:not(.eyebrow):not(.product-note) { font-size: 16px; }
+ .proposition-card { padding: 24px 21px; }
+ .proposition-card h3 { font-size: 24px; }
+ .product-frame-bar { padding: 12px 14px; }
+ .software-hero-copy { margin-bottom: 30px; }
+ .software-status-table, .software-status-table tbody { display: block; }
+ .software-status-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+ .software-status-table tr { display: block; border: 1px solid #34516a; border-radius: 5px; padding: 20px; margin-bottom: 15px; }
+ .software-status-table tbody th, .software-status-table td, .software-status-table td:nth-child(2) { display: block; width: auto; padding: 0; border: 0; }
+ .software-status-table tbody th { font-size: 18px; margin-bottom: 12px; }
+ .software-status-table td + td { margin-top: 15px; }
+}

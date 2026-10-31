@@ -1,10 +1,12 @@
 # Variana — websitebron
 
-Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 22 inhoudspagina’s en één doorverwijspagina voor het vroegere adres van Voorbeelden.
+Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 23 inhoudspagina’s en twee doorverwijspagina’s.
 
 ## Huidige indeling
 
-- Hoe het werkt bevat de bestaande opening, één interactieve systeemverkenner en de bestaande contactoproep. De oude screenshotpresentatie en afzonderlijke vierfasenuitleg zijn van deze pagina verwijderd.
+- De homepage toont direct na de hero de productpresentatie van Variana Desktop, gevolgd door het onderscheid tussen dienstverlening en software. Daarna volgt het bestaande onderdeel Van systeem naar toepassing.
+- Software staat in het hoofdmenu tussen Hoe het werkt en Voor wie. De eigen pagina software.html toont echte prototypebeelden, ontwikkelstatus, lokale software en de mogelijkheid om een productpreview aan te vragen. Het adres /software verwijst via software/index.html naar deze pagina.
+- Hoe het werkt bevat de bestaande opening, het onderscheid tussen dienst en software, één interactieve systeemverkenner en de bestaande contactoproep. De oude screenshotpresentatie en afzonderlijke vierfasenuitleg blijven verwijderd.
 - Toepassingen bevat de opening, vier invalshoeken, de A/B/C-keuzehulp, Van klantvraag naar uitwerking en de contactoproep. De losse operationele sectie is verwijderd.
 - De homepage bevat na Praktijkervaring de sectie Een greep uit onze opdrachten, gevolgd door de contactoproep. De vijf opdrachtomschrijvingen zijn door de gebruiker aangeleverd.
 - Voorbeelden is verwijderd uit navigatie en footer. Het vroegere adres voorbeelden.html verwijst door naar index.html#opdrachten; de footerlink Onze opdrachten opent die homepage-sectie rechtstreeks.
@@ -12,7 +14,7 @@ Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub
 
 ## Onderhouden en bouwen
 
-Bewerk tekst in beheer/paginas/ en metadata in beheer/pages.json. Navigatie, footer en de doorverwijzing van het vroegere Voorbeelden-adres staan in beheer/build.py.
+Bewerk tekst in beheer/paginas/ en metadata in beheer/pages.json. Navigatie, footer, de gedeelde propositiekaarten en doorverwijzingen staan in beheer/build.py. voorbeelden.html verwijst naar index.html#opdrachten; software/index.html verwijst naar ../software.html.
 
 Voer vanuit de website-map uit:
 
@@ -20,7 +22,25 @@ Voer vanuit de website-map uit:
 
 De generator schrijft de HTML in de hoofdmap. Werk beheerbronnen en gegenereerde HTML samen bij in GitHub. Voor bekijken of hosten zijn geen Python, Node, database of extra bouwstappen nodig.
 
-De algemene vormgeving staat in assets/css/styles.css. De homepage gebruikt ook cinematic.css. De build voegt de bestanden van een interactief scherm alleen toe aan de pagina met de bijbehorende markering. De CSS- en JavaScript-URL’s krijgen een inhoudshash tegen verouderde browsercache.
+De algemene vormgeving staat in assets/css/styles.css. De homepage gebruikt ook cinematic.css. De productpresentatie, softwarepagina en gedeelde propositiekaarten gebruiken product.css. De build voegt de bestanden van een interactief scherm alleen toe aan de pagina met de bijbehorende markering. De CSS- en JavaScript-URL’s krijgen een inhoudshash tegen verouderde browsercache.
+
+## Softwarepresentatie en beschikbare beelden
+
+De markering PROPOSITIONS plaatst dezelfde twee kaarten op de homepage, Hoe het werkt en de softwarepagina: Variana als dienst is nu beschikbaar; Variana als zelfstandige software is in ontwikkeling. De diensten en hun bestaande tarieven blijven beschikbaar. Er wordt geen zelfstandige download aangeboden.
+
+De homepage gebruikt het echte Nederlandse startscherm. De softwarepagina toont daarnaast het moduleoverzicht en het overzicht van specialistische modules. De drie geselecteerde bronbeelden staan onbewerkt in assets/images/software:
+
+- startscherm-nl.png
+- moduleoverzicht-nl.png
+- specialistische-modules-nl.png
+
+Deze beelden tonen de interface en module-ingangen van de ontwikkelversie. Zij bewijzen geen uitvoering van onderzoek of beschikbaarheid van alle getoonde modules. Er is geen schermopname toegevoegd: in het beschikbare bronmateriaal is geen videobestand aangetroffen. De productdemonstratie biedt daarom een aanvraag voor een preview van de ontwikkelversie, zonder een nagebootste video of afspeelknop.
+
+Installatiebestanden, ondersteunde besturingssystemen, systeemvereisten en de omvang van offline gebruik worden pas vermeld wanneer zij zijn bevestigd. Ontwikkelstatus en beschikbare functies moeten per versie worden toegelicht.
+
+De CTA contact.html?onderwerp=preview kiest de nieuwe formulieroptie voor een productpreview. Het bestaande formulier bereidt een e-mailconcept of lokaal aanvraagbestand voor; het verstuurt geen automatische e-mail.
+
+Alleen de drie gekozen, algemene interfacebeelden zijn openbaar opgenomen. Overige bronbeelden, dossierinhoud, test- en instellingenbeelden en de private inventaris van bronbestanden blijven buiten de website en uploadselectie. De originele afbeeldingen zijn niet bewerkt; eerder aanwezige beeldbestanden blijven ongewijzigd.
 
 ## Interactief systeem op Hoe het werkt
 
@@ -75,7 +95,7 @@ Beide interactieve schermen beschrijven de samenhang en vaste koppelingen. Zij v
 
 De sectie opdrachten staat in beheer/paginas/index.html tussen praktijkervaring en de bestaande contactoproep. De geordende lijst bevat vijf aangeleverde omschrijvingen: een strategisch adviesrapport, twee blauwdrukken en twee analyses. Dienstnamen staan vet; de tekst blijft beperkt tot de aangeleverde opdrachtomschrijving. De vormgeving staat in assets/css/cinematic.css.
 
-De vroegere Voorbeelden-pagina en producttour worden niet meer opgebouwd. voorbeelden.html is uitsluitend een compatibele doorverwijzing naar de opdrachten op de homepage. De oudere prototypebeelden en onderzoeksassets blijven in de bron bewaard, maar worden hier niet getoond. Zij vormen geen bewijs van uitgevoerde onderzoeksresultaten.
+De vroegere Voorbeelden-pagina en producttour worden niet meer opgebouwd. voorbeelden.html is uitsluitend een compatibele doorverwijzing naar de opdrachten op de homepage. De oudere prototypebeelden en onderzoeksassets blijven in de bron bewaard; de nieuwe productpresentatie gebruikt de drie Nederlandse beelden hierboven. Schermafbeeldingen vormen geen bewijs van uitgevoerde onderzoeksresultaten.
 
 ## Contact, tarieven en publicatie
 

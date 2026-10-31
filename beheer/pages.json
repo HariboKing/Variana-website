@@ -108,5 +108,10 @@
     "title": "Plan van aanpak en stappenplan | Inzichten vertalen naar uitvoering | Variana",
     "description": "Werk een initiatief uit in activiteiten, verantwoordelijkheden, afhankelijkheden en mijlpalen. Een plan van aanpak verbindt de gewenste richting met de uitvoering.",
     "body_file": "paginas/plan-van-aanpak.html"
+  },
+  "software.html": {
+    "title": "Variana Desktop | Software in ontwikkeling | Variana",
+    "description": "Ontdek de Nederlandse ontwikkelversie van Variana Desktop. Bekijk de werkomgeving en vraag een productpreview aan. Zelfstandige software is in ontwikkeling.",
+    "body_file": "paginas/software.html"
   }
 }
