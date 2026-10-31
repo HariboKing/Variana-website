@@ -1,29 +1,403 @@
 {
   "defaultRoute": "inzicht",
+  "organizations": [
+    {
+      "id": "bedrijf",
+      "label": "Bedrijf of andere organisatie",
+      "description": "Voor ondernemingen, stichtingen en vergelijkbare organisaties."
+    },
+    {
+      "id": "overheid",
+      "label": "Overheidsorganisatie",
+      "description": "Voor ministeries, gemeenten, beleidsmakers en andere publieke organisaties."
+    }
+  ],
   "routes": [
     {
       "id": "inzicht",
       "question": "Geef inzicht over een onderwerp.",
-      "outputIds": ["analyses"],
-      "moduleIds": []
+      "outputIds": [
+        "analyses"
+      ]
     },
     {
       "id": "overzicht",
       "question": "Geef een overzicht van mijn product, doelgroep of organisatie.",
-      "outputIds": ["blauwdruk"],
-      "moduleIds": []
+      "governmentQuestion": "Geef een overzicht van mijn vraagstuk, doelgroep of organisatie.",
+      "outputIds": [
+        "blauwdruk"
+      ]
     },
     {
       "id": "uitwerking",
       "question": "Geef een specifiek verslag, advies of stappenplan om over te kunnen dragen naar uitvoering en uitwerking.",
-      "outputIds": ["specialistische-modules"],
-      "moduleIds": []
+      "outputIds": [
+        "specialistische-modules"
+      ]
     }
   ],
   "outputs": [
-    {"id": "analyses", "label": "Analyses", "href": "analyse.html"},
-    {"id": "blauwdruk", "label": "Blauwdruk", "href": "blauwdruk.html"},
-    {"id": "specialistische-modules", "label": "Specialistische modules", "href": "specialistische-modules.html"}
+    {
+      "id": "analyses",
+      "label": "Analyses",
+      "href": "analyse.html",
+      "description": "Onderzoek en onderbouwing die inzicht geven in je onderwerp en de relevante ontwikkelingen."
+    },
+    {
+      "id": "blauwdruk",
+      "label": "Blauwdruk",
+      "href": "blauwdruk.html",
+      "description": "Een samenhangend overzicht van je organisatie, de onderliggende behoeften, oplossingen en benodigde inrichting."
+    },
+    {
+      "id": "specialistische-modules",
+      "label": "Specialistische modules",
+      "href": "specialistische-modules.html",
+      "description": "Een gerichte uitwerking die aansluit op het besluit dat je wilt nemen of de uitvoering die je voorbereidt."
+    }
   ],
-  "modules": []
+  "goals": [
+    {
+      "id": "besluit",
+      "label": "Een keuze onderbouwen",
+      "organizations": [
+        "bedrijf",
+        "overheid"
+      ]
+    },
+    {
+      "id": "uitvoering",
+      "label": "De uitvoering organiseren en volgen",
+      "organizations": [
+        "bedrijf",
+        "overheid"
+      ]
+    },
+    {
+      "id": "doelgroep",
+      "label": "Doelgroepen beter bereiken of bedienen",
+      "organizations": [
+        "bedrijf",
+        "overheid"
+      ]
+    },
+    {
+      "id": "financiering",
+      "label": "Financiering voorbereiden of mijn plan presenteren",
+      "organizations": [
+        "bedrijf"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "advies",
+      "goalId": "besluit",
+      "organizations": [
+        "bedrijf",
+        "overheid"
+      ],
+      "label": "Een inhoudelijk advies krijgen.",
+      "outputLabel": "Adviesrapport",
+      "description": "Een onderbouwde afweging van je vraagstuk, met aanbevelingen voor de vervolgstappen.",
+      "href": "adviesrapport.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing"
+      ]
+    },
+    {
+      "id": "scenarios",
+      "goalId": "besluit",
+      "organizations": [
+        "bedrijf",
+        "overheid"
+      ],
+      "label": "Alternatieven met elkaar vergelijken.",
+      "outputLabel": "Scenariovergelijking",
+      "description": "Een vergelijking van mogelijke richtingen, met hun uitgangspunten, gevolgen en onzekerheden.",
+      "href": "specialistische-modules.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing"
+      ]
+    },
+    {
+      "id": "investering",
+      "goalId": "besluit",
+      "organizations": [
+        "bedrijf"
+      ],
+      "label": "Een investeringsvoorstel beoordelen.",
+      "outputLabel": "Investeringsbeoordeling",
+      "description": "Een onderbouwde beoordeling van een voorstel aan de hand van relevante criteria, aannames en risico’s.",
+      "href": "specialistische-modules.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing",
+        "doelgroepen",
+        "begroting"
+      ]
+    },
+    {
+      "id": "plan",
+      "goalId": "uitvoering",
+      "organizations": [
+        "bedrijf",
+        "overheid"
+      ],
+      "label": "Een concreet stappenplan voor de uitvoering uitwerken.",
+      "outputLabel": "Plan van aanpak",
+      "description": "Een uitwerking van de benodigde werkzaamheden, rollen, afhankelijkheden en middelen om tot uitvoering te komen.",
+      "href": "plan-van-aanpak.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing",
+        "doelgroepen",
+        "werkpakketten",
+        "begroting"
+      ]
+    },
+    {
+      "id": "kpis",
+      "goalId": "uitvoering",
+      "organizations": [
+        "bedrijf",
+        "overheid"
+      ],
+      "label": "Doelen vertalen naar meetbare prestaties en beoordelingscriteria.",
+      "outputLabel": "KPI’s en managementcriteria",
+      "description": "Passende indicatoren en criteria om voortgang en resultaten te volgen en te beoordelen.",
+      "href": "specialistische-modules.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing",
+        "werkpakketten"
+      ]
+    },
+    {
+      "id": "journey",
+      "goalId": "doelgroep",
+      "organizations": [
+        "bedrijf",
+        "overheid"
+      ],
+      "label": "De ervaringen en contactmomenten van gebruikers in kaart brengen.",
+      "outputLabel": "Customer journey",
+      "description": "Een gebruikersreis die ervaringen, behoeften en contactmomenten zichtbaar maakt en aanknopingspunten voor verbetering biedt.",
+      "href": "specialistische-modules.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing",
+        "doelgroepen"
+      ]
+    },
+    {
+      "id": "targetlist",
+      "goalId": "doelgroep",
+      "organizations": [
+        "bedrijf"
+      ],
+      "label": "Mogelijke klanten of samenwerkingspartners gericht selecteren.",
+      "outputLabel": "Target list",
+      "description": "Een gerichte selectie van mogelijke klanten of partners op basis van onderbouwde doelgroep- en selectiecriteria.",
+      "href": "specialistische-modules.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "doelgroepen"
+      ]
+    },
+    {
+      "id": "financiering",
+      "goalId": "financiering",
+      "organizations": [
+        "bedrijf"
+      ],
+      "label": "Een financieringsaanvraag onderbouwen.",
+      "outputLabel": "Financieringsaanvraag",
+      "description": "Een samenhangende onderbouwing van je plan, de uitvoering en de financieringsbehoefte.",
+      "href": "specialistische-modules.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing",
+        "product",
+        "doelgroepen",
+        "marketing",
+        "werkpakketten",
+        "begroting"
+      ]
+    },
+    {
+      "id": "pitchdeck",
+      "goalId": "financiering",
+      "organizations": [
+        "bedrijf"
+      ],
+      "label": "Mijn plan helder presenteren aan financiers of partners.",
+      "outputLabel": "Pitchdeck",
+      "description": "Een presentatie die de kern van je plan, de onderbouwing en de gewenste vervolgstap bij elkaar brengt.",
+      "href": "specialistische-modules.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing",
+        "product",
+        "doelgroepen",
+        "marketing",
+        "werkpakketten",
+        "begroting"
+      ]
+    },
+    {
+      "id": "memorandum",
+      "goalId": "financiering",
+      "organizations": [
+        "bedrijf"
+      ],
+      "label": "Uitgebreide informatie voor financiers of investeerders samenbrengen.",
+      "outputLabel": "Informatiememorandum",
+      "description": "Een uitgebreid document met de organisatie, het plan, de uitvoering en de financiële onderbouwing in samenhang.",
+      "href": "specialistische-modules.html",
+      "stepIds": [
+        "concept",
+        "onderzoek-concept",
+        "analyses",
+        "probleem",
+        "onderzoek-probleem",
+        "oplossing",
+        "onderzoek-oplossing",
+        "product",
+        "doelgroepen",
+        "marketing",
+        "werkpakketten",
+        "begroting"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "id": "concept",
+      "label": "Conceptverwerking",
+      "description": "Je vraag, aangeleverde informatie en uitgangspunten worden geordend."
+    },
+    {
+      "id": "onderzoek-concept",
+      "label": "Literatuuronderzoek",
+      "description": "Beschikbare kennis en bronnen helpen de vraag en de uitgangspunten te onderbouwen."
+    },
+    {
+      "id": "analyses",
+      "label": "Analyses",
+      "description": "De omgeving, betrokken partijen en relevante ontwikkelingen worden in samenhang onderzocht."
+    },
+    {
+      "id": "probleem",
+      "label": "Probleemontwikkeling",
+      "description": "De achterliggende behoefte, oorzaken en betrokken doelgroepen worden scherper afgebakend."
+    },
+    {
+      "id": "onderzoek-probleem",
+      "label": "Literatuuronderzoek",
+      "description": "Bronnen helpen de beschreven problemen en behoeften te toetsen en te nuanceren."
+    },
+    {
+      "id": "oplossing",
+      "label": "Probleemoplossing",
+      "description": "Mogelijke oplossingen worden uitgewerkt vanuit de onderbouwde problemen en behoeften."
+    },
+    {
+      "id": "onderzoek-oplossing",
+      "label": "Literatuuronderzoek",
+      "description": "Beschikbare kennis helpt de voorgestelde oplossingen te onderbouwen en hun beperkingen te onderzoeken."
+    },
+    {
+      "id": "product",
+      "label": "Productontwikkeling en inrichting",
+      "description": "De oplossing wordt vertaald naar een product of dienst en de inrichting die daarvoor nodig is.",
+      "businessOnly": true
+    },
+    {
+      "id": "doelgroepen",
+      "label": "Doelgroepenbepaling",
+      "description": "In beeld brengen voor wie de oplossing bedoeld is en welke behoeften en belangen daarbij spelen."
+    },
+    {
+      "id": "marketing",
+      "label": "Marketingmatrix",
+      "description": "De marktbenadering wordt uitgewerkt met de relevante P’s van marketing.",
+      "businessOnly": true
+    },
+    {
+      "id": "werkpakketten",
+      "label": "Werkpakketten en functieprofielen",
+      "description": "Benodigde werkzaamheden, expertise en capaciteit worden vertaald naar rollen en organisatie-inrichting."
+    },
+    {
+      "id": "begroting",
+      "label": "Begroting opstellen",
+      "description": "Kosten, benodigde inzet en financiële aannames worden in samenhang uitgewerkt."
+    }
+  ],
+  "flows": {
+    "inzicht": [
+      "concept",
+      "onderzoek-concept",
+      "analyses"
+    ],
+    "overzicht": [
+      "concept",
+      "onderzoek-concept",
+      "analyses",
+      "probleem",
+      "onderzoek-probleem",
+      "oplossing",
+      "onderzoek-oplossing",
+      "product",
+      "doelgroepen",
+      "marketing",
+      "werkpakketten",
+      "begroting"
+    ]
+  }
 }
