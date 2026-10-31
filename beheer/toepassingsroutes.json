@@ -1,0 +1,29 @@
+{
+  "defaultRoute": "inzicht",
+  "routes": [
+    {
+      "id": "inzicht",
+      "question": "Geef inzicht over een onderwerp.",
+      "outputIds": ["analyses"],
+      "moduleIds": []
+    },
+    {
+      "id": "overzicht",
+      "question": "Geef een overzicht van mijn product, doelgroep of organisatie.",
+      "outputIds": ["blauwdruk"],
+      "moduleIds": []
+    },
+    {
+      "id": "uitwerking",
+      "question": "Geef een specifiek verslag, advies of stappenplan om over te kunnen dragen naar uitvoering en uitwerking.",
+      "outputIds": ["specialistische-modules"],
+      "moduleIds": []
+    }
+  ],
+  "outputs": [
+    {"id": "analyses", "label": "Analyses", "href": "analyse.html"},
+    {"id": "blauwdruk", "label": "Blauwdruk", "href": "blauwdruk.html"},
+    {"id": "specialistische-modules", "label": "Specialistische modules", "href": "specialistische-modules.html"}
+  ],
+  "modules": []
+}

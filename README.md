@@ -1,52 +1,54 @@
 # Variana — websitebron
 
-Actuele bron: https://github.com/HariboKing/Variana-website, branch main. Publicatie verloopt via GitHub Pages en de bestaande CNAME voor variana.nl. De website gebruikt statische HTML, CSS, JavaScript en lokale afbeeldingen.
+Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 23 statische HTML-pagina’s.
 
-Bijgewerkt op 31 oktober 2026: drie interactieve onderdelen hebben elk een eigen plek gekregen. De website bevat 23 pagina’s.
+## Huidige indeling
 
-## Pagina-indeling
-
-- Toepassingen begint met vier routes: Strategisch, Analytisch, Plan van aanpak / stappenplannen en Overig. Daaronder staat de horizontale onderzoeksverkenner met fictieve input.
-- Hoe het werkt begint na de intro met het systeemschema. Alle negen diagramopties linken naar een eigen uitlegpagina. De bestaande vierfasenuitleg staat eronder.
-- Voorbeelden begint met een plek voor praktijkvoorbeelden die later inhoud krijgen. Daaronder staat de interactieve productdemonstratie met de bestaande prototypebeelden.
-- Home, tarieven, contact, doelgroepen en kennisbank behouden hun functie. Verwijzingen naar verplaatste onderdelen zijn bijgewerkt.
-
-De nieuwe uitlegpagina’s zijn blauwdruk.html, specialistische-modules.html, strategie.html, analytische-verdieping.html, organisatieontwikkeling.html, marketing.html, evaluatie.html, samenhang.html en plan-van-aanpak.html. De bestaande analyse.html bevat ook uitleg over de rol van analyses in het systeem.
+- Toepassingen begint met vier soorten vraagstukken. De interactieve keuzehulp daaronder verbindt een keuze in kolom A met output in kolom B. Kolom C heeft een titel en is verder leeg.
+- Hoe het werkt bevat het systeemschema met links naar eigen uitlegpagina’s en de vierfasenuitleg.
+- Voorbeelden bevat ruimte voor praktijkcases en daaronder de interactieve producttour.
+- Contact, tarieven, doelgroepen en kennisbank behouden hun functie. Verwijzingen naar de keuzehulp zijn bijgewerkt.
 
 ## Onderhouden en bouwen
 
-Bewerk tekst in beheer/paginas/ en metadata in beheer/pages.json. De centrale navigatie, footer en producttour staan in beheer/build.py.
+Bewerk tekst in beheer/paginas/ en metadata in beheer/pages.json. Navigatie, footer en producttour staan in beheer/build.py.
 
 Voer vanuit de website-map uit:
 
     python beheer/build.py
 
-De generator schrijft alle HTML-pagina’s in de hoofdmap. Werk bij wijzigingen zowel de beheerbronnen als de gegenereerde pagina’s in GitHub bij. Voor het bekijken of hosten van de site is geen Python, Node, database of build nodig.
+De generator schrijft de HTML in de hoofdmap. Werk beheerbronnen en gegenereerde HTML samen bij in GitHub. Voor bekijken of hosten zijn geen Python, Node, database of extra bouwstappen nodig.
 
-Gedeelde vormgeving staat in assets/css/styles.css. De homepage gebruikt aanvullend cinematic.css. Het systeemdiagram gebruikt gewone links. De interactieve producttour wordt ingevoegd via PRODUCT_DEMO en gebruikt main.js.
+De algemene vormgeving staat in assets/css/styles.css. De homepage gebruikt ook cinematic.css. Stylesheets en interactieve code krijgen waar nodig een inhoudshash in de URL tegen verouderde browsercache.
 
-De onderzoeksverkenner wordt ingevoegd via RESEARCH_EXPLORER. De generator laadt research.css, research-data.js en research.js op de pagina met deze markering; dat is nu Toepassingen. Stylesheets en de interactieve researchcode krijgen een inhoudshash in de URL om verouderde browsercache te voorkomen.
+## Interactieve A/B/C-keuzehulp
 
-## Onderzoeksverkenner
+De markering APPLICATION_MATCHER plaatst de keuzehulp op Toepassingen. beheer/application_renderer.py leest beheer/toepassingsroutes.json en maakt de statische HTML met veilige ingebedde JSON. De browser gebruikt application-matcher.css en application-matcher.js; er is geen fetch of externe bibliotheek nodig.
 
-De data staat in beheer/demonstraties.json. De fictieve groeivraag en negen onderzoeksmodules zijn ongewijzigd. Het onderzoek is niet uitgevoerd: bronnen, bevindingen, rapporten en resultaten zijn leeg. Voeg uitsluitend werkelijk beschikbare en gecontroleerde output toe.
+De huidige koppelingen zijn:
 
-De kaart toont drie groepen van links naar rechts. Op smalle schermen kan alleen de kaart horizontaal schuiven. De toelichting staat eronder. De modulekeuze op het onderzoekstabblad is een horizontale rij.
+- Inzicht over een onderwerp → Analyses.
+- Overzicht van product, doelgroep of organisatie → Blauwdruk.
+- Een specifiek verslag, advies of stappenplan → Specialistische modules.
 
-De standaardweergave is De samenhang. Een bekende fragmentlink zoals toepassingen.html#onderzoek kiest het passende tabblad; toepassingen.html?module=capaciteit#onderzoek kiest de bijbehorende module. De verkenner gebruikt geen runtime-fetch en kan ook lokaal werken.
+De eerste vraag is standaard gekozen. Klikken of de pijltjestoetsen, Home en End selecteren een vraag. De gekozen vraag en de bijbehorende output lichten op; de vorige selectie vervalt. B-tegels linken naar hun uitlegpagina.
+
+Kolom C bevat momenteel geen modules, onderzoeken of zichtbare placeholdertekst. In het gegevensbestand is modules leeg en heeft iedere route een lege moduleIds-lijst. Voeg later de bedoelde modules toe aan modules en verbind ze via moduleIds met de juiste routes; dezelfde selectiecode markeert ze dan automatisch.
+
+De oude onderzoeksverkenner en fictieve gegevens zijn in de bron bewaard, maar worden niet op Toepassingen geladen of getoond. De bijbehorende oude fragmentankers blijven bereikbaar als verwijzingen naar de nieuwe interface.
 
 ## Praktijkvoorbeelden
 
-De gereserveerde ruimte staat in beheer/paginas/voorbeelden.html, onder praktijkvoorbeelden. Daar is nog geen klantcase ingevuld. Voeg hier later de bedoelde praktijkvragen, aanpak en beschikbare uitwerking toe. De producttour staat er direct onder, bij werkomgeving.
+De gereserveerde ruimte staat in beheer/paginas/voorbeelden.html, onder praktijkvoorbeelden. Hier is nog geen klantcase ingevuld. Voeg later de bedoelde praktijkvragen, aanpak en beschikbare uitwerking toe. De producttour staat daaronder, bij werkomgeving.
 
-De fictieve demonstratie op Toepassingen en de werkelijke praktijkvoorbeelden hebben elk een eigen rol. De bestaande prototypebeelden tonen de werkomgeving en vormen geen bewijs van onderzoeksresultaten.
+Prototypebeelden tonen de werkomgeving en vormen geen bewijs van uitgevoerde onderzoeksresultaten. Er worden geen onderzoeksuitkomsten of klantresultaten verzonnen.
 
-## Contact, tarieven en productstatus
+## Contact, tarieven en publicatie
 
-Het bevestigde publieke adres is info@variana.nl. Het contactformulier opent een e-mailconcept of maakt een lokale TXT-download; de bezoeker verstuurt zelf. Er is geen automatische verzending.
+Het bevestigde publieke adres is info@variana.nl. Het formulier opent een e-mailconcept of maakt een lokale TXT-download; de bezoeker verstuurt zelf. Er is geen automatische verzending.
 
-De tarieven staan in beheer/paginas/samenwerken.html. Deze herindeling verandert geen bedragen of btw-vermelding. Huidige dienstverlening gebruikt een online ondersteund prototype. Zelfstandige offline software en de zelfstandige marketing- en evaluatiemodules zijn nog in ontwikkeling.
+De tarieven staan in beheer/paginas/samenwerken.html. De huidige wijzigingen veranderen geen bedragen of btw-vermelding. Huidige dienstverlening gebruikt een online ondersteund prototype. Zelfstandige offline software en de zelfstandige marketing- en evaluatiemodules zijn nog in ontwikkeling.
 
-Bewaar bij publicatie de CNAME. Interne bron-PDF’s, werkmappen, back-ups en aanvraagbestanden horen niet in de websitebron. Oudere lokale ZIP-bestanden zijn geen bron voor deze GitHub-wijzigingsronde.
+Bewaar de CNAME. Interne bron-PDF’s, werkmappen, back-ups en aanvraagbestanden horen niet in de websitebron. Oudere ZIP-bestanden zijn geen bron voor deze GitHub-wijzigingen.
 
 Zie beheer/CONTROLE.md voor de controle van deze versie.
