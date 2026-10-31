@@ -6,6 +6,7 @@
   if (!root || !data?.cases?.length) return;
   const tabs = [...root.querySelectorAll('[data-research-tab]')];
   const tabNames = tabs.map(t => t.dataset.researchTab);
+  const defaultTab = tabNames.includes(root.dataset.defaultTab) ? root.dataset.defaultTab : 'vraagstuk';
   const params = new URLSearchParams(location.search);
   const state = { item: data.cases.find(c => c.id === params.get('casus')) || data.cases.find(c => c.id === data.defaultCase) || data.cases[0], module: '', mode: 'dependencies', loop: '' };
   const select = s => root.querySelector(s);
@@ -28,7 +29,7 @@
   const safePath = path => typeof path === 'string' && /^assets\/research\//.test(path) && !path.includes('..') && !path.includes('\\') ? path : null;
 
   function setTab(name, focus = false, updateHash = true) {
-    if (!tabNames.includes(name)) name = 'vraagstuk';
+    if (!tabNames.includes(name)) name = defaultTab;
     tabs.forEach(tab => {
       const selected = tab.dataset.researchTab === name;
       tab.setAttribute('aria-selected', String(selected));
@@ -100,7 +101,9 @@
     columns.replaceChildren();
     state.item.graphGroups.forEach((name, group) => {
       const column = element('div', 'research-graph-column');
-      column.append(element('p', 'research-graph-column-name', name));
+      const heading = element('p', 'research-graph-column-name');
+      heading.append(element('span', 'research-phase-number', String(group + 1).padStart(2, '0')), document.createTextNode(name));
+      column.append(heading);
       modules().filter(m => m.group === group).forEach(m => {
         const button = element('button', 'research-node');
         button.type = 'button';
@@ -174,15 +177,17 @@
       const a = nodeRect(from), b = nodeRect(to);
       const same = getModule(from).group === getModule(to).group;
       let x1, y1, x2, y2, d;
-      if (same) {
-        x1 = a.left + a.width / 2 - area.left; y1 = a.bottom - area.top;
-        x2 = b.left + b.width / 2 - area.left; y2 = b.top - area.top;
-        d = `M${x1},${y1} C${x1},${(y1+y2)/2} ${x2},${(y1+y2)/2} ${x2},${y2}`;
-      } else if (type === 'loop') {
+      if (type === 'loop') {
         x1 = a.left - area.left; y1 = a.top + a.height / 2 - area.top;
         x2 = b.right - area.left; y2 = b.top + b.height / 2 - area.top;
-        const bottom = graph.offsetHeight - 18;
-        d = `M${x1},${y1} C${x1-22},${bottom} ${x2+22},${bottom} ${x2},${y2}`;
+        const returnY = graph.offsetHeight - 28;
+        const leftGutter = x1 - 18, rightGutter = x2 + 18;
+        d = `M${x1},${y1} C${leftGutter},${y1} ${leftGutter},${y1+12} ${leftGutter},${y1+24} L${leftGutter},${returnY-12} Q${leftGutter},${returnY} ${leftGutter-12},${returnY} L${rightGutter+12},${returnY} Q${rightGutter},${returnY} ${rightGutter},${returnY-12} L${rightGutter},${y2+24} C${rightGutter},${y2+12} ${rightGutter},${y2} ${x2},${y2}`;
+      } else if (same) {
+        x1 = a.right - area.left; y1 = a.top + a.height / 2 - area.top;
+        x2 = b.right - area.left; y2 = b.top + b.height / 2 - area.top;
+        const gutter = x1 + 22;
+        d = `M${x1},${y1} C${gutter},${y1} ${gutter},${y2} ${x2},${y2}`;
       } else {
         x1 = a.right - area.left; y1 = a.top + a.height / 2 - area.top;
         x2 = b.left - area.left; y2 = b.top + b.height / 2 - area.top;
@@ -342,10 +347,17 @@
   caseSelect.value=state.item.id;
   select('.research-case-selector').hidden=data.cases.length<2;
   caseSelect.addEventListener('change', () => { state.item=data.cases.find(c=>c.id===caseSelect.value); renderCase(); setTab('vraagstuk'); });
-  window.addEventListener('hashchange', () => { const key=location.hash.slice(1); if (tabNames.includes(key)) setTab(key,false,false); });
+  function revealHashPanel() {
+    const key = location.hash.slice(1);
+    if (!tabNames.includes(key)) return false;
+    setTab(key, false, false);
+    requestAnimationFrame(() => select('#' + key).scrollIntoView({block: 'start'}));
+    return true;
+  }
+  window.addEventListener('hashchange', revealHashPanel);
   window.addEventListener('resize', () => requestAnimationFrame(drawGraph));
   if (typeof ResizeObserver === 'function') new ResizeObserver(() => requestAnimationFrame(drawGraph)).observe(select('[data-research-graph]'));
   renderCase();
-  setTab(location.hash.slice(1),false,false);
+  if (!revealHashPanel()) setTab(defaultTab, false, false);
   root.dataset.ready='true';
 })();

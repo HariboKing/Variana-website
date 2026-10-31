@@ -1,7 +1,7 @@
 {
   "toepassingen.html": {
-    "title": "Toepassingen | Strategie, analyse en organisatieontwikkeling | Variana",
-    "description": "Verken strategische en analytische vraagstukken, bedrijfs- en organisatieontwikkeling, marketing en evaluatie. Zie hoe analyses, blauwdruk en modules samenhangen.",
+    "title": "Toepassingen | Strategie, analyses en plannen | Variana",
+    "description": "Verken strategische en analytische vragen, plannen van aanpak en specialistische onderwerpen. Ontdek de samenhang in een horizontale interactieve onderzoekskaart.",
     "body_file": "paginas/toepassingen.html"
   },
   "voor-wie.html": {
@@ -10,8 +10,8 @@
     "body_file": "paginas/voor-wie.html"
   },
   "voorbeelden.html": {
-    "title": "Ontdek Variana in de praktijk | Interactieve onderzoeksverkenning",
-    "description": "Verken een fictieve groeivraag, bijbehorende deelvragen en mogelijke koppelingen tussen analyses. Een onderzoeksopzet; echte onderzoeksresultaten volgen later.",
+    "title": "Praktijkvoorbeelden en productdemonstratie | Variana",
+    "description": "Ruimte voor vrijgegeven praktijkvoorbeelden van Variana. Verken daarnaast de huidige werkomgeving in de interactieve productdemonstratie.",
     "body_file": "paginas/voorbeelden.html"
   },
   "samenwerken.html": {
@@ -21,7 +21,7 @@
   },
   "hoe-het-werkt.html": {
     "title": "Hoe Variana werkt | Gespecialiseerd onderzoek in samenhang",
-    "description": "Variana maakt een organisatiebrede blauwdruk als basis voor analyses, scenario’s en uitvoering. Ontdek de werkwijze en vraag een demo aan.",
+    "description": "Verken de opbouw van Variana: analyses, organisatieblauwdruk en specialistische modules. Elk onderdeel heeft een eigen uitlegpagina.",
     "body_file": "paginas/hoe-het-werkt.html"
   },
   "analyse.html": {
@@ -68,5 +68,50 @@
     "title": "Dien je vraag in of vraag een demo aan | Variana",
     "description": "Dien je organisatievraag in of vraag een demo van Variana aan. Bereid een aanvraag voor analyse, advies, organisatieblauwdruk of bedrijfsuitvoeringsplan voor.",
     "body_file": "paginas/contact.html"
+  },
+  "blauwdruk.html": {
+    "title": "Organisatieblauwdruk | Je hele organisatie in samenhang | Variana",
+    "description": "Ontdek hoe de organisatieblauwdruk strategie, markt, aanbod, mensen, processen en middelen verbindt en verdere uitwerkingen een gezamenlijke basis geeft.",
+    "body_file": "paginas/blauwdruk.html"
+  },
+  "specialistische-modules.html": {
+    "title": "Specialistische modules | Gerichte verdieping vanuit samenhang | Variana",
+    "description": "Verken specialistische verdieping voor strategie, analytische vragen, organisatieontwikkeling, marketing en evaluatie, vanuit de context van je organisatie.",
+    "body_file": "paginas/specialistische-modules.html"
+  },
+  "strategie.html": {
+    "title": "Strategische vraagstukken | Richtingen en keuzes onderbouwen | Variana",
+    "description": "Verbind strategische alternatieven met markt, doelen en organisatie. Bekijk welke informatie helpt om koers, groei of een beleidskeuze onderbouwd af te wegen.",
+    "body_file": "paginas/strategie.html"
+  },
+  "analytische-verdieping.html": {
+    "title": "Analytische verdieping | Een afgebakende vraag nader onderzoeken | Variana",
+    "description": "Verdiep een concrete vraag over oorzaken, verschillen of haalbaarheid. Verbind relevante gegevens en bronnen met de context van je organisatie.",
+    "body_file": "paginas/analytische-verdieping.html"
+  },
+  "organisatieontwikkeling.html": {
+    "title": "Bedrijfs- en organisatieontwikkeling | Van initiatief naar inrichting | Variana",
+    "description": "Onderzoek wat een initiatief vraagt van mensen, processen, middelen en uitvoering. Verbind organisatieontwikkeling met strategie, markt en een praktisch plan.",
+    "body_file": "paginas/organisatieontwikkeling.html"
+  },
+  "marketing.html": {
+    "title": "Marketing | Marktkennis verbinden met klantbenadering | Variana",
+    "description": "Ontdek de beoogde rol van marketingverdieping binnen Variana. Markt- en doelgroepanalyses zijn nu als opdracht mogelijk; zelfstandige marketingmodules zijn in ontwikkeling.",
+    "body_file": "paginas/marketing.html"
+  },
+  "evaluatie.html": {
+    "title": "Evaluatie | Voorstellen beoordelen vanuit doelen en criteria | Variana",
+    "description": "Maak een beoordelingsvraag concreet met doelen, criteria en onderbouwing. Specialistisch advies is mogelijk; zelfstandige evaluatiemodules zijn in ontwikkeling.",
+    "body_file": "paginas/evaluatie.html"
+  },
+  "samenhang.html": {
+    "title": "Samenhang en terugkoppeling | Informatie in organisatiecontext | Variana",
+    "description": "Lees hoe gedeelde uitgangspunten en zichtbare verbanden helpen om nieuwe informatie in samenhang met je organisatie en eerdere uitwerkingen te beoordelen.",
+    "body_file": "paginas/samenhang.html"
+  },
+  "plan-van-aanpak.html": {
+    "title": "Plan van aanpak en stappenplan | Inzichten vertalen naar uitvoering | Variana",
+    "description": "Werk een initiatief uit in activiteiten, verantwoordelijkheden, afhankelijkheden en mijlpalen. Een plan van aanpak verbindt de gewenste richting met de uitvoering.",
+    "body_file": "paginas/plan-van-aanpak.html"
   }
 }

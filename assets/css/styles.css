@@ -970,3 +970,29 @@ figcaption { font-size: 12px; color: #93adc1; line-height: 1.6; margin-top: 12px
  .module-notes { grid-template-columns: 1fr; }
  .module-notes > .card { padding-block: 20px; }
 }
+
+/* Four routes into the application explorer. */
+.application-overview { padding-top: 36px; padding-bottom: 40px; }
+.application-routes { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 18px; }
+.application-route { display: flex; flex-direction: column; min-width: 0; padding: 25px; transition: border-color .18s, background .18s; }
+.application-route:hover { border-color: #7bcdd3; background: #142b42; }
+.application-route h3 { font-size: 23px; line-height: 1.25; }
+.application-route p { font-size: 15px; line-height: 1.75; }
+.application-route > .text-link { margin-top: auto; padding-top: 14px; font-size: 13px; }
+.explorer-introduction { padding-bottom: 0; }
+.case-pending { border: 1px solid #36516a; background: #102338; border-radius: 8px; padding: 32px; }
+.case-pending p:last-child { margin-bottom: 0; }
+.case-placeholder > .tag { margin-bottom: 20px; }
+.case-placeholder p { max-width: 880px; }
+.case-placeholder p:last-child { margin-bottom: 0; }
+.system-detail-page .card h2 { font-size: 27px; }
+.module-page-links { display: flex; flex-wrap: wrap; gap: 14px 28px; }
+@media (max-width: 1100px) {
+ .application-routes { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 580px) {
+ .application-routes { grid-template-columns: 1fr; gap: 14px; }
+ .application-overview { padding-top: 28px; }
+ .application-route { padding: 25px; }
+ .case-pending { padding: 24px; }
+}
