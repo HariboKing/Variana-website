@@ -9,11 +9,6 @@
     "description": "Variana voor Enterprise, Groot-MKB, Klein-MKB en vergelijkbare organisaties zoals stichtingen, en overheidsorganisaties zoals ministeries en gemeenten.",
     "body_file": "paginas/voor-wie.html"
   },
-  "voorbeelden.html": {
-    "title": "Praktijkvoorbeelden en productdemonstratie | Variana",
-    "description": "Ruimte voor vrijgegeven praktijkvoorbeelden van Variana. Verken daarnaast de huidige werkomgeving in de interactieve productdemonstratie.",
-    "body_file": "paginas/voorbeelden.html"
-  },
   "samenwerken.html": {
     "title": "Tarieven voor analyse, blauwdruk en uitvoeringsplan | Variana",
     "description": "Bekijk de tarieven per Variana-onderzoeksopdracht en richtprijzen voor Klein-MKB en individuen. Toekomstige offline jaarlicenties staan apart; alle prijzen exclusief btw.",

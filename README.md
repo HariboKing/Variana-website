@@ -1,17 +1,18 @@
 # Variana — websitebron
 
-Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 23 statische HTML-pagina’s.
+Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 22 inhoudspagina’s en één doorverwijspagina voor het vroegere adres van Voorbeelden.
 
 ## Huidige indeling
 
 - Hoe het werkt bevat de bestaande opening, één interactieve systeemverkenner en de bestaande contactoproep. De oude screenshotpresentatie en afzonderlijke vierfasenuitleg zijn van deze pagina verwijderd.
 - Toepassingen bevat de opening, vier invalshoeken, de A/B/C-keuzehulp, Van klantvraag naar uitwerking en de contactoproep. De losse operationele sectie is verwijderd.
-- Voorbeelden bevat ruimte voor praktijkcases en daaronder de interactieve producttour.
+- De homepage bevat na Praktijkervaring de sectie Een greep uit onze opdrachten, gevolgd door de contactoproep. De vijf opdrachtomschrijvingen zijn door de gebruiker aangeleverd.
+- Voorbeelden is verwijderd uit navigatie en footer. Het vroegere adres voorbeelden.html verwijst door naar index.html#opdrachten; de footerlink Onze opdrachten opent die homepage-sectie rechtstreeks.
 - Contact, tarieven, doelgroepen en kennisbank behouden hun functie.
 
 ## Onderhouden en bouwen
 
-Bewerk tekst in beheer/paginas/ en metadata in beheer/pages.json. Navigatie, footer en producttour staan in beheer/build.py.
+Bewerk tekst in beheer/paginas/ en metadata in beheer/pages.json. Navigatie, footer en de doorverwijzing van het vroegere Voorbeelden-adres staan in beheer/build.py.
 
 Voer vanuit de website-map uit:
 
@@ -70,11 +71,11 @@ Deze controle gebruikt dezelfde resolver als de browser en test ook onvolledige 
 
 Beide interactieve schermen beschrijven de samenhang en vaste koppelingen. Zij voeren geen onderzoek uit, raadplegen geen bronnen en presenteren geen onderzoeksresultaten. Interne bronstukken, instructies en gedetailleerde afhankelijkheden worden niet gepubliceerd. De oude onderzoeksverkenner en fictieve gegevens blijven in de bron bewaard, maar worden niet op Toepassingen geladen of getoond.
 
-## Praktijkvoorbeelden
+## Opdrachten op de homepage
 
-De gereserveerde ruimte staat in beheer/paginas/voorbeelden.html, onder praktijkvoorbeelden. Hier is nog geen klantcase ingevuld. Voeg later de bedoelde praktijkvragen, aanpak en beschikbare uitwerking toe. De producttour staat daaronder, bij werkomgeving.
+De sectie opdrachten staat in beheer/paginas/index.html tussen praktijkervaring en de bestaande contactoproep. De geordende lijst bevat vijf aangeleverde omschrijvingen: een strategisch adviesrapport, twee blauwdrukken en twee analyses. Dienstnamen staan vet; de tekst blijft beperkt tot de aangeleverde opdrachtomschrijving. De vormgeving staat in assets/css/cinematic.css.
 
-Prototypebeelden tonen de werkomgeving en vormen geen bewijs van uitgevoerde onderzoeksresultaten. Er worden geen onderzoeksuitkomsten of klantresultaten verzonnen.
+De vroegere Voorbeelden-pagina en producttour worden niet meer opgebouwd. voorbeelden.html is uitsluitend een compatibele doorverwijzing naar de opdrachten op de homepage. De oudere prototypebeelden en onderzoeksassets blijven in de bron bewaard, maar worden hier niet getoond. Zij vormen geen bewijs van uitgevoerde onderzoeksresultaten.
 
 ## Contact, tarieven en publicatie
 
