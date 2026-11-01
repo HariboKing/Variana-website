@@ -159,7 +159,8 @@
       // Clearing detail prevents an earlier commercial choice surviving an organization change.
       root.querySelector('[data-matcher-result-title]').textContent = selection.result?.label || '';
       root.querySelector('[data-matcher-result-description]').textContent = selection.result?.description || '';
-      root.querySelector('[data-matcher-result-link]').setAttribute('href', selection.result?.href || 'specialistische-modules.html');
+      const resultHref = selection.result?.href || 'specialistische-modules.html';
+      root.querySelector('[data-matcher-result-link]').setAttribute('href', window.VARIANA_URLS?.toHref(resultHref) || resultHref);
       root.querySelector('[data-matcher-flow-explanation]').textContent = !selection.complete ? ''
         : selection.route.id === 'inzicht' ? 'Een analyse kan zelfstandig worden uitgevoerd en geeft inzicht in je onderwerp.'
         : selection.route.id === 'overzicht' ? 'De blauwdruk brengt de opbouw en inrichting samen. Van daaruit werken we het plan van aanpak of stappenplan uit.'

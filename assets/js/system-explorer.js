@@ -27,7 +27,7 @@
       root.querySelector('[data-system-detail-title]').textContent = item.title;
       root.querySelector('[data-system-detail-description]').textContent = item.description;
       root.querySelector('[data-system-detail-relation]').textContent = item.relation;
-      root.querySelector('[data-system-detail-link]').setAttribute('href', item.href);
+      root.querySelector('[data-system-detail-link]').setAttribute('href', window.VARIANA_URLS?.toHref(item.href) || item.href);
       root.dataset.selectedNode = id;
       if (updateHash) {
         const button = buttons.find(candidate => candidate.dataset.systemNode === id);

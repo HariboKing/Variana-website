@@ -1,28 +1,43 @@
 # Variana — websitebron
 
-Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 23 inhoudspagina’s en twee doorverwijspagina’s.
+Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 23 inhoudspagina’s met publieke adressen zonder .html. De oude bestandsadressen blijven beschikbaar voor bestaande links en offline bekijken.
 
 ## Huidige indeling
 
 - De homepage toont direct na de hero de productpresentatie van Variana Desktop, gevolgd door het onderscheid tussen dienstverlening en software. Daarna volgt het bestaande onderdeel Van systeem naar toepassing.
-- Software staat in het hoofdmenu tussen Hoe het werkt en Voor wie. De eigen pagina software.html richt zich op de beoogde uitkomsten: inzicht, organisatieoverzicht en een gerichte afweging of aanpak. Zij toont echte schermbeelden en een korte desktopopname. Het adres /software verwijst via software/index.html naar deze pagina.
+- Software staat in het hoofdmenu tussen Hoe het werkt en Voor wie. De eigen pagina /software/ richt zich op de beoogde uitkomsten: inzicht, organisatieoverzicht en een gerichte afweging of aanpak. Zij toont echte schermbeelden en een korte desktopopname. software/index.html bevat de volledige pagina.
 - Hoe het werkt bevat de bestaande opening, het onderscheid tussen dienst en software, één interactieve systeemverkenner en de bestaande contactoproep. De oude screenshotpresentatie en afzonderlijke vierfasenuitleg blijven verwijderd.
 - Toepassingen bevat de opening, vier invalshoeken, de A/B/C-keuzehulp, Van klantvraag naar uitwerking en de contactoproep. De losse operationele sectie is verwijderd.
 - De homepage bevat na Praktijkervaring de sectie Een greep uit onze opdrachten, gevolgd door de contactoproep. De vijf opdrachtomschrijvingen zijn door de gebruiker aangeleverd.
-- Voorbeelden is verwijderd uit navigatie en footer. Het vroegere adres voorbeelden.html verwijst door naar index.html#opdrachten; de footerlink Onze opdrachten opent die homepage-sectie rechtstreeks.
+- Voorbeelden is verwijderd uit navigatie en footer. Zowel /voorbeelden.html als /voorbeelden/ verwijst door naar /#opdrachten; de footerlink Onze opdrachten opent die homepage-sectie rechtstreeks.
 - Contact, tarieven, doelgroepen en kennisbank behouden hun functie.
 
 ## Onderhouden en bouwen
 
-Bewerk tekst in beheer/paginas/ en metadata in beheer/pages.json. Navigatie, footer, de gedeelde propositiekaarten en doorverwijzingen staan in beheer/build.py. voorbeelden.html verwijst naar index.html#opdrachten; software/index.html verwijst naar ../software.html.
+Bewerk tekst in beheer/paginas/ en metadata in beheer/pages.json. Navigatie, footer en de gedeelde propositiekaarten staan in beheer/build.py. De bronbestanden, metadata en routegegevens behouden hun .html-bestandsnamen en verwijzingen. beheer/url_renderer.py zet die bij het bouwen om naar publieke adressen en voegt de compatibele doorverwijzingen toe. Bewerk de gegenereerde pagina’s niet afzonderlijk.
 
 Voer vanuit de website-map uit:
 
     python beheer/build.py
 
-De generator schrijft de HTML in de hoofdmap. Werk beheerbronnen en gegenereerde HTML samen bij in GitHub. Voor bekijken of hosten zijn geen Python, Node, database of extra bouwstappen nodig.
+De generator schrijft de homepage als index.html en de overige 22 inhoudspagina’s als een volledige pagina in een eigen map, bijvoorbeeld software/index.html. Daarnaast blijven volledige .html-versies in de hoofdmap bestaan. Werk beheerbronnen, gegenereerde HTML en de paginamappen samen bij in GitHub. Voor bekijken of hosten zijn geen Python, Node, database of extra bouwstappen nodig.
 
 De algemene vormgeving staat in assets/css/styles.css. De homepage gebruikt ook cinematic.css. De productpresentatie, softwarepagina en gedeelde propositiekaarten gebruiken product.css. De build voegt de bestanden van een interactief scherm alleen toe aan de pagina met de bijbehorende markering. De CSS- en JavaScript-URL’s krijgen een inhoudshash tegen verouderde browsercache.
+
+## Publieke adressen en offline bekijken
+
+- De homepage gebruikt https://variana.nl/; andere pagina’s gebruiken bijvoorbeeld https://variana.nl/software/ en https://variana.nl/hoe-het-werkt/. GitHub Pages serveert daarvoor de index.html in de betreffende map.
+- Een vroeg script normaliseert oude .html-adressen en expliciete adressen zoals /software/index.html naar het publieke adres. Het bewaart queryparameters en fragmentankers. De oude Voorbeelden-adressen bewaren de query en gebruiken altijd het nieuwe anker #opdrachten.
+- Dit zijn doorverwijzingen in de browser, geen HTTP 301-doorverwijzingen. Zonder JavaScript werkt de gewone navigatie naar de nieuwe paginamappen; oude bestandsadressen hebben een beperkte fallback. / en /index.html gebruiken op deze statische hosting hetzelfde bestand, waardoor een expliciet geopend /index.html zonder JavaScript zichtbaar kan blijven. De fallback bewaart niet alle queryparameters of fragmenten.
+- Elke inhoudspagina vermeldt haar publieke adres in de canonical-link en og:url. De build herschrijft interne links en past assetpaden aan de mapdiepte aan, ook voor videobronnen, ondertiteling en posterbeelden.
+- assets/js/page-urls.js leest de ingebedde URL-tabel vóór de andere paginascripts. De twee interactieve schermen gebruiken deze helper voor hun dynamische links. Bij file:// zet de helper paginalinks terug naar de bestaande .html-bestanden in de hoofdmap, zodat het offline voorbeeld via index.html te bekijken blijft.
+
+Controleer wijzigingen in de adresafhandeling en de bestaande keuzehulp met:
+
+    node beheer/controle_urls.cjs
+    node beheer/controle_routes.cjs
+
+Deze indeling is bedoeld voor publicatie op de hoofdmap van variana.nl. De CNAME blijft behouden.
 
 ## Softwarepresentatie en beschikbare beelden
 
@@ -42,7 +57,7 @@ Het fictieve concept is in de lokale app bewaard. De desktopbroncode is voor dez
 
 De producttekst legt het nut van een eigen werkomgeving uit: regie over de werkwijze, continuïteit van de opgebouwde onderzoekscontext en lokale AI als ontwikkelrichting. Dit zijn beoogde voordelen. Er wordt niet gesteld dat alle AI-functionaliteit al offline werkt, gegevens nooit het apparaat verlaten of bepaalde beveiligingsgaranties gelden. Installatiebestanden, ondersteunde besturingssystemen, systeemvereisten en de omvang van offline gebruik worden pas vermeld wanneer zij zijn bevestigd.
 
-De CTA contact.html?onderwerp=preview kiest de nieuwe formulieroptie voor een productpreview. Het bestaande formulier bereidt een e-mailconcept of lokaal aanvraagbestand voor; het verstuurt geen automatische e-mail.
+De CTA /contact/?onderwerp=preview kiest de nieuwe formulieroptie voor een productpreview. Het bestaande formulier bereidt een e-mailconcept of lokaal aanvraagbestand voor; het verstuurt geen automatische e-mail.
 
 De opname en nieuwe screenshots gebruiken de algemene werkomgeving en het eigen fictieve Horizon Fietsservice-concept. Bestaande herkenbare projecten, hun dossierinhoud en private test- of instellingenbeelden zijn niet in de opname of nieuwe websitebeelden verwerkt. De private opname- en broninventaris blijven buiten de website en uploadselectie. Eerder aanwezige beeldbestanden blijven ongewijzigd.
 
@@ -101,7 +116,7 @@ Beide interactieve schermen beschrijven de samenhang en vaste koppelingen. Zij v
 
 De sectie opdrachten staat in beheer/paginas/index.html tussen praktijkervaring en de bestaande contactoproep. De geordende lijst bevat vijf aangeleverde omschrijvingen: een strategisch adviesrapport, twee blauwdrukken en twee analyses. Dienstnamen staan vet; de tekst blijft beperkt tot de aangeleverde opdrachtomschrijving. De vormgeving staat in assets/css/cinematic.css.
 
-De vroegere Voorbeelden-pagina en producttour worden niet meer opgebouwd. voorbeelden.html is uitsluitend een compatibele doorverwijzing naar de opdrachten op de homepage. De oudere prototypebeelden en onderzoeksassets blijven in de bron bewaard. De huidige productpresentatie gebruikt de conceptbeelden en desktopopname hierboven; zij toont de voorbereiding van een vraagstuk en vormt geen bewijs van uitgevoerde onderzoeksresultaten.
+De vroegere Voorbeelden-pagina en producttour worden niet meer opgebouwd. voorbeelden.html en voorbeelden/index.html zijn uitsluitend compatibele doorverwijzingen naar de opdrachten op de homepage. De oudere prototypebeelden en onderzoeksassets blijven in de bron bewaard. De huidige productpresentatie gebruikt de conceptbeelden en desktopopname hierboven; zij toont de voorbereiding van een vraagstuk en vormt geen bewijs van uitgevoerde onderzoeksresultaten.
 
 ## Contact, tarieven en publicatie
 

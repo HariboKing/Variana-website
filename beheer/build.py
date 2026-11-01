@@ -9,11 +9,14 @@ import html
 import hashlib
 from research_renderer import load_research, render_explorer, render_teaser
 from application_renderer import render_application_matcher
+from url_renderer import page_url_map, render_clean_page, examples_redirect
 
 BASE = Path(__file__).resolve().parent
 SITE = BASE.parent if BASE.name == 'beheer' else BASE.parent / 'outputs' / 'variana-website'
 SITE.mkdir(parents=True, exist_ok=True)
 pages = json.loads((BASE/'pages.json').read_text(encoding='utf-8'))
+url_map = page_url_map(pages)
+url_helper_version = hashlib.sha256((SITE/'assets/js/page-urls.js').read_bytes()).hexdigest()[:12]
 
 def arrow():
     return '<span aria-hidden="true">→</span>'
@@ -87,11 +90,16 @@ for filename, page in pages.items():
     content = f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><meta name="theme-color" content="#081322"><title>{title}</title><meta name="description" content="{description}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:type" content="{'article' if filename.startswith('kennis-') else 'website'}"><meta property="og:locale" content="nl_NL"><link rel="icon" href="assets/images/variana-mark.png" type="image/png"><link rel="stylesheet" href="assets/css/styles.css?v={style_version}"><script type="application/ld+json">{json.dumps(schema,ensure_ascii=False)}</script><script src="assets/js/config.js" defer></script><script src="assets/js/main.js" defer></script>{extra_scripts}</head><body class="{body_class}">{header(filename)}<main id="main">{body}</main>{footer()}{viewer() if 'data-image-zoom' in body else ''}<noscript><div class="noscript-note">Alle inhoud en links zijn beschikbaar. Voor de interactieve schermen, het mobiele menu en het lokale aanvraagbestand is JavaScript nodig. Productafbeeldingen kun je ook via de afbeeldingslinks vergroten.</div></noscript></body></html>'''
     if '<!--' in body:
         raise ValueError(f'Unfilled marker in {filename}')
-    (SITE/filename).write_text(content,encoding='utf-8')
-# Preserve old bookmarks without retaining a separate examples page.
-redirect_content = f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Opdrachten | Variana</title><meta name="description" content="Bekijk een greep uit onze opdrachten op de homepage van Variana."><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=index.html#opdrachten"><link rel="canonical" href="https://variana.nl/"><link rel="stylesheet" href="assets/css/styles.css?v={style_version}"></head><body class="inner-page"><main class="page-intro container"><h1>Onze opdrachten staan op de homepage.</h1><p><a class="button primary" href="index.html#opdrachten">Bekijk onze opdrachten <span aria-hidden="true">→</span></a></p></main></body></html>'''
-(SITE/'voorbeelden.html').write_text(redirect_content,encoding='utf-8')
-software_redirect = '''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Variana Desktop | Software</title><meta name="description" content="Ontdek Variana Desktop en bekijk de ontwikkelpreview."><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=../software.html"><link rel="canonical" href="https://variana.nl/software.html"></head><body><main><h1>Variana Desktop</h1><p><a href="../software.html">Ontdek de software</a></p></main></body></html>'''
-(SITE/'software').mkdir(exist_ok=True)
-(SITE/'software/index.html').write_text(software_redirect,encoding='utf-8')
-print(f'Built {len(pages)} content pages and two redirects in {SITE}')
+    canonical_path = url_map[filename]
+    # Root HTML files remain valid offline and normalize old web addresses.
+    legacy = render_clean_page(content,canonical_path,'',url_map,url_helper_version,legacy=True)
+    (SITE/filename).write_text(legacy,encoding='utf-8')
+    if filename != 'index.html':
+        folder = SITE/canonical_path.strip('/')
+        folder.mkdir(exist_ok=True)
+        clean = render_clean_page(content,canonical_path,'../',url_map,url_helper_version)
+        (folder/'index.html').write_text(clean,encoding='utf-8')
+(SITE/'voorbeelden.html').write_text(examples_redirect(''),encoding='utf-8')
+(SITE/'voorbeelden').mkdir(exist_ok=True)
+(SITE/'voorbeelden/index.html').write_text(examples_redirect('../'),encoding='utf-8')
+print(f'Built {len(pages)} clean routes, legacy HTML copies and examples redirects in {SITE}')
