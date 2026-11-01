@@ -36,6 +36,8 @@
 .software-feature-list h3 { font-size: 22px; margin: 0 0 11px; line-height: 1.4; }
 .software-feature-list p { margin: 0; color: #b5cbdc; font-size: 16px; line-height: 1.8; }
 .software-gallery { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; margin-top: 34px; }
+.software-demo-frame { margin-top: 34px; }
+.software-demo-video { display: block; width: 100%; height: auto; background: #081322; }
 .software-gallery .product-frame:first-child { grid-column: 1 / -1; }
 .software-status-table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.8; }
 .software-status-table caption { text-align: left; color: #a8c3d7; margin-bottom: 17px; }

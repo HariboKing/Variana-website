@@ -5,7 +5,7 @@ Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub
 ## Huidige indeling
 
 - De homepage toont direct na de hero de productpresentatie van Variana Desktop, gevolgd door het onderscheid tussen dienstverlening en software. Daarna volgt het bestaande onderdeel Van systeem naar toepassing.
-- Software staat in het hoofdmenu tussen Hoe het werkt en Voor wie. De eigen pagina software.html toont echte prototypebeelden, ontwikkelstatus, lokale software en de mogelijkheid om een productpreview aan te vragen. Het adres /software verwijst via software/index.html naar deze pagina.
+- Software staat in het hoofdmenu tussen Hoe het werkt en Voor wie. De eigen pagina software.html richt zich op de beoogde uitkomsten: inzicht, organisatieoverzicht en een gerichte afweging of aanpak. Zij toont echte schermbeelden en een korte desktopopname. Het adres /software verwijst via software/index.html naar deze pagina.
 - Hoe het werkt bevat de bestaande opening, het onderscheid tussen dienst en software, één interactieve systeemverkenner en de bestaande contactoproep. De oude screenshotpresentatie en afzonderlijke vierfasenuitleg blijven verwijderd.
 - Toepassingen bevat de opening, vier invalshoeken, de A/B/C-keuzehulp, Van klantvraag naar uitwerking en de contactoproep. De losse operationele sectie is verwijderd.
 - De homepage bevat na Praktijkervaring de sectie Een greep uit onze opdrachten, gevolgd door de contactoproep. De vijf opdrachtomschrijvingen zijn door de gebruiker aangeleverd.
@@ -26,21 +26,27 @@ De algemene vormgeving staat in assets/css/styles.css. De homepage gebruikt ook 
 
 ## Softwarepresentatie en beschikbare beelden
 
-De markering PROPOSITIONS plaatst dezelfde twee kaarten op de homepage, Hoe het werkt en de softwarepagina: Variana als dienst is nu beschikbaar; Variana als zelfstandige software is in ontwikkeling. De diensten en hun bestaande tarieven blijven beschikbaar. Er wordt geen zelfstandige download aangeboden.
+De markering PROPOSITIONS plaatst dezelfde twee kaarten op de homepage en Hoe het werkt: Variana als dienst is nu beschikbaar; Variana als zelfstandige software is in ontwikkeling. De softwarepagina heeft één duidelijke statusvermelding bovenaan en een beschikbaarheidstoelichting onderaan. De diensten en hun bestaande tarieven blijven beschikbaar. Er wordt geen zelfstandige download aangeboden.
 
-De homepage gebruikt het echte Nederlandse startscherm. De softwarepagina toont daarnaast het moduleoverzicht en het overzicht van specialistische modules. De drie geselecteerde bronbeelden staan onbewerkt in assets/images/software:
+De homepage en softwarehero tonen een ingevuld fictief vraagstuk in de echte blauwdrukmodule. De softwarepagina toont daarnaast het moduleoverzicht en de projectomgeving van het bewaarde concept. De actuele beelden staan in assets/images/software:
 
-- startscherm-nl.png
+- blauwdruk-concept-nl.png
 - moduleoverzicht-nl.png
-- specialistische-modules-nl.png
+- project-concept-nl.png
 
-Deze beelden tonen de interface en module-ingangen van de ontwikkelversie. Zij bewijzen geen uitvoering van onderzoek of beschikbaarheid van alle getoonde modules. Er is geen schermopname toegevoegd: in het beschikbare bronmateriaal is geen videobestand aangetroffen. De productdemonstratie biedt daarom een aanvraag voor een preview van de ontwikkelversie, zonder een nagebootste video of afspeelknop.
+De nieuwe conceptbeelden zijn 1536 × 816 pixels; het moduleoverzicht is 1918 × 1020 pixels. Het fictieve demonstratieproject heet Horizon Fietsservice. De beelden tonen ingevoerde informatie en een bewaard concept, geen afgerond onderzoek of gegenereerde eindblauwdruk. De eerder gebruikte start- en moduleschermen blijven als bronbestanden behouden.
 
-Installatiebestanden, ondersteunde besturingssystemen, systeemvereisten en de omvang van offline gebruik worden pas vermeld wanneer zij zijn bevestigd. Ontwikkelstatus en beschikbare functies moeten per versie worden toegelicht.
+De productdemonstratie gebruikt assets/video/variana-concept-rondleiding-nl.mp4 met Nederlandse ondertiteling in het gelijknamige .vtt-bestand. De opname van circa 31 seconden is in de echte desktopapp gemaakt en uit zeven korte opnamen gemonteerd. Zij toont het kiezen van een module, het invoeren van een fictief organisatievraagstuk, lokaal bewaren als concept en terugvinden in de projectomgeving. Er is geen onderzoeksuitvoering gestart en er worden geen voltooide onderzoeksresultaten voorgesteld. De videospeler heeft bediening, een posterbeeld en Nederlandse captions.
+
+Het fictieve concept is in de lokale app bewaard. De desktopbroncode is voor deze websitepresentatie niet aangepast.
+
+De producttekst legt het nut van een eigen werkomgeving uit: regie over de werkwijze, continuïteit van de opgebouwde onderzoekscontext en lokale AI als ontwikkelrichting. Dit zijn beoogde voordelen. Er wordt niet gesteld dat alle AI-functionaliteit al offline werkt, gegevens nooit het apparaat verlaten of bepaalde beveiligingsgaranties gelden. Installatiebestanden, ondersteunde besturingssystemen, systeemvereisten en de omvang van offline gebruik worden pas vermeld wanneer zij zijn bevestigd.
 
 De CTA contact.html?onderwerp=preview kiest de nieuwe formulieroptie voor een productpreview. Het bestaande formulier bereidt een e-mailconcept of lokaal aanvraagbestand voor; het verstuurt geen automatische e-mail.
 
-Alleen de drie gekozen, algemene interfacebeelden zijn openbaar opgenomen. Overige bronbeelden, dossierinhoud, test- en instellingenbeelden en de private inventaris van bronbestanden blijven buiten de website en uploadselectie. De originele afbeeldingen zijn niet bewerkt; eerder aanwezige beeldbestanden blijven ongewijzigd.
+De opname en nieuwe screenshots gebruiken de algemene werkomgeving en het eigen fictieve Horizon Fietsservice-concept. Bestaande herkenbare projecten, hun dossierinhoud en private test- of instellingenbeelden zijn niet in de opname of nieuwe websitebeelden verwerkt. De private opname- en broninventaris blijven buiten de website en uploadselectie. Eerder aanwezige beeldbestanden blijven ongewijzigd.
+
+De hoofdnavigatie wordt voor alle inhoudspagina’s door dezelfde headerfunctie opgebouwd. Software staat daarin tussen Hoe het werkt en Voor wie. Een afwijkende weergave op een reeds geopende pagina kan een oudere browser- of publicatiecache betreffen; beschrijf dit niet als een verholpen bronfout zonder die fout eerst te hebben vastgesteld.
 
 ## Interactief systeem op Hoe het werkt
 
@@ -95,7 +101,7 @@ Beide interactieve schermen beschrijven de samenhang en vaste koppelingen. Zij v
 
 De sectie opdrachten staat in beheer/paginas/index.html tussen praktijkervaring en de bestaande contactoproep. De geordende lijst bevat vijf aangeleverde omschrijvingen: een strategisch adviesrapport, twee blauwdrukken en twee analyses. Dienstnamen staan vet; de tekst blijft beperkt tot de aangeleverde opdrachtomschrijving. De vormgeving staat in assets/css/cinematic.css.
 
-De vroegere Voorbeelden-pagina en producttour worden niet meer opgebouwd. voorbeelden.html is uitsluitend een compatibele doorverwijzing naar de opdrachten op de homepage. De oudere prototypebeelden en onderzoeksassets blijven in de bron bewaard; de nieuwe productpresentatie gebruikt de drie Nederlandse beelden hierboven. Schermafbeeldingen vormen geen bewijs van uitgevoerde onderzoeksresultaten.
+De vroegere Voorbeelden-pagina en producttour worden niet meer opgebouwd. voorbeelden.html is uitsluitend een compatibele doorverwijzing naar de opdrachten op de homepage. De oudere prototypebeelden en onderzoeksassets blijven in de bron bewaard. De huidige productpresentatie gebruikt de conceptbeelden en desktopopname hierboven; zij toont de voorbereiding van een vraagstuk en vormt geen bewijs van uitgevoerde onderzoeksresultaten.
 
 ## Contact, tarieven en publicatie
 

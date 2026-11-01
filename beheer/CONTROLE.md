@@ -1,34 +1,38 @@
-# Controle Variana — softwarepresentatie
+# Controle Variana — productbeleving en desktopdemonstratie
 
-Deze wijziging voegt een gerichte presentatie van Variana Desktop toe en maakt het onderscheid tussen beschikbare dienstverlening en software in ontwikkeling zichtbaar.
+Deze wijziging scherpt de bestaande productpresentatie gericht aan. De softwarepagina benadrukt de beoogde uitkomsten en lokale werkomgeving, beperkt herhaalde statusmeldingen en toont een echte korte desktopopname.
 
 ## Beoogd gedrag
 
-- De homepage toont direct na de bestaande hero de desktopproductpresentatie en de twee propositiekaarten, vóór Van systeem naar toepassing.
-- De vijf aangeleverde opdrachten blijven tussen praktijkervaring en contact staan, inclusief de internationale juridische organisatie.
-- Software staat in de hoofdnavigatie tussen Hoe het werkt en Voor wie. software.html bevat de producthero, productdemonstratie, werkomgeving, functionaliteiten en ontwikkelstatus, lokale software en beschikbaarheid.
-- Het adres /software wordt ondersteund door software/index.html, dat naar ../software.html verwijst. voorbeelden.html blijft doorverwijzen naar index.html#opdrachten.
-- Hoe het werkt behoudt de opening en toont daarna de propositiekaarten vóór het bestaande interactieve systeemscherm.
-- De gedeelde kaarten onderscheiden Variana als dienst, nu beschikbaar, en Variana als software, in ontwikkeling. Er wordt geen zelfstandige download aangeboden.
-- Drie echte Nederlandse interfacebeelden tonen het startscherm, moduleoverzicht en specialistische modules. De afbeeldingen zijn niet bewerkt.
-- Er is geen schermopname of nagebootste video opgenomen. De productpreview kan worden aangevraagd via contact.html?onderwerp=preview.
-- De nieuwe formulieroptie gebruikt het bestaande e-mailconcept of lokale aanvraagbestand. Er is geen automatische verzending.
-- De tekst claimt geen bevestigde onderzoeksuitvoering op grond van screenshots. Installatie, besturingssystemen, systeemvereisten en de omvang van offline gebruik blijven afhankelijk van bevestiging per ontwikkelversie.
-- Overige bronbeelden, dossierinhoud, test- en instellingenbeelden en de private broninventaris worden niet gepubliceerd.
-- Tarieven, opdrachtomschrijvingen, de A/B/C-keuzehulp, de blauwdruklogica en overheidsfilters behouden hun inhoud en gedrag.
+- De hero gaat over een onderbouwde keuze vanuit een complexe vraag. De inhoud verbindt analyses aan inzicht, de blauwdruk aan samenhang en aanpak, en specialistische uitwerkingen aan concrete afwegingen.
+- Eén statusvermelding bovenaan en een beschikbaarheidstoelichting onderaan geven aan dat de zelfstandige software wordt ontwikkeld. De afbeeldingen en uitkomstentabel herhalen deze melding niet telkens.
+- De homepage en softwarehero tonen een fictief vraagstuk dat is ingevuld in de echte blauwdrukmodule. De projectomgeving toont hetzelfde bewaarde fictieve concept.
+- De video variana-concept-rondleiding-nl.mp4 duurt circa 31 seconden en is gemonteerd uit zeven echte schermopnamen van de desktopapp. De speler heeft bediening, een posterbeeld en Nederlandse captions uit het bijbehorende .vtt-bestand.
+- De rondleiding toont modulekeuze, invoer van het fictieve Horizon Fietsservice-vraagstuk, lokaal bewaren als concept en terugvinden in de eigen projectomgeving. Er is geen onderzoek uitgevoerd en er wordt geen gegenereerde eindblauwdruk gepresenteerd.
+- De nieuwe screenshots blauwdruk-concept-nl.png en project-concept-nl.png zijn 1536 × 816 pixels. Het bestaande moduleoverzicht blijft zichtbaar; oudere afbeeldingen blijven als bronbestanden behouden.
+- De opname bevat geen bestaande herkenbare klantprojecten of private dossier-, test- of instellingenbeelden. Private bron- en opnamebestanden vallen buiten de uploadselectie.
+- Het fictieve concept blijft in de lokale app bewaard. De desktopbroncode is voor de presentatie niet veranderd.
+- De uitleg over lokaal werken noemt regie, continuïteit van onderzoekscontext en lokale AI als ontwikkelrichting. Zij bevat geen garantie dat alle functies offline werken, gegevens altijd lokaal blijven of bepaalde beveiliging wordt geboden.
+- De productpreview blijft bereikbaar via contact.html?onderwerp=preview. Het formulier bereidt een e-mailconcept of lokaal aanvraagbestand voor en verstuurt niet automatisch.
+- De navigatie komt op alle inhoudspagina’s uit dezelfde headerfunctie. Software staat tussen Hoe het werkt en Voor wie; een afwijkende oude weergave wordt eerst op caching onderzocht.
+- Tarieven, vijf opdrachtomschrijvingen, de A/B/C-keuzehulp, blauwdruklogica en overheidsfilters behouden hun inhoud en gedrag.
 
-## Uitgevoerde controles
+## Uitgevoerde bron- en bouwcontroles
 
-- 23 inhoudspagina’s en twee doorverwijzingen gebouwd; alle 25 HTML-bestanden gecontroleerd op interne bestanden, ankers, unieke IDs, H1, metabeschrijvingen en ARIA-verwijzingen. Geen fouten.
-- Homepagevolgorde en behoud van de vijf opdrachten inclusief internationale juridische organisatie gecontroleerd.
-- Software staat tussen Hoe het werkt en Voor wie, ook in het mobiele menu. De softwarelink op de homepage werkt. Het lokale adres /software verwijst door naar software.html.
-- Drie Nederlandse bronbeelden visueel geïnspecteerd: originele bytes en afmetingen behouden, relevante altteksten en onderschriften. Vergrootweergave van het startscherm en specialistische modules getest.
-- Geen video-afspeelknop of installatiebestand zonder daadwerkelijk beschikbaar bestand. Ontwikkelstatus en nog niet bevestigde installatie/offlinegegevens zijn expliciet.
-- Previewknop opent de contactpagina met preview geselecteerd; bestaande demo- en opdrachtquery’s blijven werken. Er is geen formulier verstuurd.
-- Homepage, Software en Hoe het werkt getest op 320, 768 en 1440 pixels: geen horizontale overloop of mislukte geladen afbeeldingen. Mobiele statustabel visueel bekeken.
-- Systeemscherm reageert nog op Blauwdruk; de overheidskeuze voor overzicht levert één blauwdruk met plan van aanpak. Interactiecode en routegegevens zijn ongewijzigd.
-- Tariefbron, contactconfiguratie, CNAME, bestaande interactiecode en routegegevens zijn bytegelijk aan de vorige versie.
-- Uploadselectie beperkt tot websitebronnen en de drie algemene, onbewerkte softwarebeelden. Private broninventaris, downloadlinks en de overige bronbeelden vallen erbuiten.
-- Geen browserfouten of waarschuwingen waargenomen. Deployment en live pagina’s worden afzonderlijk gecontroleerd na publicatie.
+- De bouw en statische controle van 23 inhoudspagina’s en twee doorverwijzingen zijn geslaagd: alle 25 HTML-bestanden zijn gecontroleerd op interne bestanden, ankers, unieke IDs, H1, metabeschrijvingen en ARIA-verwijzingen.
+- De beschermde bestaande bestanden zijn ongewijzigd volgens de statische vergelijking.
+- De aangescherpte softwarebron behoudt de bestaande sectieankers; herhaalde beeldbadges en statusrijen zijn vervangen door een uitkomstgerichte toelichting.
+- De gemaakte opname toont de echte app, met een fictief concept en zonder gestarte onderzoeksuitvoering. De nieuwe screenshots tonen conceptinvoer en projectvoorbereiding.
+
+## Lokale browsercontrole
+
+- Video afspelen getest tot het einde: 31,33 seconden, 1536 × 816 pixels, geen afspeelfout; Nederlandse captions staan aan. Alle zeven opgenomen scènes zijn gecontroleerd op uitsluitend algemene of fictieve inhoud. Het projectoverzicht met een bestaand klantproject is niet opgenomen.
+- Twee nieuwe onbewerkte screenshots van de echte interface gecontroleerd; de invoer en projectomgeving hebben de status concept en passende onderschriften.
+- Homepage, Software en Hoe het werkt getest op 320, 768 en 1440 pixels: geen horizontale overloop of mislukte geladen afbeeldingen. De videospeler schaalt binnen de schermbreedte.
+- In de software-inhoud staat precies één productstatus bovenaan; de beschikbaarheidstoelichting staat onderaan. Herhaalde beeldbadges en propositiekaarten op deze productpagina zijn verwijderd.
+- Bestaande preview- en formuliercode is ongewijzigd. Er is geen aanvraag verstuurd.
+- Software staat in de gedeelde hoofdnavigatie van alle drie geteste pagina’s. De live navigatie en deployment worden afzonderlijk gecontroleerd na publicatie.
+- Interactiecode, routegegevens en tarieven zijn bytegelijk aan de vorige versie. De vijf opdrachten inclusief de internationale juridische organisatie blijven behouden.
+- Uploadselectie bevat alleen websitebronnen, twee neutrale conceptscreenshots, het MP4-bestand en captions. Desktopcode, private dossiers, tijdelijke frames, runtimehulpmiddelen en broninventaris worden niet gepubliceerd.
 
 Deze controle is geen volledige toegankelijkheidsaudit of fysieke apparaattest.
