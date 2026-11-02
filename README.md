@@ -14,9 +14,11 @@ Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub
 
 ## Onderhouden en bouwen
 
-Het contactformulier vraagt verplicht om naam en e-mailadres; telefoonnummer en de toelichting zijn optioneel. Beide optionele velden worden meegenomen in het e-mailconcept en de lokale tekstdownload. De knop Open het contactformulier in B en C verschijnt alleen na een volledige selectie. Zij opent op Toepassingen een native dialog met de gekozen uitwerking ingevuld; de pagina blijft op haar plaats en de achtergrond kan niet worden bediend. Het kruisje of Escape sluit het venster, waarna de focus teruggaat naar de knop. Ingevulde tekst blijft tijdens deze paginaweergave bewaard; een andere keuze vervangt het onderwerp.
+Het contactformulier verzendt de aanvraag rechtstreeks via FormSubmit; de bezoeker hoeft geen e-mailprogramma te openen. Naam en e-mailadres zijn verplicht; telefoonnummer en de toelichting zijn optioneel. De knop Open het contactformulier in B en C verschijnt alleen na een volledige selectie. Zij opent op Toepassingen een native dialog met de gekozen uitwerking ingevuld; de pagina blijft op haar plaats en de achtergrond kan niet worden bediend. Het kruisje of Escape sluit het venster, waarna de focus teruggaat naar de knop. Invoer blijft bij sluiten en heropenen en bij een verzendfout behouden. Persoonlijke invoer wordt pas gewist wanneer de verzenddienst de aanvraag heeft geaccepteerd.
 
 De contactpagina en het venster gebruiken hetzelfde bronfragment in beheer/onderdelen/contact-formulier.html via CONTACT_FORM. De build leidt de toegestane onderwerpen af uit beheer/toepassingsroutes.json en plaatst ze via CONTACT_RESULT_TOPICS bij beide formulieren. main.js selecteert alleen een bekend onderwerp uit die tabel. De dialogvormgeving staat in assets/css/contact-dialog.css en wordt uitsluitend bij de keuzehulp geladen. Bestaande demo-, preview- en overige contactlinks blijven bruikbaar. De knop behoudt een gewone contactlink met `onderwerp=keuze-<resultaat-id>` en de centrale URL-helper als fallback wanneer de modal niet kan worden geopend.
+
+De publieke instellingen staan in assets/js/config.js: contactEmail is het ontvangstadres en contactEndpoint is het AJAX-adres van FormSubmit. Daar staan geen wachtwoorden of geheime API-sleutels in. assets/js/contact-delivery.js verstuurt JSON met een POST, zonder cookies of andere credentials. De build laadt dit script vóór main.js op Contact en Toepassingen. Een aanvraag krijgt alleen een succesmelding na een succesvolle HTTP-response met de bevestigde success-waarde van de dienst. Netwerk-, timeout-, activatie- en andere fouten bewaren de invoer en tonen een foutmelding. Tijdens de aanvraag zijn de velden en verzendknop geblokkeerd; sluiten en heropenen van de modal verandert de lopende aanvraag niet.
 
 Bewerk tekst in beheer/paginas/ en metadata in beheer/pages.json. Navigatie, footer en de gedeelde propositiekaarten staan in beheer/build.py. De bronbestanden, metadata en routegegevens behouden hun .html-bestandsnamen en verwijzingen. beheer/url_renderer.py zet die bij het bouwen om naar publieke adressen en voegt de compatibele doorverwijzingen toe. Bewerk de gegenereerde pagina’s niet afzonderlijk.
 
@@ -61,7 +63,7 @@ Het fictieve concept is in de lokale app bewaard. De desktopbroncode is voor dez
 
 De producttekst legt het nut van een eigen werkomgeving uit: regie over de werkwijze, continuïteit van de opgebouwde onderzoekscontext en lokale AI als ontwikkelrichting. Dit zijn beoogde voordelen. Er wordt niet gesteld dat alle AI-functionaliteit al offline werkt, gegevens nooit het apparaat verlaten of bepaalde beveiligingsgaranties gelden. Installatiebestanden, ondersteunde besturingssystemen, systeemvereisten en de omvang van offline gebruik worden pas vermeld wanneer zij zijn bevestigd.
 
-De CTA /contact/?onderwerp=preview kiest de nieuwe formulieroptie voor een productpreview. Het bestaande formulier bereidt een e-mailconcept of lokaal aanvraagbestand voor; het verstuurt geen automatische e-mail.
+De CTA /contact/?onderwerp=preview kiest de formulieroptie voor een productpreview. Die aanvraag wordt via dezelfde rechtstreekse FormSubmit-verzending afgehandeld.
 
 De opname en nieuwe screenshots gebruiken de algemene werkomgeving en het eigen fictieve Horizon Fietsservice-concept. Bestaande herkenbare projecten, hun dossierinhoud en private test- of instellingenbeelden zijn niet in de opname of nieuwe websitebeelden verwerkt. De private opname- en broninventaris blijven buiten de website en uploadselectie. Eerder aanwezige beeldbestanden blijven ongewijzigd.
 
@@ -124,7 +126,11 @@ De vroegere Voorbeelden-pagina en producttour worden niet meer opgebouwd. voorbe
 
 ## Contact, tarieven en publicatie
 
-Het bevestigde publieke adres is info@variana.nl. Het formulier opent een e-mailconcept of maakt een lokale TXT-download; de bezoeker verstuurt zelf. Er is geen automatische verzending.
+Het bevestigde publieke ontvangstadres is info@variana.nl. De knop Verstuur aanvraag verstuurt vanaf de website via https://formsubmit.co/ajax/info@variana.nl. De oude e-mailconcept- en TXT-downloadfuncties zijn uit het formulier verwijderd. De gewone e-maillink voor rechtstreeks contact blijft beschikbaar.
+
+Voor ingebruikname moet de eigenaar de activeringsmail van FormSubmit op info@variana.nl bevestigen. Die eigenaarsactivatie en daadwerkelijke ontvangst van een testaanvraag in de mailbox zijn nog niet geverifieerd. Een geaccepteerde AJAX-response bevestigt op zichzelf geen aflevering in de inbox. Bevestig de activatie en controleer daarna één echte aanvraag vanuit zowel de contactpagina als de modal voordat volledige ontvangst als getest wordt gemeld.
+
+FormSubmit verwerkt de ingevulde gegevens als verzenddienst. Volgens de [officiële documentatie](https://formsubmit.co/documentation) bewaart FormSubmit inzendingen dertig dagen. Controleer deze voorwaarden opnieuw bij een wijziging van dienst of configuratie. De openbare formuliertekst noemt FormSubmit en verwijst naar het privacybeleid. De honeypot blijft aanwezig; de integratie zet de standaardcaptcha niet expliciet uit.
 
 De tarieven staan in beheer/paginas/samenwerken.html. Deze wijziging verandert geen bedragen of btw-vermelding. De huidige dienstverlening gebruikt een online ondersteund prototype. Zelfstandige offline software en de zelfstandige marketing- en evaluatiemodules zijn nog in ontwikkeling; de keuzehulpen wijzigen die beschikbaarheid niet.
 

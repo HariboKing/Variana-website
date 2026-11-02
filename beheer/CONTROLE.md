@@ -1,6 +1,20 @@
 # Controle Variana — contactformulier en keuzehulp
 
-## Aanvulling van 2 november 2026 — formulier boven Toepassingen
+## Wijziging van 2 november 2026 — rechtstreeks verzenden
+
+- Het gedeelde formulier op Contact en in de toepassingenmodal gebruikt nu Verstuur aanvraag. De browser verstuurt JSON rechtstreeks naar de FormSubmit-AJAX-endpoint voor info@variana.nl. De e-mailconcept- en lokale downloadafhandeling zijn verwijderd; de gewone directe e-maillink blijft beschikbaar.
+- Naam en e-mailadres blijven verplicht; telefoonnummer en toelichting blijven optioneel. De leesbare gekozen uitwerking gaat mee als onderwerp. De gedeelde formulierbron, onderwerpallowlist en native modal blijven behouden.
+- contact-delivery.js controleert HTTP-status, JSON en de bevestigde success-waarde. Een activatiemelding wordt als nog niet beschikbaar behandeld. Netwerk-, timeout- en andere fouten geven geen succesmelding. De timeout is 25 seconden; fetch gebruikt CORS en credentials: omit. Er worden geen geheime sleutels in de website opgenomen.
+- De verzendknop en invoervelden worden tijdens verzending geblokkeerd. Sluiten en heropenen van de modal behouden het oorspronkelijke onderwerp en de status van een lopende aanvraag. Bij een fout blijft invoer staan; pas na bevestigde acceptatie door de dienst wordt persoonlijke invoer gewist.
+- De honeypot blijft aanwezig. De integratie bevat geen instelling die de standaardcaptcha uitschakelt. De formuliertekst noemt FormSubmit als verzenddienst en verwijst naar het privacybeleid. Volgens de [officiële FormSubmit-documentatie](https://formsubmit.co/documentation) worden inzendingen dertig dagen bewaard.
+- Zestien transportgevallen met nagebootste responses zijn geslaagd, waaronder bevestigde acceptatie, afwijzing, activatie, ongeldige responses, netwerkfout en timeout. Dit zijn technische controles en geen bewijs van aflevering van een echte aanvraag.
+- De build voor 23 inhoudsroutes, 49 routecontroles, 47 URL-controles en 19 volledige contactselecties is geslaagd. Alle 47 HTML-bestanden zijn statisch gecontroleerd. Een lokale testserver met nagebootste verzenddienst bevestigt afwijzing met behoud van invoer, succesvol opnieuw versturen, blokkade tijdens verzending en sluiten/heropenen van de modal tijdens een lopende aanvraag. Er zijn twee gesimuleerde requests verstuurd zonder automatische herhalingen; zij bevatten het leesbare onderwerp, optioneel telefoonnummer en een bronadres zonder query of fragment.
+- De gewone contactpagina behoudt de previewselectie en verplichte naam/e-mail, met optionele telefoon/toelichting. De downloadknop ontbreekt. De gedeelde formulierbron blijft identiek voor beide pagina's.
+- De eigenaar moet de FormSubmit-activeringsmail op info@variana.nl bevestigen. Eigenaarsactivatie en daadwerkelijke ontvangst in de mailbox zijn nog niet geverifieerd. Livecontrole en activering worden afzonderlijk afgerond.
+
+De onderdelen hieronder zijn historische controles van eerdere versies. Hun opmerkingen over e-mailconcepten en TXT-downloads beschrijven de eerdere werking en zijn niet meer van toepassing op het huidige formulier.
+
+## Eerdere aanvulling van 2 november 2026 — formulier boven Toepassingen
 
 - De knop in B en C heet Open het contactformulier en opent na een volledige selectie een native dialog boven de huidige toepassingenpagina. De normale contactlink blijft alleen als fallback bestaan.
 - showModal maakt de achtergrond inert. Het venster heeft een benoemde sluitknop, een scrollbare inhoud en een vast zichtbare kop bij het scrollen in het formulier. De achtergrondscroll wordt tijdens het openen geblokkeerd.

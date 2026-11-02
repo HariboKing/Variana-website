@@ -59,10 +59,13 @@ const form = document.getElementById('contact-form');
 if (form) {
   const configured = window.VARIANA_CONFIG?.contactEmail || '';
   const emailReady = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(configured);
+  const endpoint = window.VARIANA_CONFIG?.contactEndpoint || '';
+  const delivery = window.VARIANA_DELIVERY;
+  const deliveryReady = typeof endpoint === 'string' && !!endpoint && typeof delivery?.send === 'function';
   const button = document.getElementById('contact-submit');
   const mode = document.getElementById('contact-mode');
   const status = document.getElementById('form-status');
-  const downloadButton = document.getElementById('contact-download');
+  let isSubmitting = false;
   const topic = new URLSearchParams(location.search).get('onderwerp');
   const aliases = { dienstverlening: 'samenwerking', analyse: 'opdracht', advies: 'opdracht', licenties: 'licentie' };
   const topicPayload = document.querySelector('[data-contact-topics]');
@@ -97,15 +100,21 @@ if (form) {
     let contactTrigger;
     window.VARIANA_CONTACT = Object.freeze({
       open(topicValue, trigger) {
-        if (!setTopic(topicValue)) return false;
+        const previousTopic = form.elements.topic.value;
+        // A request already in flight keeps its original subject and status.
+        if (!isSubmitting && !setTopic(topicValue)) return false;
         try {
           if (!contactDialog.open) contactDialog.showModal();
         } catch (_) { return false; } // The ordinary contact link remains the fallback.
         contactTrigger = trigger;
         document.body.classList.add('contact-dialog-open');
-        status.textContent = '';
+        if (!isSubmitting && previousTopic !== form.elements.topic.value) {
+          status.textContent = '';
+          form.dataset.contactState = deliveryReady ? 'ready' : 'unavailable';
+        }
         contactDialog.scrollTop = 0;
-        form.elements.name.focus({ preventScroll: true });
+        if (isSubmitting) contactDialog.querySelector('[data-close-contact]')?.focus({ preventScroll: true });
+        else form.elements.name.focus({ preventScroll: true });
         return true;
       }
     });
@@ -118,51 +127,75 @@ if (form) {
     });
   }
   if (emailReady) {
-    button.textContent = 'Open aanvraag in mijn e-mailprogramma ↗';
-    mode.textContent = `Je e-mailprogramma opent met een bericht aan ${configured}. Controleer het bericht en verstuur het daar zelf. Je kunt je aanvraag ook als tekst downloaden.`;
     document.querySelectorAll('[data-contact-address]').forEach((link) => {
       link.href = `mailto:${configured}`;
       link.textContent = configured;
     });
-    downloadButton.hidden = false;
   }
-  function requestText() {
+  button.textContent = 'Verstuur aanvraag';
+  form.dataset.contactState = deliveryReady ? 'ready' : 'unavailable';
+  if (!deliveryReady) {
+    mode.textContent = 'Het formulier kan op dit moment geen aanvragen versturen. Probeer het later opnieuw.';
+  }
+  function requestPayload() {
     const values = new FormData(form);
     const topicText = form.elements.topic.selectedOptions[0].textContent;
-    const subject = `Kennismaking Variana — ${topicText}`;
-    const phone = String(values.get('phone') || '').trim() || 'Niet ingevuld';
-    const message = String(values.get('message') || '').trim() || 'Niet ingevuld';
-    const body = `Aanvraag Variana\n\nOnderwerp: ${topicText}\nNaam: ${values.get('name')}\nOrganisatie: ${values.get('organization') || 'Niet ingevuld'}\nE-mailadres: ${values.get('email')}\nTelefoonnummer: ${phone}\n\nMeer informatie over je vraagstuk:\n${message}\n\nDit is een lokaal opgesteld aanvraagconcept. Er is niets automatisch verzonden.\n`;
-    return { subject, body };
+    const value = name => String(values.get(name) || '').trim();
+    return {
+      name: value('name'),
+      email: value('email'),
+      Organisatie: value('organization') || 'Niet ingevuld',
+      Telefoonnummer: value('phone') || 'Niet ingevuld',
+      Onderwerp: topicText,
+      message: value('message') || 'Niet ingevuld',
+      _subject: `Aanvraag Variana — ${topicText}`,
+      _template: 'table',
+      _honey: value('_honey'),
+      _url: /^https?:$/.test(location.protocol) ? location.origin + location.pathname
+        : 'https://variana.nl' + (contactDialog ? '/toepassingen/' : '/contact/')
+    };
   }
-  function downloadRequest(body) {
-    const url = URL.createObjectURL(new Blob(['\uFEFF', body], { type: 'text/plain;charset=utf-8' }));
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'variana-aanvraag.txt';
-    document.body.append(link);
-    link.click();
-    link.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    status.textContent = emailReady
-      ? `Je aanvraagbestand is voorbereid voor download. Er is niets verzonden. Je kunt het bestand zelf naar ${configured} mailen.`
-      : 'Je aanvraagbestand is voorbereid voor download. Er is niets verzonden. Bewaar het bestand; een contactadres moet nog worden ingesteld.';
-  }
-  downloadButton.addEventListener('click', () => {
-    if (form.reportValidity()) downloadRequest(requestText().body);
-  });
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (isSubmitting || !deliveryReady) return;
     if (!form.reportValidity()) return;
-    const { subject, body } = requestText();
-    if (emailReady) {
-      location.href = `mailto:${configured}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      status.textContent = 'Het e-mailconcept is aangeboden aan je e-mailprogramma. Controleer het bericht en verstuur het daar zelf. Opent er geen programma? Download je aanvraag en mail deze zelf. Er is niets automatisch verzonden.';
-    } else {
-      downloadRequest(body);
+    const payload = requestPayload();
+    if (payload._honey) {
+      form.dataset.contactState = 'error';
+      status.textContent = 'We konden de verzending niet bevestigen. Je invoer blijft staan. Probeer het opnieuw.';
+      return;
+    }
+    const controls = [...form.querySelectorAll('input, select, textarea, button')]
+      .map(control => ({ control, disabled: control.disabled }));
+    isSubmitting = true;
+    form.setAttribute('aria-busy', 'true');
+    form.dataset.contactState = 'sending';
+    status.textContent = 'Je aanvraag wordt verstuurd…';
+    button.textContent = 'Bezig met versturen…';
+    controls.forEach(({ control }) => { control.disabled = true; });
+    try {
+      const result = await delivery.send(endpoint, payload);
+      if (result?.accepted !== true) throw new Error('Unconfirmed submission');
+      // Clear personal input only after the service has accepted this request.
+      ['name', 'organization', 'email', 'phone', 'message', '_honey'].forEach(name => {
+        const control = form.elements.namedItem(name);
+        if (control) control.value = '';
+      });
+      form.dataset.contactState = 'success';
+      status.textContent = 'Bedankt. Je aanvraag is verstuurd. We nemen contact met je op.';
+    } catch (error) {
+      form.dataset.contactState = 'error';
+      status.textContent = error?.code === 'activation'
+        ? 'Het formulier kan op dit moment nog geen aanvragen versturen. Je invoer blijft staan. Probeer het later opnieuw.'
+        : 'We konden de verzending niet bevestigen. Je invoer blijft staan. Probeer het opnieuw.';
+    } finally {
+      controls.forEach(({ control, disabled }) => { control.disabled = disabled; });
+      isSubmitting = false;
+      form.removeAttribute('aria-busy');
+      button.textContent = 'Verstuur aanvraag';
     }
   });
-  button.disabled = false;
+  button.disabled = !deliveryReady;
 }
 
 // Real product images remain ordinary links when JavaScript is unavailable.
