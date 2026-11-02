@@ -1,4 +1,18 @@
-# Controle Variana — publieke adressen zonder .html
+# Controle Variana — contactformulier en keuzehulp
+
+## Wijziging van 2 november 2026
+
+- Het veld heet E-mailadres. Naam en e-mailadres blijven verplicht; telefoonnummer en de toelichting bij het vraagstuk zijn optioneel. De toelichting heet Geef hier meer informatie over je vraagstuk.
+- Telefoonnummer en toelichting worden opgenomen in zowel het e-mailconcept als het lokale aanvraagbestand. Lege of uitsluitend uit spaties bestaande optionele invoer wordt weergegeven als Niet ingevuld.
+- De schermen B en C bieden na een volledige selectie Ga verder naar contact. Het onderwerp op de contactpagina wordt ingevuld met de precieze gekozen uitwerking. Een onvolledige selectie verbergt de knop en wist de oude link.
+- De toegestane keuzehulp-onderwerpen worden uit de bestaande routegegevens gegenereerd. Een onbekende querywaarde voegt geen vrije tekst of optie toe; bestaande onderwerpverwijzingen en de URL-helper blijven werken.
+- De build voor 23 inhoudsroutes is geslaagd. De bestaande 49 routecontroles en 47 URL-controles slagen. Alle 19 geldige complete selecties verwijzen naar het exacte contactonderwerp; publieke en offline contactlinks behouden onderwerp en formulieranker.
+- Statische controle van alle 47 gegenereerde HTML-bestanden is geslaagd, inclusief interne bestanden, ankers, unieke IDs, metadata en ARIA-verwijzingen. Bestaande teksten buiten Contact, tarieven, routegegevens, stijlen en media zijn ongewijzigd.
+- Lokaal in de browser getest: de knop in B geeft Blauwdruk & plan van aanpak door; de knop in C geeft Scenariovergelijking door; een gewijzigde onvolledige keuze wist beide links. Bestaande previewlinks en onbekende onderwerpwaarden behouden correct gedrag.
+- Naam en e-mailadres blijven verplicht. Twee echte TXT-downloads met fictieve testinvoer bevestigen dat telefoon en toelichting leeg mogen blijven en dat een ingevuld telefoonnummer in de aanvraag terechtkomt. Er is geen e-mail verstuurd.
+- De controle na publicatie wordt afzonderlijk afgerond.
+
+## Eerdere controle — publieke adressen zonder .html
 
 Deze wijziging geeft de bestaande website adressen zonder .html. De producttekst, desktopdemonstratie, screenshots, tarieven en opdrachtomschrijvingen blijven inhoudelijk behouden.
 

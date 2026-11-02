@@ -161,6 +161,15 @@
       root.querySelector('[data-matcher-result-description]').textContent = selection.result?.description || '';
       const resultHref = selection.result?.href || 'specialistische-modules.html';
       root.querySelector('[data-matcher-result-link]').setAttribute('href', window.VARIANA_URLS?.toHref(resultHref) || resultHref);
+      root.querySelectorAll('[data-matcher-contact]').forEach(item => { item.hidden = !selection.complete; });
+      root.querySelectorAll('[data-matcher-contact-link]').forEach(link => {
+        if (!selection.complete) {
+          link.removeAttribute('href');
+          return;
+        }
+        const contactHref = 'contact.html?onderwerp=' + encodeURIComponent('keuze-' + selection.result.id) + '#contact-form';
+        link.setAttribute('href', window.VARIANA_URLS?.toHref(contactHref) || contactHref);
+      });
       root.querySelector('[data-matcher-flow-explanation]').textContent = !selection.complete ? ''
         : selection.route.id === 'inzicht' ? 'Een analyse kan zelfstandig worden uitgevoerd en geeft inzicht in je onderwerp.'
         : selection.route.id === 'overzicht' ? 'De blauwdruk brengt de opbouw en inrichting samen. Van daaruit werken we het plan van aanpak of stappenplan uit.'

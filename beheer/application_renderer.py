@@ -151,6 +151,15 @@ def _pending():
     )
 
 
+def _contact_action():
+    return (
+        '<div data-matcher-contact hidden>'
+        '<p class="matcher-scope">Je gekozen uitwerking staat alvast ingevuld.</p>'
+        '<div class="matcher-next button-row"><a class="button primary" data-matcher-contact-link>'
+        'Ga verder naar contact <span aria-hidden="true">→</span></a></div></div>'
+    )
+
+
 def render_application_matcher(base, site=None):
     """Return static accessible markup. No answer is selected on first display."""
     data = load_application_routes(base)
@@ -194,7 +203,7 @@ def render_application_matcher(base, site=None):
 {_pending()}
 <div data-matcher-output-content hidden><ul class="matcher-output-list" aria-labelledby="matcher-output-title">{outputs}</ul>
 <article class="matcher-result"><p class="eyebrow">Passende uitwerking</p><h4 data-matcher-result-title></h4><p data-matcher-result-description></p><a class="text-link" href="specialistische-modules.html" data-matcher-result-link>Lees meer over deze uitwerking <span aria-hidden="true">→</span></a></article>
-<p class="matcher-scope">Dit is een indicatie op basis van je keuzes. De precieze uitwerking stemmen we af op je vraag en de beschikbare informatie.</p></div>
+<p class="matcher-scope">Dit is een indicatie op basis van je keuzes. De precieze uitwerking stemmen we af op je vraag en de beschikbare informatie.</p>{_contact_action()}</div>
 </section>
 <section class="matcher-panel" id="matcher-panel-c" role="tabpanel" aria-labelledby="matcher-tab-c" tabindex="0" data-matcher-panel="c" hidden>
 <span id="samenhang" class="matcher-anchor"></span><span id="resultaten" class="matcher-anchor"></span>
@@ -203,7 +212,7 @@ def render_application_matcher(base, site=None):
 <div data-matcher-flow-content hidden><p class="matcher-scope matcher-flow-intro">Een mogelijke route op hoofdlijnen. Welke onderdelen nodig zijn en hoe diep ze worden uitgewerkt, hangt af van je vraag en de beschikbare informatie.</p>
 <p class="matcher-blueprint-note" data-matcher-flow-explanation></p>
 <ol class="matcher-flow-list" data-matcher-modules aria-labelledby="matcher-modules-title"></ol>
-<aside class="matcher-feedback" aria-labelledby="matcher-feedback-title"><h4 id="matcher-feedback-title">Intern aangescherpt vóór de eerste oplevering</h4><p>Vóór de eerste oplevering doorloopt de uitwerking uitgebreide interne terugkoppelingen. Onderzoeksuitkomsten worden aan bronnen en aan elkaar getoetst; nieuwe inzichten worden in eerdere onderdelen verwerkt.</p><p>De eerste versie die je ontvangt, is daardoor intern al herzien en aangescherpt. Feedback van jou of externe betrokkenen is daarin nog niet verwerkt.</p></aside></div>
+<aside class="matcher-feedback" aria-labelledby="matcher-feedback-title"><h4 id="matcher-feedback-title">Intern aangescherpt vóór de eerste oplevering</h4><p>Vóór de eerste oplevering doorloopt de uitwerking uitgebreide interne terugkoppelingen. Onderzoeksuitkomsten worden aan bronnen en aan elkaar getoetst; nieuwe inzichten worden in eerdere onderdelen verwerkt.</p><p>De eerste versie die je ontvangt, is daardoor intern al herzien en aangescherpt. Feedback van jou of externe betrokkenen is daarin nog niet verwerkt.</p></aside>{_contact_action()}</div>
 </section>
 <p class="matcher-sr-only" id="matcher-selection" role="status" aria-live="polite" aria-atomic="true" data-matcher-status>Kies je organisatietype om je vraag verder in te vullen.</p>
 <script type="application/json" data-matcher-data>{payload}</script>

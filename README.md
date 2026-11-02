@@ -14,6 +14,8 @@ Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub
 
 ## Onderhouden en bouwen
 
+Het contactformulier vraagt verplicht om naam en e-mailadres; telefoonnummer en de toelichting zijn optioneel. Beide optionele velden worden meegenomen in het e-mailconcept en de lokale tekstdownload. De contactknop in B en C van de keuzehulp verschijnt alleen na een volledige selectie en neemt het resultaat mee als `onderwerp=keuze-<resultaat-id>`. De build leidt de toegestane onderwerpen af uit beheer/toepassingsroutes.json en plaatst ze via CONTACT_RESULT_TOPICS in de contactpagina. main.js selecteert alleen een bekend onderwerp uit die tabel; bestaande demo-, preview- en overige contactlinks blijven bruikbaar. De knop blijft de centrale URL-helper gebruiken voor publieke en offline adressen.
+
 Bewerk tekst in beheer/paginas/ en metadata in beheer/pages.json. Navigatie, footer en de gedeelde propositiekaarten staan in beheer/build.py. De bronbestanden, metadata en routegegevens behouden hun .html-bestandsnamen en verwijzingen. beheer/url_renderer.py zet die bij het bouwen om naar publieke adressen en voegt de compatibele doorverwijzingen toe. Bewerk de gegenereerde pagina’s niet afzonderlijk.
 
 Voer vanuit de website-map uit:

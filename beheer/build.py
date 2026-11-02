@@ -8,7 +8,7 @@ import json
 import html
 import hashlib
 from research_renderer import load_research, render_explorer, render_teaser
-from application_renderer import render_application_matcher
+from application_renderer import render_application_matcher, load_application_routes
 from url_renderer import page_url_map, render_clean_page, examples_redirect
 
 BASE = Path(__file__).resolve().parent
@@ -41,6 +41,7 @@ def viewer():
 
 research_data=None
 style_version=hashlib.sha256((SITE/'assets/css/styles.css').read_bytes()).hexdigest()[:12]
+main_version=hashlib.sha256((SITE/'assets/js/main.js').read_bytes()).hexdigest()[:12]
 
 for filename, page in pages.items():
     source_body = page.get('body')
@@ -59,6 +60,18 @@ for filename, page in pages.items():
         body = body.replace('<!-- SYSTEM_EXPLORER -->', '')
     if '<!-- PROPOSITIONS -->' in body:
         body = body.replace('<!-- PROPOSITIONS -->', propositions())
+    if '<!-- CONTACT_RESULT_TOPICS -->' in body:
+        routes = load_application_routes(BASE)
+        categories = {item['id']: item for item in routes['outputs']}
+        topics = {}
+        for route in routes['routes']:
+            if route['id'] == 'uitwerking':
+                continue
+            category = categories[route['outputIds'][0]]
+            topics['keuze-' + category['id']] = route.get('resultLabel') or category['label']
+        topics.update({'keuze-' + item['id']: item['outputLabel'] for item in routes['tasks']})
+        payload = json.dumps(topics, ensure_ascii=True).replace('<', '\\u003c')
+        body = body.replace('<!-- CONTACT_RESULT_TOPICS -->', '<script type="application/json" data-contact-topics>' + payload + '</script>')
     title = html.escape(page['title'])
     description = html.escape(page['description'], quote=True)
     schema = {'@context':'https://schema.org','@type':'Article' if filename.startswith('kennis-') else 'WebPage','name':page['title'],'description':page['description'],'inLanguage':'nl-NL'}
@@ -87,7 +100,7 @@ for filename, page in pages.items():
     if '<!-- PROPOSITIONS -->' in source_body or filename == 'software.html':
         product_css_version=hashlib.sha256((SITE/'assets/css/product.css').read_bytes()).hexdigest()[:12]
         extra_scripts+=f'<link rel="stylesheet" href="assets/css/product.css?v={product_css_version}">'
-    content = f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><meta name="theme-color" content="#081322"><title>{title}</title><meta name="description" content="{description}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:type" content="{'article' if filename.startswith('kennis-') else 'website'}"><meta property="og:locale" content="nl_NL"><link rel="icon" href="assets/images/variana-mark.png" type="image/png"><link rel="stylesheet" href="assets/css/styles.css?v={style_version}"><script type="application/ld+json">{json.dumps(schema,ensure_ascii=False)}</script><script src="assets/js/config.js" defer></script><script src="assets/js/main.js" defer></script>{extra_scripts}</head><body class="{body_class}">{header(filename)}<main id="main">{body}</main>{footer()}{viewer() if 'data-image-zoom' in body else ''}<noscript><div class="noscript-note">Alle inhoud en links zijn beschikbaar. Voor de interactieve schermen, het mobiele menu en het lokale aanvraagbestand is JavaScript nodig. Productafbeeldingen kun je ook via de afbeeldingslinks vergroten.</div></noscript></body></html>'''
+    content = f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><meta name="theme-color" content="#081322"><title>{title}</title><meta name="description" content="{description}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:type" content="{'article' if filename.startswith('kennis-') else 'website'}"><meta property="og:locale" content="nl_NL"><link rel="icon" href="assets/images/variana-mark.png" type="image/png"><link rel="stylesheet" href="assets/css/styles.css?v={style_version}"><script type="application/ld+json">{json.dumps(schema,ensure_ascii=False)}</script><script src="assets/js/config.js" defer></script><script src="assets/js/main.js?v={main_version}" defer></script>{extra_scripts}</head><body class="{body_class}">{header(filename)}<main id="main">{body}</main>{footer()}{viewer() if 'data-image-zoom' in body else ''}<noscript><div class="noscript-note">Alle inhoud en links zijn beschikbaar. Voor de interactieve schermen, het mobiele menu en het lokale aanvraagbestand is JavaScript nodig. Productafbeeldingen kun je ook via de afbeeldingslinks vergroten.</div></noscript></body></html>'''
     if '<!--' in body:
         raise ValueError(f'Unfilled marker in {filename}')
     canonical_path = url_map[filename]

@@ -65,7 +65,20 @@ if (form) {
   const downloadButton = document.getElementById('contact-download');
   const topic = new URLSearchParams(location.search).get('onderwerp');
   const aliases = { dienstverlening: 'samenwerking', analyse: 'opdracht', advies: 'opdracht', licenties: 'licentie' };
-  const selected = aliases[topic] || topic;
+  const selected = Object.prototype.hasOwnProperty.call(aliases, topic) ? aliases[topic] : topic;
+  const topicPayload = document.querySelector('[data-contact-topics]');
+  let resultTopics = {};
+  try {
+    const parsed = JSON.parse(topicPayload?.textContent || '{}');
+    if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) resultTopics = parsed;
+  } catch (_) { /* Ordinary contact topics remain available. */ }
+  if (selected?.startsWith('keuze-') && Object.prototype.hasOwnProperty.call(resultTopics, selected)
+    && typeof resultTopics[selected] === 'string' && resultTopics[selected]) {
+    const option = document.createElement('option');
+    option.value = selected;
+    option.textContent = resultTopics[selected];
+    form.elements.topic.append(option);
+  }
   if ([...form.elements.topic.options].some((item) => item.value === selected)) form.elements.topic.value = selected;
   if (emailReady) {
     button.textContent = 'Open aanvraag in mijn e-mailprogramma ↗';
@@ -80,7 +93,9 @@ if (form) {
     const values = new FormData(form);
     const topicText = form.elements.topic.selectedOptions[0].textContent;
     const subject = `Kennismaking Variana — ${topicText}`;
-    const body = `Aanvraag Variana\n\nOnderwerp: ${topicText}\nNaam: ${values.get('name')}\nOrganisatie: ${values.get('organization') || 'Niet ingevuld'}\nE-mailadres: ${values.get('email')}\n\nVraagstuk:\n${values.get('message')}\n\nDit is een lokaal opgesteld aanvraagconcept. Er is niets automatisch verzonden.\n`;
+    const phone = String(values.get('phone') || '').trim() || 'Niet ingevuld';
+    const message = String(values.get('message') || '').trim() || 'Niet ingevuld';
+    const body = `Aanvraag Variana\n\nOnderwerp: ${topicText}\nNaam: ${values.get('name')}\nOrganisatie: ${values.get('organization') || 'Niet ingevuld'}\nE-mailadres: ${values.get('email')}\nTelefoonnummer: ${phone}\n\nMeer informatie over je vraagstuk:\n${message}\n\nDit is een lokaal opgesteld aanvraagconcept. Er is niets automatisch verzonden.\n`;
     return { subject, body };
   }
   function downloadRequest(body) {
