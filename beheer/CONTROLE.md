@@ -1,4 +1,14 @@
-# Controle Variana — decoratieve pijlen verwijderd
+# Controle Variana — voorbeelddownload
+
+## Wijziging van 2 november 2026 — concurrentieanalyse als download
+
+- De vijfde homepageopdracht over kartonnen kattenvoerverpakking bevat Download de concurrentieanalyse, met PDF en 125 kB als bestandsinformatie. Het directe anker is /#voorbeeld-kattenvoerverpakking.
+- De lokale link assets/downloads/concurrentieanalyse-kattenvoerverpakking.pdf heeft het downloadattribuut Concurrentieanalyse_kattenvoerverpakking.pdf. De oorspronkelijke PDF is bytegelijk overgenomen. De hoofdtaak heeft het bestand gecontroleerd: vijftien pagina’s, 125.137 bytes, niet versleuteld; de eerste pagina is visueel bekeken.
+- Alle vijf opdrachtomschrijvingen zijn behouden. De link staat onder de bestaande vijfde omschrijving en gebruikt geen pijltje. De CSS laat link en bestandsinformatie op een smal scherm afbreken.
+- De bronreview vond geen concrete fout. De build voor 23 inhoudsroutes en statische controle van 47 HTML-bestanden zijn geslaagd. De 110 bestaande bestanden buiten deze wijziging zijn bytegelijk gebleven. De desktopweergave is visueel bekeken; bij 320 pixels is er geen horizontale overloop en past de downloadlink binnen de voorbeeldrij.
+- De geüploade PDF-blob komt exact overeen met het aangeleverde bestand. Controleer na publicatie één echte download en vergelijk de bestandsinhoud met het origineel.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
 
 ## Wijziging van 2 november 2026 — decoratieve pijlen verwijderd
 

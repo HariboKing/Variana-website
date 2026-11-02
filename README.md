@@ -2,6 +2,8 @@
 
 Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 23 inhoudspagina’s met publieke adressen zonder .html. De oude bestandsadressen blijven beschikbaar voor bestaande links en offline bekijken.
 
+Bij het vijfde homepagevoorbeeld over kattenvoerverpakking staat Download de concurrentieanalyse. Het anker /#voorbeeld-kattenvoerverpakking opent die rij rechtstreeks. De link downloadt assets/downloads/concurrentieanalyse-kattenvoerverpakking.pdf met de oorspronkelijke bestandsnaam; het aangeleverde PDF-bestand is ongewijzigd opgenomen. Voeg eventuele volgende documenten bij dezelfde downloadgroep toe in beheer/paginas/index.html; de beperkte vormgeving staat in assets/css/cinematic.css.
+
 Decoratieve pijlen zijn verwijderd uit knoppen, doorverwijsblokken, klikbare opties, systeemoverzichten en de onderzoeksverkenner. De bron verwijdert volledige pijlspans en SVG-pijlpunten; gewone verbindingslijnen blijven beschikbaar. CSS-inspringing die alleen voor een pijl diende is aangepast. Linkbestemmingen, teksten, formulieren en interactiewerking blijven behouden. Toetsenbordbesturing met de Arrow-toetsen, native browserbediening en de bestaande softwarebeelden blijven werken zoals voorheen.
 
 Deze versie voert de overstap naar Formspree door. De eigenaar heeft bevestigd dat het e-mailadres bij Formspree is geverifieerd en heeft de echte formulierendpoint https://formspree.io/f/xkjjpzyl aangeleverd. Een echte aanvraag vanuit de live toepassingenmodal is door Formspree geaccepteerd; de eigenaar heeft ontvangst op info@variana.nl bevestigd.

@@ -48,6 +48,9 @@
 .home .home-assignment-number { font: 13px/1.8 var(--mono); color: var(--teal-bright); }
 .home .home-assignment-list p { margin: 0; max-width: 1020px; color: #bfd0de; font-size: 18px; line-height: 1.8; }
 .home .home-assignment-list strong { color: #f2f6fa; font-weight: 600; }
+.home .home-assignment-downloads { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: 12px; }
+.home .home-assignment-downloads .text-link { max-width: 100%; text-decoration: underline; text-underline-offset: 3px; }
+.home .home-assignment-file-meta { color: var(--muted); font-size: 13px; }
 
 @media (min-width: 1600px) {
   .cinematic-hero .hero-copy { max-width: 800px; }
