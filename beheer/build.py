@@ -56,10 +56,14 @@ for filename, page in pages.items():
         body = body.replace('<!-- RESEARCH_EXPLORER -->', render_explorer(research_data))
     if '<!-- APPLICATION_MATCHER -->' in body:
         body = body.replace('<!-- APPLICATION_MATCHER -->', render_application_matcher(BASE,SITE))
+        body += '<dialog id="contact-dialog" class="contact-dialog" aria-labelledby="contact-dialog-title"><header class="contact-dialog-heading"><h2 id="contact-dialog-title">Dien je vraag in</h2><button type="button" class="contact-dialog-close" data-close-contact aria-label="Sluit contactformulier"><span aria-hidden="true">×</span></button></header><div class="contact-dialog-body"><!-- CONTACT_FORM --></div></dialog>'
+
     if '<!-- SYSTEM_EXPLORER -->' in body:
         body = body.replace('<!-- SYSTEM_EXPLORER -->', '')
     if '<!-- PROPOSITIONS -->' in body:
         body = body.replace('<!-- PROPOSITIONS -->', propositions())
+    if '<!-- CONTACT_FORM -->' in body:
+        body = body.replace('<!-- CONTACT_FORM -->', (BASE/'onderdelen/contact-formulier.html').read_text(encoding='utf-8'))
     if '<!-- CONTACT_RESULT_TOPICS -->' in body:
         routes = load_application_routes(BASE)
         categories = {item['id']: item for item in routes['outputs']}
@@ -90,6 +94,9 @@ for filename, page in pages.items():
         matcher_css_version=hashlib.sha256((SITE/'assets/css/application-matcher.css').read_bytes()).hexdigest()[:12]
         matcher_js_version=hashlib.sha256((SITE/'assets/js/application-matcher.js').read_bytes()).hexdigest()[:12]
         extra_scripts=f'<link rel="stylesheet" href="assets/css/application-matcher.css?v={matcher_css_version}"><script src="assets/js/application-matcher.js?v={matcher_js_version}" defer></script>'
+    if '<!-- APPLICATION_MATCHER -->' in source_body:
+        dialog_css_version=hashlib.sha256((SITE/'assets/css/contact-dialog.css').read_bytes()).hexdigest()[:12]
+        extra_scripts+=f'<link rel="stylesheet" href="assets/css/contact-dialog.css?v={dialog_css_version}">'
     if '<!-- SYSTEM_EXPLORER -->' in source_body:
         system_css_version=hashlib.sha256((SITE/'assets/css/system-explorer.css').read_bytes()).hexdigest()[:12]
         system_js_version=hashlib.sha256((SITE/'assets/js/system-explorer.js').read_bytes()).hexdigest()[:12]

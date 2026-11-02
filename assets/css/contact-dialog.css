@@ -1,0 +1,53 @@
+/* The native modal keeps the applications page inert while the form is open. */
+body.contact-dialog-open { overflow: hidden; }
+.contact-dialog {
+  width: min(720px, calc(100% - 32px));
+  max-width: none;
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  color: var(--text);
+  background: #0e2033;
+  border: 1px solid #426078;
+  border-radius: 12px;
+  box-shadow: 0 28px 100px #0009;
+}
+.contact-dialog::backdrop { background: #030b16cf; backdrop-filter: blur(4px); }
+.contact-dialog-heading {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 28px;
+  background: #0e2033;
+  border-bottom: 1px solid #33516a;
+}
+.contact-dialog-heading h2 { margin: 0; font-size: 27px; }
+.contact-dialog-close {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #496176;
+  background: #081727;
+  font-size: 30px;
+  line-height: 1;
+}
+.contact-dialog-close:hover { border-color: var(--teal-bright); color: var(--teal-bright); }
+.contact-dialog-body { padding: 28px; }
+.contact-dialog .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.contact-dialog .contact-direct { font-size: 14px; }
+@media (max-width: 600px) {
+  .contact-dialog { width: calc(100% - 20px); max-height: calc(100vh - 20px); max-height: calc(100dvh - 20px); }
+  .contact-dialog-heading { padding: 12px 20px; }
+  .contact-dialog-heading h2 { font-size: 23px; }
+  .contact-dialog-body { padding: 22px 20px; }
+  .contact-dialog .field input, .contact-dialog .field select, .contact-dialog .field textarea { font-size: 16px; }
+  .contact-dialog .contact-actions .button { width: 100%; }
+}

@@ -65,21 +65,58 @@ if (form) {
   const downloadButton = document.getElementById('contact-download');
   const topic = new URLSearchParams(location.search).get('onderwerp');
   const aliases = { dienstverlening: 'samenwerking', analyse: 'opdracht', advies: 'opdracht', licenties: 'licentie' };
-  const selected = Object.prototype.hasOwnProperty.call(aliases, topic) ? aliases[topic] : topic;
   const topicPayload = document.querySelector('[data-contact-topics]');
   let resultTopics = {};
   try {
     const parsed = JSON.parse(topicPayload?.textContent || '{}');
     if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) resultTopics = parsed;
   } catch (_) { /* Ordinary contact topics remain available. */ }
-  if (selected?.startsWith('keuze-') && Object.prototype.hasOwnProperty.call(resultTopics, selected)
-    && typeof resultTopics[selected] === 'string' && resultTopics[selected]) {
-    const option = document.createElement('option');
-    option.value = selected;
-    option.textContent = resultTopics[selected];
-    form.elements.topic.append(option);
+  function setTopic(value) {
+    if (typeof value !== 'string') return false;
+    const selected = Object.prototype.hasOwnProperty.call(aliases, value) ? aliases[value] : value;
+    const resultLabel = selected.startsWith('keuze-') && Object.prototype.hasOwnProperty.call(resultTopics, selected)
+      && typeof resultTopics[selected] === 'string' && resultTopics[selected] ? resultTopics[selected] : null;
+    const ordinary = [...form.elements.topic.options].some(item => !item.hasAttribute('data-contact-result') && item.value === selected);
+    if (!resultLabel && !ordinary) return false;
+    // One generated option is enough, even after closing and choosing another result.
+    form.elements.topic.querySelectorAll('[data-contact-result]').forEach(item => item.remove());
+    if (resultLabel) {
+      const option = document.createElement('option');
+      option.value = selected;
+      option.textContent = resultLabel;
+      option.setAttribute('data-contact-result', '');
+      form.elements.topic.append(option);
+    }
+    form.elements.topic.value = selected;
+    return true;
   }
-  if ([...form.elements.topic.options].some((item) => item.value === selected)) form.elements.topic.value = selected;
+  setTopic(topic);
+
+  const contactDialog = document.getElementById('contact-dialog');
+  if (contactDialog && form.closest('dialog') === contactDialog && typeof contactDialog.showModal === 'function') {
+    let contactTrigger;
+    window.VARIANA_CONTACT = Object.freeze({
+      open(topicValue, trigger) {
+        if (!setTopic(topicValue)) return false;
+        try {
+          if (!contactDialog.open) contactDialog.showModal();
+        } catch (_) { return false; } // The ordinary contact link remains the fallback.
+        contactTrigger = trigger;
+        document.body.classList.add('contact-dialog-open');
+        status.textContent = '';
+        contactDialog.scrollTop = 0;
+        form.elements.name.focus({ preventScroll: true });
+        return true;
+      }
+    });
+    contactDialog.querySelector('[data-close-contact]')?.addEventListener('click', () => contactDialog.close());
+    // Native modal behavior keeps focus inside and closes on Escape.
+    contactDialog.addEventListener('close', () => {
+      document.body.classList.remove('contact-dialog-open');
+      if (contactTrigger?.isConnected) contactTrigger.focus({ preventScroll: true });
+      contactTrigger = null;
+    });
+  }
   if (emailReady) {
     button.textContent = 'Open aanvraag in mijn e-mailprogramma ↗';
     mode.textContent = `Je e-mailprogramma opent met een bericht aan ${configured}. Controleer het bericht en verstuur het daar zelf. Je kunt je aanvraag ook als tekst downloaden.`;

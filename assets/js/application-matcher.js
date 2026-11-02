@@ -193,6 +193,14 @@
       if (focus) choices.find(button => button.dataset.matcherChoice === group && button.dataset.choiceValue === value)?.focus();
     }
 
+    root.querySelectorAll('[data-matcher-contact-link]').forEach(link => {
+      link.addEventListener('click', event => {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey
+          || !selection.complete) return;
+        const topic = 'keuze-' + selection.result.id;
+        if (window.VARIANA_CONTACT?.open(topic, link) === true) event.preventDefault();
+      });
+    });
     tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => setPanel(tab.dataset.matcherTab, false, true, root.getBoundingClientRect().top < 0));
       tab.addEventListener('keydown', event => {

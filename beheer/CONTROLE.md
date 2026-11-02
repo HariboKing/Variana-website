@@ -1,6 +1,17 @@
 # Controle Variana — contactformulier en keuzehulp
 
-## Wijziging van 2 november 2026
+## Aanvulling van 2 november 2026 — formulier boven Toepassingen
+
+- De knop in B en C heet Open het contactformulier en opent na een volledige selectie een native dialog boven de huidige toepassingenpagina. De normale contactlink blijft alleen als fallback bestaan.
+- showModal maakt de achtergrond inert. Het venster heeft een benoemde sluitknop, een scrollbare inhoud en een vast zichtbare kop bij het scrollen in het formulier. De achtergrondscroll wordt tijdens het openen geblokkeerd.
+- Kruisje en Escape sluiten het venster. Focus keert terug naar de activerende knop. Ingevulde tekst blijft bij sluiten en heropenen op dezelfde pagina behouden; de actuele keuze bepaalt opnieuw het onderwerp. Er wordt hoogstens één gegenereerde onderwerpoptie getoond.
+- Contactpagina en dialog worden uit hetzelfde formulierfragment opgebouwd. Naam en e-mailadres blijven verplicht; telefoonnummer en toelichting blijven optioneel. E-mailconcept en lokale download behouden hun werking.
+- De build voor 23 inhoudsroutes, 49 routecontroles, 47 URL-controles en 19 volledige contactselecties zijn geslaagd. Statische controle van 47 HTML-bestanden is geslaagd; het formulier is identiek op beide pagina's en komt op iedere pagina precies één keer voor. De bronreview vond geen concrete implementatiefout.
+- Lokaal in de browser getest: B en C openen het native venster zonder adreswijziging. Een poging de tab in de achtergrond aan te klikken verandert de keuze niet. Het onderwerp wisselt van Blauwdruk & plan van aanpak naar Analyses zonder extra onderwerpopties; naamtekst blijft behouden. Kruisje en Escape sluiten, herstellen focus en heffen de scrollblokkade op.
+- Een echte TXT-download vanuit de geopende modal met fictieve testinvoer is gecontroleerd: juiste onderwerp en optionele lege velden. Er is geen e-mail verstuurd. De gewone contactpagina blijft werken, inclusief onderwerp=preview.
+- Bij 320 × 720 pixels past het venster binnen de schermbreedte, zonder horizontale overloop. Na scrollen naar de toelichting blijft de sluitknop in beeld. De livecontrole wordt afzonderlijk afgerond na publicatie.
+
+## Eerdere wijziging van 2 november 2026 — doorverwijzing naar Contact
 
 - Het veld heet E-mailadres. Naam en e-mailadres blijven verplicht; telefoonnummer en de toelichting bij het vraagstuk zijn optioneel. De toelichting heet Geef hier meer informatie over je vraagstuk.
 - Telefoonnummer en toelichting worden opgenomen in zowel het e-mailconcept als het lokale aanvraagbestand. Lege of uitsluitend uit spaties bestaande optionele invoer wordt weergegeven als Niet ingevuld.

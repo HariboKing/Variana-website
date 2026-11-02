@@ -155,8 +155,8 @@ def _contact_action():
     return (
         '<div data-matcher-contact hidden>'
         '<p class="matcher-scope">Je gekozen uitwerking staat alvast ingevuld.</p>'
-        '<div class="matcher-next button-row"><a class="button primary" data-matcher-contact-link>'
-        'Ga verder naar contact <span aria-hidden="true">→</span></a></div></div>'
+        '<div class="matcher-next button-row"><a class="button primary" aria-haspopup="dialog" data-matcher-contact-link>'
+        'Open het contactformulier <span aria-hidden="true">→</span></a></div></div>'
     )
 
 
