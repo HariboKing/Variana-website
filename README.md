@@ -2,7 +2,7 @@
 
 Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 23 inhoudspagina’s met publieke adressen zonder .html. De oude bestandsadressen blijven beschikbaar voor bestaande links en offline bekijken.
 
-Deze versie voert de overstap naar Formspree door. De eigenaar heeft bevestigd dat het e-mailadres bij Formspree is geverifieerd en heeft de echte formulierendpoint https://formspree.io/f/xkjjpzyl aangeleverd. Live acceptatie door de verzenddienst en daadwerkelijke ontvangst van een aanvraag in de mailbox moeten nog worden gecontroleerd.
+Deze versie voert de overstap naar Formspree door. De eigenaar heeft bevestigd dat het e-mailadres bij Formspree is geverifieerd en heeft de echte formulierendpoint https://formspree.io/f/xkjjpzyl aangeleverd. Een echte aanvraag vanuit de live toepassingenmodal is door Formspree geaccepteerd; de eigenaar heeft ontvangst op info@variana.nl bevestigd.
 
 ## Huidige indeling
 
@@ -132,7 +132,7 @@ De vroegere Voorbeelden-pagina en producttour worden niet meer opgebouwd. voorbe
 
 Het bevestigde publieke ontvangstadres is info@variana.nl. De eigenaar heeft de formulierendpoint https://formspree.io/f/xkjjpzyl aangeleverd. Controleer in Formspree de bijbehorende ontvanger en bevestig dat de aanvraag in de gewenste mailbox aankomt. Een geverifieerd accountadres is op zichzelf geen bewijs van inboxaflevering. De oude e-mailconcept- en TXT-downloadfuncties zijn uit het formulier verwijderd. De gewone e-maillink voor rechtstreeks contact blijft beschikbaar.
 
-De eigenaar heeft het e-mailadres bij Formspree als geverifieerd bevestigd. Vijfentwintig transportgevallen met nagebootste requests slagen, zonder echte inzending. Live acceptatie door de aangeleverde endpoint en daadwerkelijke ontvangst van een testaanvraag zijn nog niet geverifieerd. Controleer een aanvraag vanuit zowel de contactpagina als de modal; meld ontvangst pas als de eigenaar die in de mailbox heeft bevestigd.
+De eigenaar heeft het e-mailadres bij Formspree als geverifieerd bevestigd. Vijfentwintig transportgevallen met nagebootste requests slagen. Daarnaast is één echte testaanvraag vanuit de live toepassingenmodal verstuurd en door de eigenaar in de mailbox ontvangen. Het venster bleef open op dezelfde toepassingenpagina, met het onderwerp Analyses. De contactpagina en de modal gebruiken hetzelfde formulier en dezelfde verzendcode; er is geen tweede echte aanvraag nodig geweest.
 
 Formspree verwerkt de ingevulde gegevens als verzenddienst. De openbare formuliertekst noemt Formspree en verwijst naar het [privacybeleid](https://formspree.io/legal/privacy-policy/). Controleer de actuele voorwaarden en instellingen van het gekozen formulier voordat deze koppeling in gebruik wordt genomen. De eerdere FormSubmit-pogingen hebben geen door de eigenaar ontvangen activeringsmail of bewezen inboxaflevering opgeleverd; de Formspree-voorbereiding is geen bewijs dat die eerdere koppeling werkte.
 
