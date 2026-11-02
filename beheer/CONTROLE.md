@@ -1,6 +1,18 @@
 # Controle Variana — contactformulier en keuzehulp
 
-## Wijziging van 2 november 2026 — rechtstreeks verzenden
+## Wijziging van 2 november 2026 — Formspree
+
+- Deze lokale versie vervangt de verzenddienst door Formspree. Het gedeelde contactformulier, de native modal, onderwerpselectie en de bestaande verplichte/optionele velden blijven behouden. Alleen de zichtbare providervermelding en privacyverwijzing in het formulier zijn naar Formspree aangepast.
+- De transportcode accepteert uitsluitend een echte endpoint in de vorm https://formspree.io/f/ gevolgd door kleine letters en cijfers. De eigenaar heeft de echte endpoint https://formspree.io/f/xkjjpzyl aangeleverd. Publicatie en live acceptatie door deze endpoint worden afzonderlijk gecontroleerd; zij zijn hier nog niet als voltooid vermeld.
+- De browser verstuurt een FormData-POST met Accept: application/json, CORS, credentials: omit en redirect: error. De browser bepaalt zelf de multipart-boundary. De timeout blijft 25 seconden, ook tijdens het lezen van de responsebody.
+- De leesbare uitwerking gaat mee als Onderwerp en als subject voor de notificatie. De bronpagina wordt Bronpagina. Oude providerinstellingen _template en _honey en onbekende payloadvelden worden niet meegestuurd; de honeypot wordt vóór verzending door main.js gecontroleerd.
+- Een succesvolle HTTP-response betekent acceptatie door Formspree. Een bekende JSON-errorsresponse wordt afgewezen, ook als de HTTP-status succesvol is. Acceptatie bewijst nog geen inboxaflevering. Fouten bewaren de invoer; de bestaande formulierbesturing blokkeert dubbele inzendingen en houdt een lopende aanvraag bij sluiten/heropenen ongewijzigd.
+- Vijfentwintig transportgevallen met nagebootste requests zijn geslaagd, waaronder correcte payloadmapping, acceptatie, bekende foutresponses, afwijzende HTTP-status, netwerkfouten, timeout tijdens fetch en body, en ongeldige endpoints. Er is vanuit deze controles geen echte aanvraag verstuurd.
+- De build voor 23 inhoudsroutes, 49 routecontroles, 47 URL-controles en 19 complete contactselecties is geslaagd. Alle 47 HTML-bestanden zijn statisch gecontroleerd; contactpagina en modal gebruiken precies hetzelfde formulier, één per pagina. De eigenaar heeft bevestigd dat het e-mailadres bij Formspree is geverifieerd en heeft de echte formulierendpoint aangeleverd. Live acceptatie en daadwerkelijke ontvangst in de mailbox worden na publicatie afzonderlijk bevestigd.
+
+De onderdelen hieronder zijn historische controles van eerdere versies en verzendpogingen. De eerdere FormSubmit-pogingen hebben geen door de eigenaar ontvangen activeringsmail of bewezen inboxaflevering opgeleverd. Historische technische controles zijn geen bewijs dat die koppeling werkte.
+
+## Eerdere wijziging van 2 november 2026 — FormSubmit-verzendpoging
 
 - Het gedeelde formulier op Contact en in de toepassingenmodal gebruikt nu Verstuur aanvraag. De browser verstuurt JSON rechtstreeks naar de FormSubmit-AJAX-endpoint voor info@variana.nl. De e-mailconcept- en lokale downloadafhandeling zijn verwijderd; de gewone directe e-maillink blijft beschikbaar.
 - Naam en e-mailadres blijven verplicht; telefoonnummer en toelichting blijven optioneel. De leesbare gekozen uitwerking gaat mee als onderwerp. De gedeelde formulierbron, onderwerpallowlist en native modal blijven behouden.

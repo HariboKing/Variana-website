@@ -9,7 +9,17 @@
 
   async function send(endpoint, payload, options = {}) {
     const fetcher = options.fetcher || globalThis.fetch;
-    if (!endpoint || typeof fetcher !== 'function') throw failure('rejected');
+    if (typeof endpoint !== 'string' || !/^https:\/\/formspree\.io\/f\/[a-z0-9]+$/.test(endpoint)
+      || typeof fetcher !== 'function' || typeof FormData !== 'function'
+      || !payload || typeof payload !== 'object') throw failure('rejected');
+    const data = new FormData();
+    for (const name of ['name', 'email', 'Organisatie', 'Telefoonnummer', 'Onderwerp', 'message']) {
+      data.set(name, String(payload[name] ?? ''));
+    }
+    // Formspree's documented notification field is subject; old provider
+    // settings and arbitrary payload properties must not enter the new request.
+    if (payload._subject != null) data.set('subject', String(payload._subject));
+    if (payload._url != null) data.set('Bronpagina', String(payload._url));
     const controller = new AbortController();
     let timedOut = false;
     const timer = setTimeout(() => {
@@ -19,23 +29,25 @@
     try {
       const response = await fetcher(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        // The browser supplies the multipart boundary for FormData.
+        headers: { Accept: 'application/json' },
         credentials: 'omit',
         mode: 'cors',
         redirect: 'error',
         signal: controller.signal,
-        body: JSON.stringify(payload)
+        body: data
       });
       let result;
-      try { result = await response.json(); } catch (_) { throw failure('rejected'); }
-      if (!response.ok || !result || typeof result !== 'object') throw failure('rejected');
-      const message = typeof result.message === 'string' ? result.message : '';
-      if (/activat|confirm.{0,40}e-?mail|verif.{0,40}e-?mail/i.test(message)) throw failure('activation');
-      if (result.success !== true && result.success !== 'true') throw failure('rejected');
+      try { result = await response.json(); } catch (_) { /* Successful responses may have no JSON body. */ }
+      if (timedOut) throw failure('timeout');
+      if (!response.ok || (result && typeof result === 'object'
+        && Object.prototype.hasOwnProperty.call(result, 'errors'))) throw failure('rejected');
+      // HTTP acceptance is the documented AJAX success signal. It is not
+      // a guarantee that a notification has reached the recipient's inbox.
       return { accepted: true };
     } catch (error) {
       if (timedOut) throw failure('timeout');
-      if (['activation', 'rejected'].includes(error?.code)) throw error;
+      if (error?.code === 'rejected') throw error;
       throw failure('network');
     } finally {
       clearTimeout(timer);
