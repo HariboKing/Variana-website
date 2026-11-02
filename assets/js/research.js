@@ -83,12 +83,12 @@
     const available = outputs().filter(o => o.moduleIds?.includes(m.id));
     const status = element('div', 'research-detail-status');
     status.append(element('p', '', available.length ? 'Gecontroleerde output voor dit onderdeel is opgenomen bij De resultaten.' : 'Er is nog geen gecontroleerde onderzoeksoutput voor dit onderdeel beschikbaar.'));
-    const button = element('button', 'button secondary', 'Bekijk de koppelingen →');
+    const button = element('button', 'button secondary', 'Bekijk de koppelingen');
     button.type = 'button';
     button.dataset.openModuleGraph = m.id;
     status.append(button);
     if (available.length) {
-      const resultsButton = element('button', 'text-link', 'Naar gecontroleerde resultaten →');
+      const resultsButton = element('button', 'text-link', 'Naar gecontroleerde resultaten');
       resultsButton.type = 'button';
       resultsButton.dataset.showResearchTab = 'resultaten';
       status.append(resultsButton);
@@ -143,7 +143,7 @@
       const next = downstream(current.id);
       context.append(next.length ? moduleButtons(next) : element('p', 'research-muted', 'De uiteindelijke bespreking en besluitvorming.'));
     }
-    const button = element('button', 'button secondary', 'Open dit onderzoeksonderdeel →');
+    const button = element('button', 'button secondary', 'Open dit onderzoeksonderdeel');
     button.type = 'button';
     button.dataset.openModule = current.id;
     context.append(button);
@@ -157,20 +157,6 @@
     const ns = 'http://www.w3.org/2000/svg';
     svg.replaceChildren();
     svg.setAttribute('viewBox', `0 0 ${graph.offsetWidth} ${graph.offsetHeight}`);
-    const defs = document.createElementNS(ns, 'defs');
-    ['base', 'active', 'loop'].forEach(type => {
-      const marker = document.createElementNS(ns, 'marker');
-      marker.setAttribute('id', 'research-arrow-' + type);
-      marker.setAttribute('viewBox', '0 0 10 10');
-      marker.setAttribute('refX', '9'); marker.setAttribute('refY', '5');
-      marker.setAttribute('markerWidth', '5'); marker.setAttribute('markerHeight', '5');
-      marker.setAttribute('orient', 'auto-start-reverse');
-      const arrow = document.createElementNS(ns, 'path');
-      arrow.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z');
-      arrow.setAttribute('fill', type === 'loop' ? '#b7a1e4' : type === 'active' ? '#63c8d4' : '#526d84');
-      marker.append(arrow); defs.append(marker);
-    });
-    svg.append(defs);
     const area = graph.getBoundingClientRect();
     const nodeRect = id => root.querySelector(`[data-graph-module="${id}"]`).getBoundingClientRect();
     function line(from, to, type) {
@@ -196,7 +182,6 @@
       }
       const path = document.createElementNS(ns, 'path');
       path.setAttribute('d', d); path.setAttribute('class', 'research-edge edge-' + type);
-      path.setAttribute('marker-end', 'url(#research-arrow-' + type + ')');
       svg.append(path);
     }
     const loop = state.item.loops.find(l => l.id === state.loop);
@@ -238,7 +223,7 @@
       const card = element('article', 'research-approved-result');
       card.append(element('span', 'tag available', 'Gecontroleerde output'), element('h4', '', output.title));
       if (output.description) card.append(element('p', '', output.description));
-      const anchor = element('a', 'text-link', 'Open het onderzoeksdeel →');
+      const anchor = element('a', 'text-link', 'Open het onderzoeksdeel');
       anchor.href = safePath(output.path);
       card.append(anchor);
       const linkedModules = (output.moduleIds || []).map(getModule).filter(Boolean);

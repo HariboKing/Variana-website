@@ -1,4 +1,16 @@
-# Controle Variana — contactformulier en keuzehulp
+# Controle Variana — decoratieve pijlen verwijderd
+
+## Wijziging van 2 november 2026 — decoratieve pijlen verwijderd
+
+- Decoratieve pijlen zijn verwijderd uit knoppen, doorverwijsblokken, klikbare opties, systeemoverzichten en de onderzoeksverkenner. Volledige pijlspans zijn verwijderd, zodat er geen lege icoonruimte overblijft. CSS-pijlen en SVG-pijlpunten zijn verwijderd; gewone verbindingslijnen blijven behouden.
+- De bijbehorende inspringing van de feature-lijsten en tussenruimte in het systeemoverzicht is aangepast. De vormgeving is verder niet heringericht.
+- De linkbestemmingen van alle 23 gegenereerde inhoudspagina’s zijn gelijk aan de vorige versie. Er zijn geen lege pijlspans achtergebleven. Functionele menu-elementen blijven bestaan.
+- Toetsenbordbesturing, native dropdown- en uitklapbediening, videobediening en de bestaande softwarebeelden blijven behouden. De contactvelden, Formspree-koppeling en modalwerking zijn niet gewijzigd.
+- De build voor 23 inhoudsroutes en de statische controle van alle 47 HTML-bestanden zijn geslaagd. De 36 bestanden buiten de toegestane visuele wijzigingen zijn bytegelijk gebleven. De bronreview vond geen resterende zichtbare pijlglyphs of SVG-pijlmarkers en geen concrete implementatiefout.
+- Lokaal in de browser gecontroleerd: de keuzehulp opent de contactmodal met het juiste onderwerp; Escape sluit het venster; de rechterpijltoets wisselt nog van B naar C. De systeemverkenner toont Marketing en de juiste detailpagina. Bij 320 pixels zijn er geen horizontale overloop of defecte afbeeldingen. De desktopweergave is visueel gecontroleerd. Er zijn geen testmails verstuurd.
+- Controleer na publicatie de bijgewerkte blokken en knoppen op variana.nl met een volledig herladen pagina.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
 
 ## Wijziging van 2 november 2026 — Formspree
 

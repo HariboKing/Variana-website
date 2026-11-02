@@ -105,7 +105,6 @@
  .matcher-choice-list .matcher-question { padding: 19px 16px; }
  .matcher-choice-group h4 { font-size: 18px; }
  .matcher-next { flex-direction: column; }
- .matcher-next .button { justify-content: space-between; }
  .matcher-result, .matcher-feedback { padding: 21px 18px; }
  .matcher-result h4 { font-size: 23px; overflow-wrap: anywhere; }
  .matcher-feedback h4 { font-size: 19px; }

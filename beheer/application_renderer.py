@@ -147,7 +147,7 @@ def _pending():
         '<div class="matcher-pending" data-matcher-pending>'
         '<p data-matcher-pending-text>Kies bij A eerst je organisatietype en je vraagstuk.</p>'
         '<button type="button" class="button secondary" data-matcher-back>Vul je vraag in bij A '
-        '<span aria-hidden="true">→</span></button></div>'
+        '</button></div>'
     )
 
 
@@ -156,7 +156,7 @@ def _contact_action():
         '<div data-matcher-contact hidden>'
         '<p class="matcher-scope">Je gekozen uitwerking staat alvast ingevuld.</p>'
         '<div class="matcher-next button-row"><a class="button primary" aria-haspopup="dialog" data-matcher-contact-link>'
-        'Open het contactformulier <span aria-hidden="true">→</span></a></div></div>'
+        'Open het contactformulier</a></div></div>'
     )
 
 
@@ -180,7 +180,7 @@ def render_application_matcher(base, site=None):
     outputs = ''.join(
         f'<li><a class="matcher-output" href="{esc(output["href"])}" '
         f'data-matcher-output="{esc(output["id"])}"><strong>{esc(output["label"])}</strong>'
-        '<span aria-hidden="true">→</span></a></li>'
+        '</a></li>'
         for output in data['outputs']
     )
     payload = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c').replace('\u2028', '\\u2028').replace('\u2029', '\\u2029')
@@ -194,7 +194,7 @@ def render_application_matcher(base, site=None):
 <span id="vraagstuk" class="matcher-anchor"></span>
 <div class="matcher-panel-heading"><p class="eyebrow">A / Het vraagstuk</p><h3 id="matcher-question-title">Wat is je vraagstuk?</h3><p>Je keuzes maken zichtbaar welke uitwerking en onderzoeksroute bij je vraag kunnen passen.</p></div>
 {groups}
-<div class="matcher-next button-row" data-matcher-next hidden><button type="button" class="button primary" data-matcher-open="b">Bekijk de passende output <span aria-hidden="true">→</span></button><button type="button" class="button secondary" data-matcher-open="c">Bekijk de onderzoeksroute <span aria-hidden="true">→</span></button></div>
+<div class="matcher-next button-row" data-matcher-next hidden><button type="button" class="button primary" data-matcher-open="b">Bekijk de passende output</button><button type="button" class="button secondary" data-matcher-open="c">Bekijk de onderzoeksroute</button></div>
 <noscript><p>Schakel JavaScript in voor de keuzehulp, of bekijk de uitleg over <a href="analyse.html">analyses</a>, <a href="blauwdruk.html">blauwdrukken</a> en <a href="specialistische-modules.html">specialistische uitwerkingen</a>.</p></noscript>
 </section>
 <section class="matcher-panel" id="matcher-panel-b" role="tabpanel" aria-labelledby="matcher-tab-b" tabindex="0" data-matcher-panel="b" hidden>
@@ -202,7 +202,7 @@ def render_application_matcher(base, site=None):
 <div class="matcher-panel-heading"><p class="eyebrow">B / De output</p><h3 id="matcher-output-title">Welke output hoort daarbij?</h3><p class="matcher-context" data-matcher-context hidden></p></div>
 {_pending()}
 <div data-matcher-output-content hidden><ul class="matcher-output-list" aria-labelledby="matcher-output-title">{outputs}</ul>
-<article class="matcher-result"><p class="eyebrow">Passende uitwerking</p><h4 data-matcher-result-title></h4><p data-matcher-result-description></p><a class="text-link" href="specialistische-modules.html" data-matcher-result-link>Lees meer over deze uitwerking <span aria-hidden="true">→</span></a></article>
+<article class="matcher-result"><p class="eyebrow">Passende uitwerking</p><h4 data-matcher-result-title></h4><p data-matcher-result-description></p><a class="text-link" href="specialistische-modules.html" data-matcher-result-link>Lees meer over deze uitwerking</a></article>
 <p class="matcher-scope">Dit is een indicatie op basis van je keuzes. De precieze uitwerking stemmen we af op je vraag en de beschikbare informatie.</p>{_contact_action()}</div>
 </section>
 <section class="matcher-panel" id="matcher-panel-c" role="tabpanel" aria-labelledby="matcher-tab-c" tabindex="0" data-matcher-panel="c" hidden>
