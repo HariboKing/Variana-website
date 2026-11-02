@@ -1,4 +1,16 @@
-# Controle Variana — voorbeelddownload
+# Controle Variana — rapportpresentatie
+
+## Wijziging van 2 november 2026 — centraal voorbeeldrapport
+
+- /voorbeelden/ is een echte inhoudspagina met een rechtstreeks uit de PDF gerenderde rapportpreview, een ingebouwde PDF-lezer en zichtbare links voor apart openen en downloaden. Voorbeelden is nog niet toegevoegd aan het hoofdmenu. De opdrachtenlijst blijft op de homepage.
+- De homepage toont het rapport na Van systeem naar toepassing en vóór Praktijkervaring. Op Analyses staat dezelfde presentatie direct na Wat kun je ontvangen? Beide gebruiken REPORT_PREVIEW en hetzelfde bronfragment. Op mobiel staat het rapportbeeld vóór de toelichting en knop.
+- In B van de keuzehulp verschijnt het voorbeeld uitsluitend bij een complete analysevraag of Scenariovergelijking, voor bedrijf en overheid. Een andere of onvolledige keuze verbergt het voorbeeld direct. Bij scenario’s gaat het om een illustratie van een vergelijkende analyse; het document wordt niet als volledig scenariorapport gepresenteerd.
+- De vijf oorspronkelijke opdrachtomschrijvingen zijn behouden. De link bij kattenvoerverpakking verwijst nu naar het centrale rapport. De PDF is ongewijzigd: vijftien pagina’s, 125.137 bytes, SHA256 3043a8f57300bbf990f6e9d0483a1fc8746074199bee6aa6bca7deb2373ec117. Een echte lokale browserdownload heeft dezelfde hash.
+- De build voor 24 inhoudsroutes, 49 routecontroles, 56 URL-controles en 23 controles voor voorbeeldrelevantie slagen. De URL-controle omvat de daadwerkelijke Voorbeelden-pagina, rapportankers, queryparameters, relatieve paden en offline bestanden. De oude fallback naar de homepage blijft alleen beschikbaar wanneer de inhoudspagina ontbreekt.
+- Lokaal in de browser gecontroleerd: homepagepreview en centrale rapportpresentatie; analyse toont voorbeeld; blauwdruk verbergt voorbeeld; scenariovergelijking toont aangepaste tekst; algemeen advies verbergt voorbeeld. Het contactvenster opent nog met Analyses als onderwerp en sluit met Escape. Er zijn geen aanvragen verstuurd.
+- De oude /voorbeelden.html-link normaliseert naar /voorbeelden/ met behoud van query en rapportanker. Bij 320 en 390 pixels is geen horizontale overloop vastgesteld. De PDF-download werkt; weergave in de ingebouwde PDF-lezer hangt af van de browserondersteuning, daarom blijven apart openen en downloaden zichtbaar beschikbaar.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
 
 ## Wijziging van 2 november 2026 — concurrentieanalyse als download
 

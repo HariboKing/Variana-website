@@ -160,6 +160,13 @@ def _contact_action():
     )
 
 
+def _report_example():
+    return '''<aside class="matcher-report-example" data-matcher-example hidden aria-labelledby="matcher-example-title">
+<figure class="matcher-example-page"><img src="assets/images/reports/concurrentieanalyse-pagina-1.webp" alt="Eerste pagina van de voorbeeldconcurrentieanalyse over kattenvoerverpakking" width="1191" height="842" loading="lazy" decoding="async"><figcaption>Pagina 1 uit het rapport</figcaption></figure>
+<div class="matcher-example-copy"><p class="eyebrow">Voorbeeld van onze output</p><h4 id="matcher-example-title" data-matcher-example-intro></h4><p>Een concurrentieanalyse over kattenvoerverpakking laat zien hoe bevindingen en verschillen worden geordend.</p><a class="text-link" href="voorbeelden.html#concurrentieanalyse">Bekijk een voorbeeld van een concurrentieanalyse</a></div>
+</aside>'''
+
+
 def render_application_matcher(base, site=None):
     """Return static accessible markup. No answer is selected on first display."""
     data = load_application_routes(base)
@@ -203,7 +210,7 @@ def render_application_matcher(base, site=None):
 {_pending()}
 <div data-matcher-output-content hidden><ul class="matcher-output-list" aria-labelledby="matcher-output-title">{outputs}</ul>
 <article class="matcher-result"><p class="eyebrow">Passende uitwerking</p><h4 data-matcher-result-title></h4><p data-matcher-result-description></p><a class="text-link" href="specialistische-modules.html" data-matcher-result-link>Lees meer over deze uitwerking</a></article>
-<p class="matcher-scope">Dit is een indicatie op basis van je keuzes. De precieze uitwerking stemmen we af op je vraag en de beschikbare informatie.</p>{_contact_action()}</div>
+<p class="matcher-scope">Dit is een indicatie op basis van je keuzes. De precieze uitwerking stemmen we af op je vraag en de beschikbare informatie.</p>{_report_example()}{_contact_action()}</div>
 </section>
 <section class="matcher-panel" id="matcher-panel-c" role="tabpanel" aria-labelledby="matcher-tab-c" tabindex="0" data-matcher-panel="c" hidden>
 <span id="samenhang" class="matcher-anchor"></span><span id="resultaten" class="matcher-anchor"></span>

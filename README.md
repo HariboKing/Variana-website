@@ -1,8 +1,8 @@
 # Variana — websitebron
 
-Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 23 inhoudspagina’s met publieke adressen zonder .html. De oude bestandsadressen blijven beschikbaar voor bestaande links en offline bekijken.
+Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 24 inhoudspagina’s met publieke adressen zonder .html. De oude bestandsadressen blijven beschikbaar voor bestaande links en offline bekijken.
 
-Bij het vijfde homepagevoorbeeld over kattenvoerverpakking staat Download de concurrentieanalyse. Het anker /#voorbeeld-kattenvoerverpakking opent die rij rechtstreeks. De link downloadt assets/downloads/concurrentieanalyse-kattenvoerverpakking.pdf met de oorspronkelijke bestandsnaam; het aangeleverde PDF-bestand is ongewijzigd opgenomen. Voeg eventuele volgende documenten bij dezelfde downloadgroep toe in beheer/paginas/index.html; de beperkte vormgeving staat in assets/css/cinematic.css.
+Het voorbeeldrapport staat centraal op /voorbeelden/#concurrentieanalyse. Daar kan de bezoeker een echte rapportpagina bekijken, de volledige PDF in de browser openen en het document downloaden. De homepage en Analyses tonen een gedeelde rapportpreview; de keuzehulp toont het voorbeeld uitsluitend bij een analyse of scenariovergelijking. Ook het vijfde homepagevoorbeeld over kattenvoerverpakking verwijst naar deze centrale pagina. Het anker /#voorbeeld-kattenvoerverpakking opent die bestaande opdrachtomschrijving rechtstreeks. Het aangeleverde PDF-bestand in assets/downloads/concurrentieanalyse-kattenvoerverpakking.pdf is ongewijzigd opgenomen.
 
 Decoratieve pijlen zijn verwijderd uit knoppen, doorverwijsblokken, klikbare opties, systeemoverzichten en de onderzoeksverkenner. De bron verwijdert volledige pijlspans en SVG-pijlpunten; gewone verbindingslijnen blijven beschikbaar. CSS-inspringing die alleen voor een pijl diende is aangepast. Linkbestemmingen, teksten, formulieren en interactiewerking blijven behouden. Toetsenbordbesturing met de Arrow-toetsen, native browserbediening en de bestaande softwarebeelden blijven werken zoals voorheen.
 
@@ -15,7 +15,7 @@ Deze versie voert de overstap naar Formspree door. De eigenaar heeft bevestigd d
 - Hoe het werkt bevat de bestaande opening, het onderscheid tussen dienst en software, één interactieve systeemverkenner en de bestaande contactoproep. De oude screenshotpresentatie en afzonderlijke vierfasenuitleg blijven verwijderd.
 - Toepassingen bevat de opening, vier invalshoeken, de A/B/C-keuzehulp, Van klantvraag naar uitwerking en de contactoproep. De losse operationele sectie is verwijderd.
 - De homepage bevat na Praktijkervaring de sectie Een greep uit onze opdrachten, gevolgd door de contactoproep. De vijf opdrachtomschrijvingen zijn door de gebruiker aangeleverd.
-- Voorbeelden is verwijderd uit navigatie en footer. Zowel /voorbeelden.html als /voorbeelden/ verwijst door naar /#opdrachten; de footerlink Onze opdrachten opent die homepage-sectie rechtstreeks.
+- /voorbeelden/ is de centrale rapportpagina. Voorbeelden staat nog niet in het hoofdmenu; de footerlink Onze opdrachten opent de bestaande homepage-sectie rechtstreeks.
 - Contact, tarieven, doelgroepen en kennisbank behouden hun functie.
 
 ## Onderhouden en bouwen
@@ -34,14 +34,14 @@ Voer vanuit de website-map uit:
 
     python beheer/build.py
 
-De generator schrijft de homepage als index.html en de overige 22 inhoudspagina’s als een volledige pagina in een eigen map, bijvoorbeeld software/index.html. Daarnaast blijven volledige .html-versies in de hoofdmap bestaan. Werk beheerbronnen, gegenereerde HTML en de paginamappen samen bij in GitHub. Voor bekijken of hosten zijn geen Python, Node, database of extra bouwstappen nodig.
+De generator schrijft de homepage als index.html en de overige 23 inhoudspagina’s als een volledige pagina in een eigen map, bijvoorbeeld software/index.html. Daarnaast blijven volledige .html-versies in de hoofdmap bestaan. Werk beheerbronnen, gegenereerde HTML en de paginamappen samen bij in GitHub. Voor bekijken of hosten zijn geen Python, Node, database of extra bouwstappen nodig.
 
 De algemene vormgeving staat in assets/css/styles.css. De homepage gebruikt ook cinematic.css. De productpresentatie, softwarepagina en gedeelde propositiekaarten gebruiken product.css. De build voegt de bestanden van een interactief scherm alleen toe aan de pagina met de bijbehorende markering. De CSS- en JavaScript-URL’s krijgen een inhoudshash tegen verouderde browsercache.
 
 ## Publieke adressen en offline bekijken
 
 - De homepage gebruikt https://variana.nl/; andere pagina’s gebruiken bijvoorbeeld https://variana.nl/software/ en https://variana.nl/hoe-het-werkt/. GitHub Pages serveert daarvoor de index.html in de betreffende map.
-- Een vroeg script normaliseert oude .html-adressen en expliciete adressen zoals /software/index.html naar het publieke adres. Het bewaart queryparameters en fragmentankers. De oude Voorbeelden-adressen bewaren de query en gebruiken altijd het nieuwe anker #opdrachten.
+- Een vroeg script normaliseert oude .html-adressen en expliciete adressen zoals /software/index.html naar het publieke adres. Het bewaart queryparameters en fragmentankers, ook bij /voorbeelden.html en rapportankers op /voorbeelden/.
 - Dit zijn doorverwijzingen in de browser, geen HTTP 301-doorverwijzingen. Zonder JavaScript werkt de gewone navigatie naar de nieuwe paginamappen; oude bestandsadressen hebben een beperkte fallback. / en /index.html gebruiken op deze statische hosting hetzelfde bestand, waardoor een expliciet geopend /index.html zonder JavaScript zichtbaar kan blijven. De fallback bewaart niet alle queryparameters of fragmenten.
 - Elke inhoudspagina vermeldt haar publieke adres in de canonical-link en og:url. De build herschrijft interne links en past assetpaden aan de mapdiepte aan, ook voor videobronnen, ondertiteling en posterbeelden.
 - assets/js/page-urls.js leest de ingebedde URL-tabel vóór de andere paginascripts. De twee interactieve schermen gebruiken deze helper voor hun dynamische links. Bij file:// zet de helper paginalinks terug naar de bestaande .html-bestanden in de hoofdmap, zodat het offline voorbeeld via index.html te bekijken blijft.
@@ -50,6 +50,7 @@ Controleer wijzigingen in de adresafhandeling en de bestaande keuzehulp met:
 
     node beheer/controle_urls.cjs
     node beheer/controle_routes.cjs
+    node beheer/controle_voorbeelden.cjs
 
 Deze indeling is bedoeld voor publicatie op de hoofdmap van variana.nl. De CNAME blijft behouden.
 
@@ -130,7 +131,17 @@ Beide interactieve schermen beschrijven de samenhang en vaste koppelingen. Zij v
 
 De sectie opdrachten staat in beheer/paginas/index.html tussen praktijkervaring en de bestaande contactoproep. De geordende lijst bevat vijf aangeleverde omschrijvingen: een strategisch adviesrapport, twee blauwdrukken en twee analyses. Dienstnamen staan vet; de tekst blijft beperkt tot de aangeleverde opdrachtomschrijving. De vormgeving staat in assets/css/cinematic.css.
 
-De vroegere Voorbeelden-pagina en producttour worden niet meer opgebouwd. voorbeelden.html en voorbeelden/index.html zijn uitsluitend compatibele doorverwijzingen naar de opdrachten op de homepage. De oudere prototypebeelden en onderzoeksassets blijven in de bron bewaard. De huidige productpresentatie gebruikt de conceptbeelden en desktopopname hierboven; zij toont de voorbereiding van een vraagstuk en vormt geen bewijs van uitgevoerde onderzoeksresultaten.
+De vroegere producttour wordt niet meer opgebouwd. De oudere prototypebeelden en onderzoeksassets blijven in de bron bewaard. De huidige softwarepresentatie gebruikt de conceptbeelden en desktopopname hierboven; zij toont de voorbereiding van een vraagstuk en vormt geen bewijs van uitgevoerde onderzoeksresultaten. Het afzonderlijke voorbeeldrapport is door de eigenaar aangeleverd en wordt niet voorgesteld als een softwaredemonstratie.
+
+## Voorbeeldrapporten
+
+beheer/paginas/voorbeelden.html bevat de centrale rapportpagina, met een echte preview, een PDF-lezer en zichtbare links voor apart openen en downloaden. De bestaande PDF telt vijftien pagina’s en is 125.137 bytes. De WebP in assets/images/reports/concurrentieanalyse-pagina-1.webp is rechtstreeks uit de eerste PDF-pagina gerenderd. De tekst benoemt bevindingen, vergelijkingen en aannames; zij belooft geen onafhankelijk gevalideerd onderzoek of vaste rapportomvang voor nieuwe opdrachten.
+
+De markering REPORT_PREVIEW plaatst beheer/onderdelen/rapport-preview.html na de drie dienstkaarten op de homepage en direct na Wat kun je ontvangen? op Analyses. assets/css/report-preview.css wordt alleen op die pagina’s en Voorbeelden geladen. Op mobiel verschijnt de echte rapportpagina vóór de toelichting en knop.
+
+De keuzehulp toont in B een klein voorbeeld bij complete inzichtvragen en de specialistische uitwerking Scenariovergelijking, voor zowel bedrijven als overheden. Bij de vergelijking vermeldt de tekst dat het document laat zien hoe een vergelijkende analyse is opgebouwd. De voorbeeldlink verdwijnt direct bij een onvolledige of andere keuze. De resolver en contactselectie blijven gelijk. beheer/controle_voorbeelden.cjs controleert deze selectie voor negentien complete routes en vier onvolledige keuzes.
+
+Voeg volgende representatieve documenten toe aan de centrale pagina en koppel ze aan passende uitkomsten. De opdrachtomschrijvingen op de homepage blijven een afzonderlijke lijst. De URL-renderer maakt van Voorbeelden een gewone inhoudsroute; alleen wanneer die pagina ontbreekt blijft de historische fallback naar /#opdrachten bestaan.
 
 ## Contact, tarieven en publicatie
 

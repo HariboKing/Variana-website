@@ -26,8 +26,17 @@
       outputIds: complete ? route.outputIds : [] };
   }
 
+  function reportExampleIntro(selection) {
+    if (!selection.complete) return '';
+    if (selection.route.id === 'inzicht') return 'Benieuwd hoe zo’n analyse eruitziet?';
+    if (selection.route.id === 'uitwerking' && selection.task?.id === 'scenarios') {
+      return 'Bekijk hoe een vergelijkende analyse is opgebouwd.';
+    }
+    return '';
+  }
+
   // Keep the resolver available to the dependency-free regression check.
-  if (typeof module !== 'undefined' && module.exports) module.exports = { resolveSelection };
+  if (typeof module !== 'undefined' && module.exports) module.exports = { resolveSelection, reportExampleIntro };
   if (typeof document === 'undefined') return;
 
   document.querySelectorAll('[data-application-matcher]').forEach(root => {
@@ -161,6 +170,9 @@
       root.querySelector('[data-matcher-result-description]').textContent = selection.result?.description || '';
       const resultHref = selection.result?.href || 'specialistische-modules.html';
       root.querySelector('[data-matcher-result-link]').setAttribute('href', window.VARIANA_URLS?.toHref(resultHref) || resultHref);
+      const exampleIntro = reportExampleIntro(selection);
+      root.querySelector('[data-matcher-example]').hidden = !exampleIntro;
+      root.querySelector('[data-matcher-example-intro]').textContent = exampleIntro;
       root.querySelectorAll('[data-matcher-contact]').forEach(item => { item.hidden = !selection.complete; });
       root.querySelectorAll('[data-matcher-contact-link]').forEach(link => {
         if (!selection.complete) {

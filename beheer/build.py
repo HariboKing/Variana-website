@@ -59,6 +59,8 @@ for filename, page in pages.items():
         body = body.replace('<!-- SYSTEM_EXPLORER -->', '')
     if '<!-- PROPOSITIONS -->' in body:
         body = body.replace('<!-- PROPOSITIONS -->', propositions())
+    if '<!-- REPORT_PREVIEW -->' in body:
+        body = body.replace('<!-- REPORT_PREVIEW -->', (BASE/'onderdelen/rapport-preview.html').read_text(encoding='utf-8'))
     if '<!-- CONTACT_FORM -->' in body:
         body = body.replace('<!-- CONTACT_FORM -->', (BASE/'onderdelen/contact-formulier.html').read_text(encoding='utf-8'))
     if '<!-- CONTACT_RESULT_TOPICS -->' in body:
@@ -104,6 +106,9 @@ for filename, page in pages.items():
     if '<!-- PROPOSITIONS -->' in source_body or filename == 'software.html':
         product_css_version=hashlib.sha256((SITE/'assets/css/product.css').read_bytes()).hexdigest()[:12]
         extra_scripts+=f'<link rel="stylesheet" href="assets/css/product.css?v={product_css_version}">'
+    if '<!-- REPORT_PREVIEW -->' in source_body or filename == 'voorbeelden.html':
+        report_css_version=hashlib.sha256((SITE/'assets/css/report-preview.css').read_bytes()).hexdigest()[:12]
+        extra_scripts+=f'<link rel="stylesheet" href="assets/css/report-preview.css?v={report_css_version}">'
     config_version=hashlib.sha256((SITE/'assets/js/config.js').read_bytes()).hexdigest()[:12]
     contact_script=''
     if 'id="contact-form"' in body:
@@ -121,7 +126,8 @@ for filename, page in pages.items():
         folder.mkdir(exist_ok=True)
         clean = render_clean_page(content,canonical_path,'../',url_map,url_helper_version)
         (folder/'index.html').write_text(clean,encoding='utf-8')
-(SITE/'voorbeelden.html').write_text(examples_redirect(''),encoding='utf-8')
-(SITE/'voorbeelden').mkdir(exist_ok=True)
-(SITE/'voorbeelden/index.html').write_text(examples_redirect('../'),encoding='utf-8')
-print(f'Built {len(pages)} clean routes, legacy HTML copies and examples redirects in {SITE}')
+if 'voorbeelden.html' not in pages:
+    (SITE/'voorbeelden.html').write_text(examples_redirect(''),encoding='utf-8')
+    (SITE/'voorbeelden').mkdir(exist_ok=True)
+    (SITE/'voorbeelden/index.html').write_text(examples_redirect('../'),encoding='utf-8')
+print(f'Built {len(pages)} clean routes and legacy HTML copies in {SITE}')

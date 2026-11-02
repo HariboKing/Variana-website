@@ -7,7 +7,8 @@ from urllib.parse import urlsplit, urlunsplit
 
 def page_url_map(pages):
     result = {name: '/' if name == 'index.html' else '/' + name[:-5] + '/' for name in pages}
-    result['voorbeelden.html'] = '/#opdrachten'
+    # Older builds without an examples page still retain their original alias.
+    result.setdefault('voorbeelden.html', '/#opdrachten')
     return result
 
 
@@ -26,9 +27,9 @@ def rewrite_urls(document, asset_prefix, routes):
             target = urlunsplit(('', '', path, url.query, url.fragment))
         elif path.lstrip('/') in routes:
             target_url = urlsplit(routes[path.lstrip('/')])
-            # Examples no longer has its former sections; every old link lands
-            # on the assignments section instead of a non-existent fragment.
-            fragment = target_url.fragment if path.lstrip('/') == 'voorbeelden.html' else url.fragment
+            # A legacy alias may define its own landing section. Real pages
+            # preserve the requested section, including the report viewer.
+            fragment = target_url.fragment or url.fragment
             target = urlunsplit(('', '', target_url.path, url.query, fragment))
         else:
             return match.group(0)

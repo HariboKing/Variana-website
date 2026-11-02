@@ -113,5 +113,10 @@
     "title": "Variana Desktop | Software in ontwikkeling | Variana",
     "description": "Van complexe vraag naar een onderbouwde keuze. Bekijk de echte desktoprondleiding, ontdek de beoogde mogelijkheden van lokaal werken en vraag een productpreview aan.",
     "body_file": "paginas/software.html"
+  },
+  "voorbeelden.html": {
+    "title": "Voorbeeldrapport concurrentieanalyse | Variana",
+    "description": "Bekijk een echt voorbeeldrapport over concurrenten en alternatieven voor kattenvoerverpakking. Lees de concurrentieanalyse online of download de PDF.",
+    "body_file": "paginas/voorbeelden.html"
   }
 }
