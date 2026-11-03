@@ -1,5 +1,15 @@
 # Controle Variana — rapportpresentatie
 
+## Wijziging van 3 november 2026 — omgevingsanalyse als tweede voorbeeld
+
+- De centrale voorbeeldpagina bevat naast de concurrentieanalyse een omgevingsanalyse op /voorbeelden/#omgevingsanalyse. Beide rapporten zijn direct bereikbaar via benoemde rapportlinks bovenaan de pagina. De paginatitel en metabeschrijving noemen beide voorbeelden.
+- Het nieuwe rapport heeft een echte eerste-paginapreview, een link voor openen in een apart venster en een downloadknop met de oorspronkelijke bestandsnaam. De bestaande concurrentieanalyse en haar download blijven behouden.
+- Het aangeleverde bestand is ongewijzigd opgenomen: elf pagina’s, 125.290 bytes, SHA256 a1413bd13a5707c23fd7362f3b1f459b9785e9ff7a014f9ef152bce5917325e3. De eerste pagina is rechtstreeks als WebP gerenderd en visueel gecontroleerd. De preview van de staande pagina behoudt het volledige paginabeeld.
+- De bestaande homepagepreview, analysepreview en keuzehulpkoppeling blijven naar het specifieke concurrentievoorbeeld verwijzen. Contact, tarieven en routegegevens zijn niet aangepast.
+- De build voor 24 inhoudsroutes, 56 URL-controles en de statische controle van 47 HTML-bestanden slagen. Alle 111 bestaande bestanden buiten deze wijziging zijn bytegelijk gebleven. Lokaal werken beide rapportankers; bij 320 pixels is er geen horizontale overloop en passen beide nieuwe knoppen binnen de schermbreedte. De nieuwe preview laadt en behoudt de volledige eerste pagina.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
+
 ## Wijziging van 2 november 2026 — centraal voorbeeldrapport
 
 - /voorbeelden/ is een echte inhoudspagina met een rechtstreeks uit de PDF gerenderde rapportpreview, een ingebouwde PDF-lezer en zichtbare links voor apart openen en downloaden. Voorbeelden is nog niet toegevoegd aan het hoofdmenu. De opdrachtenlijst blijft op de homepage.

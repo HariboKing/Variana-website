@@ -11,6 +11,7 @@
 .report-preview-bar { padding: 13px 17px; border-bottom: 1px solid #2c435c; color: #c4d7e4; background: #14283c; font: 12px/1.7 var(--mono); letter-spacing: .025em; }
 .report-page-link { display: block; background: #fff; }
 .report-page-link img { display: block; width: 100%; height: auto; }
+.report-portrait .report-page-link img { max-height: 560px; object-fit: contain; background: #fff; }
 .report-page-link:focus-visible { outline-offset: -5px; }
 .report-preview-figure figcaption { margin: 0; padding: 13px 17px; border-top: 1px solid #2c435c; color: #a6bed1; font-size: 12px; line-height: 1.7; }
 .report-example { padding-top: 10px; }
