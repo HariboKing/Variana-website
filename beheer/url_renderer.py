@@ -7,8 +7,8 @@ from urllib.parse import urlsplit, urlunsplit
 
 def page_url_map(pages):
     result = {name: '/' if name == 'index.html' else '/' + name[:-5] + '/' for name in pages}
-    # Older builds without an examples page still retain their original alias.
-    result.setdefault('voorbeelden.html', '/#opdrachten')
+    # Reports now live in the shared reader on the homepage. Keep older links.
+    result.setdefault('voorbeelden.html', '/#voorbeeldrapport')
     return result
 
 
@@ -27,9 +27,13 @@ def rewrite_urls(document, asset_prefix, routes):
             target = urlunsplit(('', '', path, url.query, url.fragment))
         elif path.lstrip('/') in routes:
             target_url = urlsplit(routes[path.lstrip('/')])
-            # A legacy alias may define its own landing section. Real pages
-            # preserve the requested section, including the report viewer.
-            fragment = target_url.fragment or url.fragment
+            # Keep report-specific old links pointed at the selected home tab.
+            if path.lstrip('/') == 'voorbeelden.html' and target_url.fragment == 'voorbeeldrapport':
+                fragment = {'concurrentieanalyse': 'concurrentieanalyse',
+                            'omgevingsanalyse': 'omgevingsanalyse',
+                            'rapport-bekijken': 'concurrentieanalyse'}.get(url.fragment, 'voorbeeldrapport')
+            else:
+                fragment = target_url.fragment or url.fragment
             target = urlunsplit(('', '', target_url.path, url.query, fragment))
         else:
             return match.group(0)
@@ -54,5 +58,5 @@ def render_clean_page(document, canonical_path, asset_prefix, routes, helper_ver
 
 
 def examples_redirect(asset_prefix):
-    fallback = asset_prefix + 'index.html#opdrachten'
-    return f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Opdrachten | Variana</title><meta name="description" content="Bekijk onze opdrachten op de homepage van Variana."><meta name="robots" content="noindex"><link rel="canonical" href="https://variana.nl/#opdrachten"><script>(()=>{{const p=/^https?:$/.test(location.protocol)?'/':{json.dumps(asset_prefix + 'index.html')};location.replace(p+location.search+'#opdrachten');}})();</script><noscript><meta http-equiv="refresh" content="0; url={fallback}"></noscript></head><body><main><h1>Onze opdrachten staan op de homepage.</h1><p><a href="{fallback}">Bekijk onze opdrachten</a></p></main></body></html>'''
+    fallback = asset_prefix + 'index.html#voorbeeldrapport'
+    return f'''<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Voorbeeldrapporten | Variana</title><meta name="description" content="Bekijk onze voorbeeldrapporten in de PDF-lezer op de homepage van Variana."><meta name="robots" content="noindex"><link rel="canonical" href="https://variana.nl/#voorbeeldrapport"><script>(()=>{{const p=/^https?:$/.test(location.protocol)?'/':{json.dumps(asset_prefix + 'index.html')};const sections={{'#concurrentieanalyse':'#concurrentieanalyse','#omgevingsanalyse':'#omgevingsanalyse','#rapport-bekijken':'#concurrentieanalyse'}};location.replace(p+location.search+(sections[location.hash]||'#voorbeeldrapport'));}})();</script><noscript><meta http-equiv="refresh" content="0; url={fallback}"></noscript></head><body><main><h1>Onze voorbeeldrapporten staan op de homepage.</h1><p><a href="{fallback}">Bekijk de voorbeeldrapporten</a></p></main></body></html>'''

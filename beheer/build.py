@@ -10,6 +10,7 @@ import hashlib
 from research_renderer import load_research, render_explorer, render_teaser
 from application_renderer import render_application_matcher, load_application_routes
 from url_renderer import page_url_map, render_clean_page, examples_redirect
+from report_renderer import render_report_reader
 
 BASE = Path(__file__).resolve().parent
 SITE = BASE.parent if BASE.name == 'beheer' else BASE.parent / 'outputs' / 'variana-website'
@@ -61,6 +62,8 @@ for filename, page in pages.items():
         body = body.replace('<!-- PROPOSITIONS -->', propositions())
     if '<!-- REPORT_PREVIEW -->' in body:
         body = body.replace('<!-- REPORT_PREVIEW -->', (BASE/'onderdelen/rapport-preview.html').read_text(encoding='utf-8'))
+    if '<!-- REPORT_READER -->' in body:
+        body = body.replace('<!-- REPORT_READER -->', render_report_reader(BASE,SITE))
     if '<!-- CONTACT_FORM -->' in body:
         body = body.replace('<!-- CONTACT_FORM -->', (BASE/'onderdelen/contact-formulier.html').read_text(encoding='utf-8'))
     if '<!-- CONTACT_RESULT_TOPICS -->' in body:
@@ -106,9 +109,13 @@ for filename, page in pages.items():
     if '<!-- PROPOSITIONS -->' in source_body or filename == 'software.html':
         product_css_version=hashlib.sha256((SITE/'assets/css/product.css').read_bytes()).hexdigest()[:12]
         extra_scripts+=f'<link rel="stylesheet" href="assets/css/product.css?v={product_css_version}">'
-    if '<!-- REPORT_PREVIEW -->' in source_body or filename == 'voorbeelden.html':
+    if '<!-- REPORT_PREVIEW -->' in source_body:
         report_css_version=hashlib.sha256((SITE/'assets/css/report-preview.css').read_bytes()).hexdigest()[:12]
         extra_scripts+=f'<link rel="stylesheet" href="assets/css/report-preview.css?v={report_css_version}">'
+    if '<!-- REPORT_READER -->' in source_body:
+        reader_css_version=hashlib.sha256((SITE/'assets/css/report-reader.css').read_bytes()).hexdigest()[:12]
+        reader_js_version=hashlib.sha256((SITE/'assets/js/report-reader.js').read_bytes()).hexdigest()[:12]
+        extra_scripts+=f'<link rel="stylesheet" href="assets/css/report-reader.css?v={reader_css_version}"><script src="assets/js/report-reader.js?v={reader_js_version}" defer></script>'
     config_version=hashlib.sha256((SITE/'assets/js/config.js').read_bytes()).hexdigest()[:12]
     contact_script=''
     if 'id="contact-form"' in body:

@@ -163,7 +163,7 @@ def _contact_action():
 def _report_example():
     return '''<aside class="matcher-report-example" data-matcher-example hidden aria-labelledby="matcher-example-title">
 <figure class="matcher-example-page"><img src="assets/images/reports/concurrentieanalyse-pagina-1.webp" alt="Eerste pagina van de voorbeeldconcurrentieanalyse over kattenvoerverpakking" width="1191" height="842" loading="lazy" decoding="async"><figcaption>Pagina 1 uit het rapport</figcaption></figure>
-<div class="matcher-example-copy"><p class="eyebrow">Voorbeeld van onze output</p><h4 id="matcher-example-title" data-matcher-example-intro></h4><p>Een concurrentieanalyse over kattenvoerverpakking laat zien hoe bevindingen en verschillen worden geordend.</p><a class="text-link" href="voorbeelden.html#concurrentieanalyse">Bekijk een voorbeeld van een concurrentieanalyse</a></div>
+<div class="matcher-example-copy"><p class="eyebrow">Voorbeeld van onze output</p><h4 id="matcher-example-title" data-matcher-example-intro></h4><p>Een concurrentieanalyse over kattenvoerverpakking laat zien hoe bevindingen en verschillen worden geordend.</p><a class="text-link" href="index.html#concurrentieanalyse">Bekijk een voorbeeld van een concurrentieanalyse</a></div>
 </aside>'''
 
 

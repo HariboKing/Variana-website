@@ -1,5 +1,16 @@
 # Controle Variana — rapportpresentatie
 
+## Wijziging van 3 november 2026 — gedeelde PDF-lezer op de homepage
+
+- De homepage bevat na Van systeem naar toepassing één PDF-lezer met knoppen voor Concurrentieanalyse en Omgevingsanalyse. De actieve knop bepaalt de PDF, titel, toelichting en downloadlink. Beide oorspronkelijke PDF-bestanden zijn ongewijzigd behouden.
+- De rapportenlijst staat in beheer/rapporten.json. beheer/report_renderer.py controleert beschikbare bestanden en bouwt de rapportkeuze op. Alleen de homepage laadt report-reader.css en report-reader.js. Een nieuw beschikbaar rapport kan via één lijstitem worden toegevoegd.
+- De vijf opdrachtomschrijvingen blijven behouden. De rapportlink en bestandsinformatie bij de vijfde opdracht zijn verwijderd. Analyses en passende uitkomsten van de keuzehulp verwijzen rechtstreeks naar het concurrentievoorbeeld in de homepagelezer.
+- De afzonderlijke Voorbeelden-pagina wordt niet meer opgebouwd. De oude adressen verwijzen door naar de homepage; bestaande concurrentie- en omgevingsankers blijven het juiste rapport kiezen. Queryparameters blijven behouden, evenals offline verwijzingen. Ook de gedeelde client-URL-helper bewaart deze specifieke rapportkeuze.
+- Lokaal in de browser gecontroleerd: beide keuzeknoppen wisselen dezelfde iframe en de juiste downloadnaam; pijltjestoetsen, Home en End wisselen selectie en focus; bij 320 pixels is geen horizontale overloop. De opdrachtenlijst bevat geen links meer. Bij ontbrekende PDF-ondersteuning blijven openen in een apart venster en downloaden beschikbaar. Zonder JavaScript blijven afzonderlijke documentlinks zichtbaar.
+- De build voor 23 inhoudsroutes en 69 URL-controles slagen. De controle van de native PDF-weergave is beperkt door browserondersteuning; de keuze van het juiste PDF-bestand, de linkbestemmingen en de fallback zijn afzonderlijk gecontroleerd. Contact, tarieven en de routegegevens zijn niet gewijzigd.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
+
 ## Wijziging van 3 november 2026 — omgevingsanalyse als tweede voorbeeld
 
 - De centrale voorbeeldpagina bevat naast de concurrentieanalyse een omgevingsanalyse op /voorbeelden/#omgevingsanalyse. Beide rapporten zijn direct bereikbaar via benoemde rapportlinks bovenaan de pagina. De paginatitel en metabeschrijving noemen beide voorbeelden.

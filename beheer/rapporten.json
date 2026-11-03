@@ -1,0 +1,20 @@
+{
+  "reports": [
+    {
+      "id": "concurrentieanalyse",
+      "label": "Concurrentieanalyse",
+      "description": "Een analyse van concurrenten, alternatieven en aandachtspunten rond een kartonnen verpakking voor droog kattenvoer.",
+      "file": "assets/downloads/concurrentieanalyse-kattenvoerverpakking.pdf",
+      "filename": "Concurrentieanalyse_kattenvoerverpakking.pdf",
+      "pages": 15
+    },
+    {
+      "id": "omgevingsanalyse",
+      "label": "Omgevingsanalyse",
+      "description": "Externe ontwikkelingen en randvoorwaarden rond kattenvoerverpakking, met bevindingen, bronverwijzingen en onzekerheden.",
+      "file": "assets/downloads/omgevingsanalyse-kattenvoerverpakking.pdf",
+      "filename": "Omgevingsanalyse_kattenvoerverpakking.pdf",
+      "pages": 11
+    }
+  ]
+}

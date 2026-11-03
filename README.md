@@ -1,8 +1,8 @@
 # Variana — websitebron
 
-Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 24 inhoudspagina’s met publieke adressen zonder .html. De oude bestandsadressen blijven beschikbaar voor bestaande links en offline bekijken.
+Actuele bron: https://github.com/HariboKing/Variana-website, branch main. GitHub Pages publiceert de site via de bestaande CNAME voor variana.nl. De website bevat 23 inhoudspagina’s met publieke adressen zonder .html. De oude bestandsadressen blijven beschikbaar voor bestaande links en offline bekijken.
 
-De voorbeeldrapporten staan centraal op /voorbeelden/. Daar kan de bezoeker echte rapportpagina’s bekijken en de volledige concurrentieanalyse en omgevingsanalyse openen of downloaden. De homepage en Analyses tonen een gedeelde preview van de concurrentieanalyse; de keuzehulp toont dat voorbeeld uitsluitend bij een analyse of scenariovergelijking. Ook het vijfde homepagevoorbeeld over kattenvoerverpakking verwijst naar de concurrentieanalyse op deze centrale pagina. Het anker /#voorbeeld-kattenvoerverpakking opent die bestaande opdrachtomschrijving rechtstreeks. Beide aangeleverde PDF-bestanden zijn ongewijzigd opgenomen.
+De voorbeeldrapporten staan in één PDF-lezer op de homepage, na Van systeem naar toepassing en vóór Praktijkervaring. De bezoeker kiest met rapportknoppen welke PDF in hetzelfde scherm verschijnt. Analyses en de keuzehulp verwijzen rechtstreeks naar deze lezer op de homepage. De opdrachtenlijst bevat geen rapport- of downloadknop meer. Het anker /#voorbeeld-kattenvoerverpakking opent nog steeds de oorspronkelijke opdrachtomschrijving. Beide aangeleverde PDF-bestanden zijn ongewijzigd opgenomen.
 
 Decoratieve pijlen zijn verwijderd uit knoppen, doorverwijsblokken, klikbare opties, systeemoverzichten en de onderzoeksverkenner. De bron verwijdert volledige pijlspans en SVG-pijlpunten; gewone verbindingslijnen blijven beschikbaar. CSS-inspringing die alleen voor een pijl diende is aangepast. Linkbestemmingen, teksten, formulieren en interactiewerking blijven behouden. Toetsenbordbesturing met de Arrow-toetsen, native browserbediening en de bestaande softwarebeelden blijven werken zoals voorheen.
 
@@ -15,7 +15,7 @@ Deze versie voert de overstap naar Formspree door. De eigenaar heeft bevestigd d
 - Hoe het werkt bevat de bestaande opening, het onderscheid tussen dienst en software, één interactieve systeemverkenner en de bestaande contactoproep. De oude screenshotpresentatie en afzonderlijke vierfasenuitleg blijven verwijderd.
 - Toepassingen bevat de opening, vier invalshoeken, de A/B/C-keuzehulp, Van klantvraag naar uitwerking en de contactoproep. De losse operationele sectie is verwijderd.
 - De homepage bevat na Praktijkervaring de sectie Een greep uit onze opdrachten, gevolgd door de contactoproep. De vijf opdrachtomschrijvingen zijn door de gebruiker aangeleverd.
-- /voorbeelden/ is de centrale rapportpagina. Voorbeelden staat nog niet in het hoofdmenu; de footerlink Onze opdrachten opent de bestaande homepage-sectie rechtstreeks.
+- /voorbeelden/ en de oude bestandsadressen verwijzen door naar de PDF-lezer op de homepage. De footerlink Onze opdrachten opent de bestaande opdrachtenlijst rechtstreeks.
 - Contact, tarieven, doelgroepen en kennisbank behouden hun functie.
 
 ## Onderhouden en bouwen
@@ -34,14 +34,14 @@ Voer vanuit de website-map uit:
 
     python beheer/build.py
 
-De generator schrijft de homepage als index.html en de overige 23 inhoudspagina’s als een volledige pagina in een eigen map, bijvoorbeeld software/index.html. Daarnaast blijven volledige .html-versies in de hoofdmap bestaan. Werk beheerbronnen, gegenereerde HTML en de paginamappen samen bij in GitHub. Voor bekijken of hosten zijn geen Python, Node, database of extra bouwstappen nodig.
+De generator schrijft de homepage als index.html en de overige 22 inhoudspagina’s als een volledige pagina in een eigen map, bijvoorbeeld software/index.html. Daarnaast blijven volledige .html-versies in de hoofdmap bestaan. Werk beheerbronnen, gegenereerde HTML en de paginamappen samen bij in GitHub. Voor bekijken of hosten zijn geen Python, Node, database of extra bouwstappen nodig.
 
 De algemene vormgeving staat in assets/css/styles.css. De homepage gebruikt ook cinematic.css. De productpresentatie, softwarepagina en gedeelde propositiekaarten gebruiken product.css. De build voegt de bestanden van een interactief scherm alleen toe aan de pagina met de bijbehorende markering. De CSS- en JavaScript-URL’s krijgen een inhoudshash tegen verouderde browsercache.
 
 ## Publieke adressen en offline bekijken
 
 - De homepage gebruikt https://variana.nl/; andere pagina’s gebruiken bijvoorbeeld https://variana.nl/software/ en https://variana.nl/hoe-het-werkt/. GitHub Pages serveert daarvoor de index.html in de betreffende map.
-- Een vroeg script normaliseert oude .html-adressen en expliciete adressen zoals /software/index.html naar het publieke adres. Het bewaart queryparameters en fragmentankers, ook bij /voorbeelden.html en rapportankers op /voorbeelden/.
+- Een vroeg script normaliseert oude .html-adressen en expliciete adressen zoals /software/index.html naar het publieke adres. Het bewaart queryparameters en fragmentankers. De oude Voorbeelden-adressen openen het overeenkomstige rapport op de homepage of de PDF-lezer wanneer geen rapport is gekozen.
 - Dit zijn doorverwijzingen in de browser, geen HTTP 301-doorverwijzingen. Zonder JavaScript werkt de gewone navigatie naar de nieuwe paginamappen; oude bestandsadressen hebben een beperkte fallback. / en /index.html gebruiken op deze statische hosting hetzelfde bestand, waardoor een expliciet geopend /index.html zonder JavaScript zichtbaar kan blijven. De fallback bewaart niet alle queryparameters of fragmenten.
 - Elke inhoudspagina vermeldt haar publieke adres in de canonical-link en og:url. De build herschrijft interne links en past assetpaden aan de mapdiepte aan, ook voor videobronnen, ondertiteling en posterbeelden.
 - assets/js/page-urls.js leest de ingebedde URL-tabel vóór de andere paginascripts. De twee interactieve schermen gebruiken deze helper voor hun dynamische links. Bij file:// zet de helper paginalinks terug naar de bestaande .html-bestanden in de hoofdmap, zodat het offline voorbeeld via index.html te bekijken blijft.
@@ -135,13 +135,15 @@ De vroegere producttour wordt niet meer opgebouwd. De oudere prototypebeelden en
 
 ## Voorbeeldrapporten
 
-beheer/paginas/voorbeelden.html bevat de centrale rapportpagina, met echte previews en zichtbare links voor openen en downloaden. Bovenaan staan links naar beide rapporten: /voorbeelden/#concurrentieanalyse en /voorbeelden/#omgevingsanalyse. De concurrentieanalyse telt vijftien pagina’s en is 125.137 bytes; de omgevingsanalyse telt elf pagina’s en is 125.290 bytes. Beide aangeleverde PDF-bestanden zijn ongewijzigd opgenomen in assets/downloads/. De WebP-bestanden in assets/images/reports/ zijn rechtstreeks uit de eerste PDF-pagina’s gerenderd. De concurrentieanalyse behoudt haar ingebouwde PDF-lezer; de omgevingsanalyse opent de PDF in een apart venster. De tekst benoemt bevindingen, bronverwijzingen en aannames; zij belooft geen onafhankelijk gevalideerd onderzoek of vaste rapportomvang voor nieuwe opdrachten.
+De markering REPORT_READER bouwt één PDF-lezer op de homepage vanuit beheer/rapporten.json via beheer/report_renderer.py. Elke beschikbare PDF heeft een eigen rapportknop; de actieve knop bepaalt de titel, toelichting, downloadlink en inhoud van hetzelfde PDF-scherm. Directe rapportlinks gebruiken /#concurrentieanalyse en /#omgevingsanalyse. /#voorbeeldrapport opent de hele sectie. De rapportknoppen ondersteunen toetsenbordbediening. Zichtbare links voor apart openen en downloaden blijven beschikbaar wanneer de browser geen ingebouwde PDF-lezer ondersteunt.
 
-De markering REPORT_PREVIEW plaatst beheer/onderdelen/rapport-preview.html na de drie dienstkaarten op de homepage en direct na Wat kun je ontvangen? op Analyses. assets/css/report-preview.css wordt alleen op die pagina’s en Voorbeelden geladen. Op mobiel verschijnt de echte rapportpagina vóór de toelichting en knop.
+Een volgend rapport toevoegen: plaats de PDF in assets/downloads/, voeg een overeenkomstig item toe aan beheer/rapporten.json en voer de build uit. De rapportkeuze wordt automatisch opgebouwd; voeg uitsluitend daadwerkelijk beschikbare documenten toe. De concurrentieanalyse telt vijftien pagina’s en is 125.137 bytes; de omgevingsanalyse telt elf pagina’s en is 125.290 bytes. Beide PDF-bestanden zijn ongewijzigd opgenomen.
+
+De homepage laadt alleen report-reader.css en report-reader.js voor de lezer. De markering REPORT_PREVIEW plaatst de bestaande concurrentiepreview uitsluitend op Analyses, direct na Wat kun je ontvangen? Die preview en passende uitkomsten van de keuzehulp verwijzen naar de homepagelezer. De eerdere afzonderlijke rapportpagina wordt niet meer opgebouwd; de oude bron en previewafbeeldingen blijven als ongebruikte historische bestanden behouden.
 
 De keuzehulp toont in B een klein voorbeeld bij complete inzichtvragen en de specialistische uitwerking Scenariovergelijking, voor zowel bedrijven als overheden. Bij de vergelijking vermeldt de tekst dat het document laat zien hoe een vergelijkende analyse is opgebouwd. De voorbeeldlink verdwijnt direct bij een onvolledige of andere keuze. De resolver en contactselectie blijven gelijk. beheer/controle_voorbeelden.cjs controleert deze selectie voor negentien complete routes en vier onvolledige keuzes.
 
-Voeg volgende representatieve documenten toe aan de centrale pagina en koppel ze aan passende uitkomsten. De opdrachtomschrijvingen op de homepage blijven een afzonderlijke lijst. De URL-renderer maakt van Voorbeelden een gewone inhoudsroute; alleen wanneer die pagina ontbreekt blijft de historische fallback naar /#opdrachten bestaan.
+De vijf opdrachtomschrijvingen op de homepage blijven een afzonderlijke lijst zonder rapport- of downloadlink. De URL-renderer houdt bestaande Voorbeelden-links bruikbaar als doorverwijzingen naar de lezer op de homepage.
 
 ## Contact, tarieven en publicatie
 

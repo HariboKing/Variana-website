@@ -41,7 +41,14 @@
       const file = legacy && files.has(legacy[1]) ? legacy[1] : canonicalFiles.get(parsed.path);
       if (!file) return value;
       const target = files.get(file);
-      const hash = target.hash || parsed.hash;
+      let hash = target.hash || parsed.hash;
+      // Retired report links keep the selected report in the homepage reader.
+      // Other aliases retain their fixed landing section.
+      if (file === 'voorbeelden.html' && target.hash === '#voorbeeldrapport') {
+        hash = parsed.hash === '#rapport-bekijken' ? '#concurrentieanalyse'
+          : ['#concurrentieanalyse', '#omgevingsanalyse'].includes(parsed.hash)
+            ? parsed.hash : '#voorbeeldrapport';
+      }
       if (root.protocol === 'file:') {
         const offlineFile = target.hash ? canonicalFiles.get(target.path) || file : file;
         return new URL(offlineFile + parsed.search + hash, root).href;
