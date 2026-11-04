@@ -1,0 +1,126 @@
+/* Pearl interiors for interactive screens; the surrounding page stays dark. */
+:is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog, .image-viewer, .product-frame, .faq-list details) {
+  --pearl-base: #f4f1eb;
+  --pearl-ink: #18333c;
+  --pearl-muted: #425c65;
+  --pearl-accent: #216771;
+  --pearl-line: #a9b8ba;
+  --pearl-surface: linear-gradient(135deg, #faf7f0 0%, #eff0f4 42%, #f5f0e9 73%, #edf3ef 100%);
+  --pearl-card: linear-gradient(120deg, #fffdf8 0%, #f2f2f4 53%, #f4f2eb 100%);
+  --pearl-selected: linear-gradient(125deg, #dcebe6 0%, #edf2ee 55%, #e6e8ef 100%);
+  --text: var(--pearl-ink);
+  --muted: var(--pearl-muted);
+  --teal-bright: var(--pearl-accent);
+  color: var(--pearl-ink);
+  color-scheme: light;
+}
+
+/* Common text, actions and focus treatments inside the light interiors. */
+:is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog, .image-viewer, .product-frame, .faq-list details) :is(h2, h3, h4, strong, label, summary) { color: var(--pearl-ink); }
+:is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog, .image-viewer, .product-frame, .faq-list details) :is(p, ul, ol, small) { color: var(--pearl-muted); }
+:is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog, .image-viewer, .product-frame, .faq-list details) :is(.eyebrow, a, .text-link) { color: var(--pearl-accent); }
+:is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog, .image-viewer, .product-frame, .faq-list details) :is(a, .text-link):hover { color: #123e48; }
+:is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog, .image-viewer, .product-frame, .faq-list details) :is(a, button, summary, input, select, textarea, [tabindex]):focus-visible { outline-color: var(--pearl-accent); }
+:is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog) .button {
+  color: var(--pearl-ink);
+  background: var(--pearl-card);
+  border-color: #6e8d92;
+}
+:is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog) .button.primary { background: var(--pearl-selected); border-color: var(--pearl-accent); }
+:is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog) .button:hover { color: #123e48; background: var(--pearl-selected); border-color: var(--pearl-accent); }
+:is(.contact-form-panel, .contact-dialog) .button:disabled { opacity: 1; color: #5a6a70; background: #e7e6e1; border-color: #aebabc; }
+
+/* A/B/C application chooser, including its output and research route. */
+.application-matcher .matcher-tabs { background: var(--pearl-surface); }
+.application-matcher .matcher-panel { background: var(--pearl-surface); border-color: var(--pearl-line); }
+.application-matcher .matcher-tabs > button,
+.application-matcher :is(.matcher-question, .matcher-output, .matcher-module, .matcher-flow-step) { color: var(--pearl-ink); background: var(--pearl-card); border-color: var(--pearl-line); }
+.application-matcher .matcher-tabs > button:hover,
+.application-matcher :is(.matcher-question, .matcher-output):hover { color: var(--pearl-ink); background: var(--pearl-selected); border-color: var(--pearl-accent); }
+.application-matcher .matcher-tabs > button[aria-selected=true],
+.application-matcher :is(.matcher-question, .matcher-output, .matcher-module).is-active,
+.application-matcher .matcher-flow-step.is-result {
+  color: var(--pearl-ink);
+  background: var(--pearl-selected);
+  border-color: var(--pearl-accent);
+  box-shadow: inset 0 0 0 1px var(--pearl-accent);
+}
+.application-matcher .matcher-tabs > button > .matcher-tab-letter,
+.application-matcher :is(.matcher-choice-number, .matcher-flow-number),
+.application-matcher .matcher-output > span { color: var(--pearl-muted); }
+.application-matcher .matcher-tabs > button[aria-selected=true] > .matcher-tab-letter,
+.application-matcher .matcher-question.is-active .matcher-choice-number,
+.application-matcher .matcher-flow-step.is-result .matcher-flow-number,
+.application-matcher .matcher-output.is-active > span { color: var(--pearl-accent); }
+.application-matcher .matcher-choice-group + .matcher-choice-group { border-top-color: var(--pearl-line); }
+.application-matcher .matcher-panel-heading > p:not(.eyebrow),
+.application-matcher .matcher-choice-copy small,
+.application-matcher :is(.matcher-pending p, .matcher-scope, .matcher-result p:not(.eyebrow), .matcher-example-page figcaption, .matcher-flow-step p, .matcher-feedback p, .matcher-blueprint-note) { color: var(--pearl-muted); }
+.application-matcher :is(.matcher-result, .matcher-report-example, .matcher-feedback, .matcher-blueprint-note) { background: var(--pearl-card); border-color: var(--pearl-line); }
+.application-matcher :is(.matcher-result, .matcher-feedback, .matcher-blueprint-note) { border-color: #789a9f; }
+.application-matcher .matcher-flow-step.is-blueprint:not(.is-result) { background: var(--pearl-card); border-color: #789a9f; }
+.application-matcher .matcher-module > a:hover { color: #123e48; }
+
+/* System explorer: every node and the shared explanation use the same palette. */
+.system-explorer { background: var(--pearl-surface); border-color: var(--pearl-line); }
+.system-explorer :is(.system-explorer-node, .system-category-node) { color: var(--pearl-ink); background: var(--pearl-card); border-color: var(--pearl-line); }
+.system-explorer :is(.system-explorer-node, .system-category-node):hover { color: var(--pearl-ink); background: var(--pearl-selected); border-color: var(--pearl-accent); }
+.system-explorer :is(.system-explorer-node, .system-category-node).is-selected { color: var(--pearl-ink); background: var(--pearl-selected); border-color: var(--pearl-accent); box-shadow: inset 0 0 0 1px var(--pearl-accent); }
+.system-explorer .system-explorer-node.is-parent { border-color: var(--pearl-accent); }
+.system-explorer .system-explorer-branches { border-top-color: var(--pearl-line); }
+.system-explorer :is(.system-node-number, .system-branches-title, .system-explorer-note) { color: var(--pearl-muted); }
+.system-explorer .system-explorer-detail { background: var(--pearl-card); border-color: #789a9f; }
+.system-explorer .system-explorer-detail .system-detail-relation { color: var(--pearl-muted); }
+
+/* The PDF itself stays original; only the controls and surrounding screen change. */
+.home-report-reader-shell { background: var(--pearl-surface); border-color: var(--pearl-line); }
+.home-report-reader-shell .home-report-reader-selector { background: var(--pearl-surface); border-bottom-color: var(--pearl-line); }
+.home-report-reader-shell .home-report-reader-selector > p { color: var(--pearl-ink); }
+.home-report-reader-shell .home-report-reader-tabs button { color: var(--pearl-ink); background: var(--pearl-card); border-color: var(--pearl-line); }
+.home-report-reader-shell .home-report-reader-tabs button:hover { color: var(--pearl-ink); background: var(--pearl-selected); border-color: var(--pearl-accent); }
+.home-report-reader-shell .home-report-reader-tabs button[aria-selected=true] { color: var(--pearl-ink); background: var(--pearl-selected); border-color: var(--pearl-accent); box-shadow: inset 0 0 0 1px var(--pearl-accent); }
+.home-report-reader-shell :is(.home-report-reader-meta, .home-report-reader-description, .home-report-reader-note) { color: var(--pearl-muted); }
+.home-report-reader-shell .home-report-pdf { background: var(--pearl-base); border-color: var(--pearl-line); }
+
+/* Contact card and the modal form, including native select menus. */
+.contact-form-panel, .contact-dialog { background: var(--pearl-surface); border-color: var(--pearl-line); }
+.contact-dialog .contact-dialog-heading { background: var(--pearl-surface); border-bottom-color: var(--pearl-line); }
+.contact-dialog .contact-dialog-close { color: var(--pearl-ink); background: var(--pearl-card); border-color: #789a9f; }
+.contact-dialog .contact-dialog-close:hover { color: #123e48; background: var(--pearl-selected); border-color: var(--pearl-accent); }
+:is(.contact-form-panel, .contact-dialog) .form-intro { border-left-color: var(--pearl-accent); }
+:is(.contact-form-panel, .contact-dialog) :is(.field label span, .field small, .form-privacy) { color: var(--pearl-muted); }
+:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea) { color: var(--pearl-ink); background: #fffdf8; border-color: #8ba1a5; }
+:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea):hover { border-color: var(--pearl-accent); }
+:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea):disabled { color: #52666d; background: #e7e6e1; border-color: #aebabc; }
+:is(.contact-form-panel, .contact-dialog) .field :is(input, textarea)::placeholder { color: #5e7179; }
+:is(.contact-form-panel, .contact-dialog) .field select option { color: var(--pearl-ink); background: #fffdf8; }
+:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea):user-invalid,
+:is(.contact-form-panel, .contact-dialog) .field [aria-invalid=true] { border-color: #913844; }
+:is(.contact-form-panel, .contact-dialog) .form-status { color: var(--pearl-accent); }
+:is(.contact-form-panel, .contact-dialog) form[data-contact-state=error] .form-status { color: #8b3241; }
+:is(.contact-form-panel, .contact-dialog) form[data-contact-state=success] .form-status { color: #255f4d; }
+:is(.contact-form-panel, .contact-dialog) form[data-contact-state=unavailable] .form-status { color: #75521d; }
+
+/* Zoom and media chrome use pearl; photographs, screenshots and video stay intact. */
+.image-viewer, .product-frame { background: var(--pearl-surface); border-color: var(--pearl-line); }
+.image-viewer .viewer-heading, .product-frame .product-frame-bar { background: var(--pearl-surface); color: var(--pearl-ink); border-color: var(--pearl-line); }
+.image-viewer .viewer-heading p, .product-frame .product-caption { color: var(--pearl-muted); }
+.image-viewer .viewer-heading button { color: var(--pearl-ink); background: var(--pearl-card); border-color: #789a9f; }
+.image-viewer .viewer-heading button:hover { background: var(--pearl-selected); border-color: var(--pearl-accent); }
+.product-frame .product-caption { background: var(--pearl-surface); border-top-color: var(--pearl-line); }
+.product-frame .product-badge { color: var(--pearl-accent); background: var(--pearl-card); border-color: #789a9f; }
+.product-frame .zoom-image { background: var(--pearl-base); border-color: var(--pearl-line); }
+.product-frame .zoom-image > span { color: var(--pearl-accent); background: var(--pearl-card); }
+.product-frame .zoom-image:hover > span { color: #123e48; background: var(--pearl-selected); }
+.product-frame .software-demo-video { background: var(--pearl-base); }
+
+/* Native knowledge-base accordions retain their behaviour with inset text. */
+.faq-list details { padding-inline: 20px; }
+.faq-list details { background: var(--pearl-surface); border-color: var(--pearl-line); }
+.faq-list details:last-child { border-bottom-color: var(--pearl-line); }
+.faq-list details[open] { background: var(--pearl-card); }
+.faq-list details summary { color: var(--pearl-ink); }
+.faq-list details summary::after { color: var(--pearl-accent); }
+.faq-list details summary:hover { color: var(--pearl-accent); }
+.faq-list details p { color: var(--pearl-muted); }
+.faq-list details a:not(.button) { color: var(--pearl-accent); }

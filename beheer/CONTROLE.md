@@ -1,5 +1,14 @@
 # Controle Variana — actuele wijzigingen
 
+## Wijziging van 5 november 2026 — parelmoeren interactieve onderdelen
+
+- De binnenvlakken van de keuzehulp, systeemverkenner en homepagelezer krijgen een licht parelmoeren palet, met donkere tekst en turquoise accenten voor actieve keuzes en focus. Ook contactformulieren, het contactvenster, uitklapblokken en de omkadering van interactieve softwarebeelden gebruiken dit palet.
+- De vormgeving staat in assets/css/interactive-pearl.css. De build laadt dit stylesheet uitsluitend op pagina’s met de betreffende onderdelen, na hun bestaande CSS. De aanpassing verandert geen paginabronnen, JavaScript, routegegevens, formulierverzending of mediabestanden.
+- Hoofdtekst, toelichting en accenttekst zijn op alle uiteinden van de kleurverlopen gecontroleerd op contrast: minimaal respectievelijk 10,82:1, 5,79:1 en 5,26:1. Placeholdertekst heeft 5,02:1 contrast op het invoerveld. De uitklapblokken hebben extra binnenruimte voor leesbaarheid.
+- De build en statische controle van alle 47 HTML-bestanden slagen. Alle 116 bestanden buiten deze wijziging zijn bytegelijk gebleven. Lokaal getest: A/B/C-selectie en analyseresultaat, contactvenster met vooringevuld onderwerp en Escape, systeemkeuze Marketing, wisselen van PDF, openen van FAQ en beeldvergroting. Formuliervelden blijven leesbaar; ongeldige e-mailinvoer blijft ongeldig. Er zijn geen aanvragen verstuurd. Bij 320 pixels passen keuzehulp, systeemverkenner en formulier zonder horizontale overloop.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
+
 ## Wijziging van 5 november 2026 — achtergronden Software en Toepassingen
 
 - De twee aangeleverde foto’s vormen de achtergrond van de openingssecties. Software toont het beeld links, met een overgang naar de paginakleur achter de tekst rechts. Toepassingen gebruikt de omgekeerde indeling: beeld rechts en tekst links.

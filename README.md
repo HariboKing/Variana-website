@@ -38,6 +38,8 @@ De generator schrijft de homepage als index.html en de overige 22 inhoudspagina�
 
 De algemene vormgeving staat in assets/css/styles.css. De homepage gebruikt ook cinematic.css. De productpresentatie, softwarepagina en gedeelde propositiekaarten gebruiken product.css. De build voegt de bestanden van een interactief scherm alleen toe aan de pagina met de bijbehorende markering. De CSS- en JavaScript-URL’s krijgen een inhoudshash tegen verouderde browsercache.
 
+De binnenkant van de interactieve schermen gebruikt assets/css/interactive-pearl.css: een licht parelmoeren kleurverloop met donkere tekst, turquoise accenten en zichtbare focus. De keuzehulp, systeemverkenner, PDF-lezer, formulieren, uitklapblokken en de bediening rond vergrootbare softwarebeelden delen dit palet. De build laadt het stylesheet na de bestaande componentvormgeving en alleen op pagina’s met deze onderdelen. De paginabronnen, interactielogica en de inhoud van afbeeldingen, video’s en PDF’s blijven hun eigen bron gebruiken.
+
 ## Publieke adressen en offline bekijken
 
 - De homepage gebruikt https://variana.nl/; andere pagina’s gebruiken bijvoorbeeld https://variana.nl/software/ en https://variana.nl/hoe-het-werkt/. GitHub Pages serveert daarvoor de index.html in de betreffende map.

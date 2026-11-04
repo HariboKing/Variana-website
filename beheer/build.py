@@ -120,6 +120,9 @@ for filename, page in pages.items():
         hero_css_version=hashlib.sha256((SITE/'assets/css/section-heroes.css').read_bytes()).hexdigest()[:12]
         hero_image='variana-desktop-achtergrond.webp' if filename=='software.html' else 'variana-toepassingen-achtergrond.webp'
         extra_scripts+=f'<link rel="preload" as="image" href="assets/images/{hero_image}" type="image/webp"><link rel="stylesheet" href="assets/css/section-heroes.css?v={hero_css_version}">'
+    if any(marker in source_body for marker in ['<!-- REPORT_READER -->','<!-- APPLICATION_MATCHER -->','<!-- SYSTEM_EXPLORER -->']) or any(marker in body for marker in ['id="contact-form"','data-image-zoom','<details','<video','<iframe']):
+        pearl_css_version=hashlib.sha256((SITE/'assets/css/interactive-pearl.css').read_bytes()).hexdigest()[:12]
+        extra_scripts+=f'<link rel="stylesheet" href="assets/css/interactive-pearl.css?v={pearl_css_version}">'
     config_version=hashlib.sha256((SITE/'assets/js/config.js').read_bytes()).hexdigest()[:12]
     contact_script=''
     if 'id="contact-form"' in body:
