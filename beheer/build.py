@@ -116,6 +116,10 @@ for filename, page in pages.items():
         reader_css_version=hashlib.sha256((SITE/'assets/css/report-reader.css').read_bytes()).hexdigest()[:12]
         reader_js_version=hashlib.sha256((SITE/'assets/js/report-reader.js').read_bytes()).hexdigest()[:12]
         extra_scripts+=f'<link rel="stylesheet" href="assets/css/report-reader.css?v={reader_css_version}"><script src="assets/js/report-reader.js?v={reader_js_version}" defer></script>'
+    if filename in ['software.html','toepassingen.html']:
+        hero_css_version=hashlib.sha256((SITE/'assets/css/section-heroes.css').read_bytes()).hexdigest()[:12]
+        hero_image='variana-desktop-achtergrond.webp' if filename=='software.html' else 'variana-toepassingen-achtergrond.webp'
+        extra_scripts+=f'<link rel="preload" as="image" href="assets/images/{hero_image}" type="image/webp"><link rel="stylesheet" href="assets/css/section-heroes.css?v={hero_css_version}">'
     config_version=hashlib.sha256((SITE/'assets/js/config.js').read_bytes()).hexdigest()[:12]
     contact_script=''
     if 'id="contact-form"' in body:

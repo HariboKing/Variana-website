@@ -1,4 +1,14 @@
-# Controle Variana — rapportpresentatie
+# Controle Variana — actuele wijzigingen
+
+## Wijziging van 5 november 2026 — achtergronden Software en Toepassingen
+
+- De twee aangeleverde foto’s vormen de achtergrond van de openingssecties. Software toont het beeld links, met een overgang naar de paginakleur achter de tekst rechts. Toepassingen gebruikt de omgekeerde indeling: beeld rechts en tekst links.
+- De achtergrondfoto’s zijn verkleind naar WebP op 2400 pixels breed. De kleurverlopen worden met CSS opgebouwd; de originele bestanden zijn niet overschreven. Beide achtergrondbestanden worden alleen op de bijbehorende pagina vooraf geladen.
+- Het oorspronkelijke softwarescherm is verplaatst naar de bestaande galerij in De werkomgeving. Bestaande tekst, knoppen, screenshots, video en beeldvergroting blijven beschikbaar. Contact, de keuzehulp en de homepagelezer zijn niet aangepast.
+- Nieuwe vormgeving staat uitsluitend in assets/css/section-heroes.css, dat alleen op Software en Toepassingen wordt geladen. De bestaande algemene vormgeving blijft behouden.
+- De build en statische controle van alle 47 HTML-bestanden slagen. Alle 118 bestaande bestanden buiten deze wijziging zijn bytegelijk gebleven; alle teksten in beide paginabronnen zijn behouden. Desktopweergaven zijn visueel bekeken op 1280 pixels en de rechter tekstkolom past ook op 1024 pixels. Bij 320 en 390 pixels is geen horizontale overloop vastgesteld. De link naar de keuzehulp en de beeldvergroting van het verplaatste softwarescherm werken; er zijn geen testaanvragen verstuurd.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
 
 ## Wijziging van 3 november 2026 — gedeelde PDF-lezer op de homepage
 

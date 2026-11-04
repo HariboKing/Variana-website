@@ -1,0 +1,46 @@
+/* Supplied photography in the Software and Applications opening sections. */
+.section-hero.page-intro { position: relative; isolation: isolate; overflow: clip; min-height: 720px; display: flex; align-items: center; padding: 80px 0 105px; background: var(--bg); }
+.section-hero::before, .section-hero::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.section-hero::before { background-size: cover; background-repeat: no-repeat; }
+.section-hero::after { background: linear-gradient(to bottom, #08132212 0%, #08132200 58%, #08132285 84%, #081322 100%); }
+.section-hero--software::before { background-image: linear-gradient(to right, #0813220d 0%, #08132226 20%, #08132285 35%, #081322f5 49%, #081322 59%), url('../images/variana-desktop-achtergrond.webp'); background-position: left center; }
+.section-hero--applications::before { background-image: linear-gradient(to right, #081322 0%, #081322fa 34%, #081322e8 45%, #08132266 61%, #0813220d 82%), url('../images/variana-toepassingen-achtergrond.webp'); background-position: 65% center; }
+.section-hero .section-hero-inner { display: flex; align-items: center; }
+.section-hero--software .section-hero-inner { justify-content: flex-end; }
+.section-hero .section-hero-copy { width: 49%; max-width: 620px; min-width: 0; margin-bottom: 0; }
+.section-hero .section-hero-copy h1 { font-size: clamp(38px,3.5vw,58px); line-height: 1.13; letter-spacing: -.035em; margin-bottom: 26px; }
+.section-hero .section-hero-copy .lead { max-width: 610px; color: #c2d0de; font-size: 19px; line-height: 1.75; }
+.section-hero .section-hero-copy .eyebrow { color: var(--teal-bright); }
+.section-hero .actions { margin-top: 30px; }
+.section-hero .button.secondary { background: #081322b8; }
+.software-gallery.software-gallery--screens .product-frame:first-child { grid-column: auto; }
+@media (min-width: 1600px) {
+  .section-hero.page-intro { min-height: 770px; }
+}
+@media (max-width: 1100px) and (min-width: 801px) {
+  .section-hero.page-intro { min-height: 700px; padding-block: 72px 95px; }
+  .section-hero .section-hero-copy { width: 51%; }
+  .section-hero .section-hero-copy h1 { font-size: 42px; }
+  .section-hero .section-hero-copy .lead { font-size: 18px; }
+  .section-hero--software::before { background-image: linear-gradient(to right, #0813220d 0%, #08132226 15%, #081322a6 30%, #081322f5 45%, #081322 55%), url('../images/variana-desktop-achtergrond.webp'); }
+}
+@media (max-width: 800px) {
+  .section-hero.page-intro { display: block; min-height: 0; padding: 270px 0 65px; }
+  .section-hero::before { bottom: auto; height: 370px; background-size: auto 100%; }
+  .section-hero--software::before { background-image: linear-gradient(to bottom, #0813220d 0%, #08132226 35%, #081322b3 70%, #081322 100%), url('../images/variana-desktop-achtergrond.webp'); background-position: left top; }
+  .section-hero--applications::before { background-image: linear-gradient(to bottom, #08132226 0%, #08132240 35%, #081322bf 70%, #081322 100%), url('../images/variana-toepassingen-achtergrond.webp'); background-position: right top; }
+  .section-hero::after { background: linear-gradient(to bottom, #08132200 0px, #08132200 195px, #081322d9 285px, #081322 350px); }
+  .section-hero .section-hero-inner { display: block; }
+  .section-hero .section-hero-copy { width: 100%; max-width: 670px; }
+  .section-hero .section-hero-copy h1 { font-size: clamp(38px,6.2vw,52px); }
+  .section-hero .section-hero-copy .lead { font-size: 18px; }
+}
+@media (max-width: 500px) {
+  .section-hero.page-intro { padding-top: 235px; padding-bottom: 50px; }
+  .section-hero::before { height: 325px; }
+  .section-hero::after { background: linear-gradient(to bottom, #08132200 0px, #08132200 160px, #081322e6 250px, #081322 310px); }
+  .section-hero .section-hero-copy h1 { font-size: 38px; }
+  .section-hero .section-hero-copy .lead { font-size: 17px; }
+  .section-hero .actions { align-items: stretch; gap: 12px; }
+  .section-hero .actions .button { width: 100%; }
+}

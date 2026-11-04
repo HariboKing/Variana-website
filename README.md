@@ -56,9 +56,13 @@ Deze indeling is bedoeld voor publicatie op de hoofdmap van variana.nl. De CNAME
 
 ## Softwarepresentatie en beschikbare beelden
 
+De openingssecties van Software en Toepassingen gebruiken de twee aangeleverde achtergrondfoto’s. Software toont het beeld links en de volledige openingstekst rechts; Toepassingen toont het beeld rechts en de tekst links. CSS-overgangen laten de foto’s aansluiten op de paginakleur. Op smalle schermen verschijnt het beeld boven de tekst. De twee WebP-bestanden in assets/images/ zijn voor het web verkleinde versies van de aangeleverde afbeeldingen; de overgangen worden in assets/css/section-heroes.css gemaakt. Alleen deze twee pagina’s laden dat stylesheet en hun eigen achtergrond vooraf.
+
+Het echte blauwdrukscherm dat eerst bovenaan Software stond, is verplaatst naar de bestaande galerij bij De werkomgeving. De schermbeelden, captions, zoomfunctie en desktopvideo blijven beschikbaar.
+
 De markering PROPOSITIONS plaatst dezelfde twee kaarten op de homepage en Hoe het werkt: Variana als dienst is nu beschikbaar; Variana als zelfstandige software is in ontwikkeling. De softwarepagina heeft één duidelijke statusvermelding bovenaan en een beschikbaarheidstoelichting onderaan. De diensten en hun bestaande tarieven blijven beschikbaar. Er wordt geen zelfstandige download aangeboden.
 
-De homepage en softwarehero tonen een ingevuld fictief vraagstuk in de echte blauwdrukmodule. De softwarepagina toont daarnaast het moduleoverzicht en de projectomgeving van het bewaarde concept. De actuele beelden staan in assets/images/software:
+De homepage en de werkomgevingsgalerij op Software tonen een ingevuld fictief vraagstuk in de echte blauwdrukmodule. De softwarepagina toont daarnaast het moduleoverzicht en de projectomgeving van het bewaarde concept. De actuele beelden staan in assets/images/software:
 
 - blauwdruk-concept-nl.png
 - moduleoverzicht-nl.png
