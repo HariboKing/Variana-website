@@ -1,5 +1,15 @@
 # Controle Variana — actuele wijzigingen
 
+## Wijziging van 5 november 2026 — wit en één aansluitend keuzescherm
+
+- Alle eerder parelmoeren binnenvlakken zijn effen wit. Dit geldt ook voor de keuzeknoppen en geselecteerde vlakken; turquoise randen en donkere tekst houden selectie en focus zichtbaar. Formuliervelden en optielijsten zijn wit, uitgeschakelde bediening heeft een neutrale grijstint.
+- De A/B/C-keuzehulp heeft één matcher-screen met een omvattende buitenrand en afgeronde buitenhoeken. De tabbladen staan binnen deze rand. De oude tussenruimte onder de tabbladen en de afzonderlijke randen en afgeronde hoeken van de inhoudspanelen zijn verwijderd.
+- De sticky tabbladen blijven werken binnen overflow:clip. Focusranden blijven zichtbaar: de tabbladen hebben binnenruimte en de paneelfocus ligt binnen de rand. IDs, rollen, routegegevens en JavaScript zijn behouden.
+- Lokaal gecontroleerd: tabbladen en inhoud sluiten zonder verticale tussenruimte aan; de inhoudspanelen hebben geen eigen rand of hoekafronding. Wisselen met muis en pijltjestoetsen werkt, evenals de analyseroute en het contactvenster met vooringevuld onderwerp. De bovenbalk blijft tijdens scrollen op de ingestelde headerhoogte staan. Bij 320 pixels passen de labels en is geen horizontale overloop vastgesteld. Het systeemscherm en het formulier zijn eveneens effen wit. Er zijn geen aanvragen verstuurd.
+- De build en statische controle van 47 HTML-bestanden slagen. Alle 115 bestaande bestanden buiten deze wijziging zijn bytegelijk gebleven, waaronder alle JavaScript, media en routegegevens.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
+
 ## Wijziging van 5 november 2026 — parelmoeren interactieve onderdelen
 
 - De binnenvlakken van de keuzehulp, systeemverkenner en homepagelezer krijgen een licht parelmoeren palet, met donkere tekst en turquoise accenten voor actieve keuzes en focus. Ook contactformulieren, het contactvenster, uitklapblokken en de omkadering van interactieve softwarebeelden gebruiken dit palet.

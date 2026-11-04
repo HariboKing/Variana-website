@@ -1,13 +1,13 @@
-/* Pearl interiors for interactive screens; the surrounding page stays dark. */
+/* White interiors for interactive screens, with dark text and teal selection. */
 :is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog, .image-viewer, .product-frame, .faq-list details) {
-  --pearl-base: #f4f1eb;
+  --pearl-base: #fff;
   --pearl-ink: #18333c;
   --pearl-muted: #425c65;
   --pearl-accent: #216771;
   --pearl-line: #a9b8ba;
-  --pearl-surface: linear-gradient(135deg, #faf7f0 0%, #eff0f4 42%, #f5f0e9 73%, #edf3ef 100%);
-  --pearl-card: linear-gradient(120deg, #fffdf8 0%, #f2f2f4 53%, #f4f2eb 100%);
-  --pearl-selected: linear-gradient(125deg, #dcebe6 0%, #edf2ee 55%, #e6e8ef 100%);
+  --pearl-surface: #fff;
+  --pearl-card: #fff;
+  --pearl-selected: #fff;
   --text: var(--pearl-ink);
   --muted: var(--pearl-muted);
   --teal-bright: var(--pearl-accent);
@@ -28,9 +28,10 @@
 }
 :is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog) .button.primary { background: var(--pearl-selected); border-color: var(--pearl-accent); }
 :is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog) .button:hover { color: #123e48; background: var(--pearl-selected); border-color: var(--pearl-accent); }
-:is(.contact-form-panel, .contact-dialog) .button:disabled { opacity: 1; color: #5a6a70; background: #e7e6e1; border-color: #aebabc; }
+:is(.contact-form-panel, .contact-dialog) .button:disabled { opacity: 1; color: #5a6a70; background: #eceff0; border-color: #aebabc; }
 
 /* A/B/C application chooser, including its output and research route. */
+.application-matcher .matcher-screen { background: var(--pearl-surface); border-color: var(--pearl-line); }
 .application-matcher .matcher-tabs { background: var(--pearl-surface); }
 .application-matcher .matcher-panel { background: var(--pearl-surface); border-color: var(--pearl-line); }
 .application-matcher .matcher-tabs > button,
@@ -89,11 +90,11 @@
 .contact-dialog .contact-dialog-close:hover { color: #123e48; background: var(--pearl-selected); border-color: var(--pearl-accent); }
 :is(.contact-form-panel, .contact-dialog) .form-intro { border-left-color: var(--pearl-accent); }
 :is(.contact-form-panel, .contact-dialog) :is(.field label span, .field small, .form-privacy) { color: var(--pearl-muted); }
-:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea) { color: var(--pearl-ink); background: #fffdf8; border-color: #8ba1a5; }
+:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea) { color: var(--pearl-ink); background: #fff; border-color: #8ba1a5; }
 :is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea):hover { border-color: var(--pearl-accent); }
-:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea):disabled { color: #52666d; background: #e7e6e1; border-color: #aebabc; }
+:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea):disabled { color: #52666d; background: #eceff0; border-color: #aebabc; }
 :is(.contact-form-panel, .contact-dialog) .field :is(input, textarea)::placeholder { color: #5e7179; }
-:is(.contact-form-panel, .contact-dialog) .field select option { color: var(--pearl-ink); background: #fffdf8; }
+:is(.contact-form-panel, .contact-dialog) .field select option { color: var(--pearl-ink); background: #fff; }
 :is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea):user-invalid,
 :is(.contact-form-panel, .contact-dialog) .field [aria-invalid=true] { border-color: #913844; }
 :is(.contact-form-panel, .contact-dialog) .form-status { color: var(--pearl-accent); }
@@ -101,7 +102,7 @@
 :is(.contact-form-panel, .contact-dialog) form[data-contact-state=success] .form-status { color: #255f4d; }
 :is(.contact-form-panel, .contact-dialog) form[data-contact-state=unavailable] .form-status { color: #75521d; }
 
-/* Zoom and media chrome use pearl; photographs, screenshots and video stay intact. */
+/* White zoom and media controls. */
 .image-viewer, .product-frame { background: var(--pearl-surface); border-color: var(--pearl-line); }
 .image-viewer .viewer-heading, .product-frame .product-frame-bar { background: var(--pearl-surface); color: var(--pearl-ink); border-color: var(--pearl-line); }
 .image-viewer .viewer-heading p, .product-frame .product-caption { color: var(--pearl-muted); }

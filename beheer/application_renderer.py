@@ -192,6 +192,7 @@ def render_application_matcher(base, site=None):
     )
     payload = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c').replace('\u2028', '\\u2028').replace('\u2029', '\\u2029')
     return f'''<section class="application-matcher container" id="demonstratie" aria-labelledby="verkenner-titel" data-application-matcher data-active-panel="a">
+<div class="matcher-screen">
 <div class="matcher-tabs" role="tablist" aria-label="Van vraagstuk naar output en onderzoek">
 <button type="button" role="tab" id="matcher-tab-a" aria-controls="matcher-panel-a" aria-selected="true" tabindex="0" data-matcher-tab="a"><span class="matcher-tab-letter">A</span><span class="matcher-tab-label">Het vraagstuk</span></button>
 <button type="button" role="tab" id="matcher-tab-b" aria-controls="matcher-panel-b" aria-selected="false" tabindex="-1" data-matcher-tab="b"><span class="matcher-tab-letter">B</span><span class="matcher-tab-label">De output</span></button>
@@ -222,5 +223,6 @@ def render_application_matcher(base, site=None):
 <aside class="matcher-feedback" aria-labelledby="matcher-feedback-title"><h4 id="matcher-feedback-title">Intern aangescherpt vóór de eerste oplevering</h4><p>Vóór de eerste oplevering doorloopt de uitwerking uitgebreide interne terugkoppelingen. Onderzoeksuitkomsten worden aan bronnen en aan elkaar getoetst; nieuwe inzichten worden in eerdere onderdelen verwerkt.</p><p>De eerste versie die je ontvangt, is daardoor intern al herzien en aangescherpt. Feedback van jou of externe betrokkenen is daarin nog niet verwerkt.</p></aside>{_contact_action()}</div>
 </section>
 <p class="matcher-sr-only" id="matcher-selection" role="status" aria-live="polite" aria-atomic="true" data-matcher-status>Kies je organisatietype om je vraag verder in te vullen.</p>
+</div>
 <script type="application/json" data-matcher-data>{payload}</script>
 </section>'''
