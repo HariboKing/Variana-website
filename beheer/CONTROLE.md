@@ -1,5 +1,15 @@
 # Controle Variana — actuele wijzigingen
 
+## Wijziging van 5 november 2026 — staalblauw met petrolondertoon
+
+- De twee verfijnde interfaces gebruiken nu licht staalblauw met een petrolondertoon. Het gedeelde inhoudsverloop gebruikt #C6D7E0, #BED1D9 en #D1E0E7, met subtiele blauwe en petrolkleurige radiale nuances.
+- Kaarten zijn lichter blauw (#E8F0F4), geselecteerde kaarten zacht petrolgroen (#BFD9CD). Randkleuren, labels en accenten sluiten daarop aan. Hoofdtekst is #18313E, toelichting #38525E en accenten #235759.
+- De aanpassing beperkt zich tot de kleurvormgeving van de keuzehulp en systeemverkenner in refined-interface.css. Bovenbalken, kader, indeling, teksten en werking gebruiken dezelfde bestaande opzet.
+- Contrast gecontroleerd tegenover alle achtergrondkleuren: hoofdtekst minimaal 7,73:1, toelichting 4,72:1 en accenttekst 4,64:1. De daadwerkelijke kleuren van normale en geselecteerde kaarten zijn in de browser bevestigd.
+- Desktop en 320 pixels mobiel zijn gecontroleerd: geselecteerde bedrijfskeuze, analyse-uitkomst in B en systeemcategorie Marketing. Beide onderdelen hebben geen horizontale overloop; er zijn geen JavaScript-fouten of testaanvragen. De build en statische controle van 47 HTML-bestanden slagen; alle 125 bestaande bestanden buiten deze kleurwijziging en documentatie zijn bytegelijk gebleven.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
+
 ## Wijziging van 5 november 2026 — verfijnde keuzehulp en systeemverkenner
 
 - Beide schermen gebruiken een kader met 20px hoeken, rand #CFD7D3 en schaduw 0 16px 40px #0E233014. Hun bovenbalk is #102738, met VARIANA links en de onderdeelnaam rechts.
