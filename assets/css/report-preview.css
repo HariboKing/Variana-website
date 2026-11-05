@@ -9,9 +9,9 @@
 .report-preview-topics li { padding: 5px 10px; border: 1px solid #3c586d; border-radius: 4px; color: #bdd3df; font-size: 12px; line-height: 1.6; }
 .report-preview-figure { grid-column: 1; grid-row: 1; min-width: 0; margin: 0; overflow: hidden; border: 1px solid #3a5872; border-radius: 8px; background: #0d1d30; box-shadow: 0 24px 65px #0003; }
 .report-preview-bar { padding: 13px 17px; border-bottom: 1px solid #2c435c; color: #c4d7e4; background: #14283c; font: 12px/1.7 var(--mono); letter-spacing: .025em; }
-.report-page-link { display: block; background: #fff; }
+.report-page-link { display: block; background: #E8F0F4; }
 .report-page-link img { display: block; width: 100%; height: auto; }
-.report-portrait .report-page-link img { max-height: 560px; object-fit: contain; background: #fff; }
+.report-portrait .report-page-link img { max-height: 560px; object-fit: contain; background: #E8F0F4; }
 .report-page-link:focus-visible { outline-offset: -5px; }
 .report-preview-figure figcaption { margin: 0; padding: 13px 17px; border-top: 1px solid #2c435c; color: #a6bed1; font-size: 12px; line-height: 1.7; }
 .report-example { padding-top: 10px; }

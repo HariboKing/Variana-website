@@ -1,5 +1,15 @@
 # Controle Variana — actuele wijzigingen
 
+## Wijziging van 5 november 2026 — overige lichte vlakken in dezelfde staalblauwe tint
+
+- Screenshotkaders, onderschriften, vergrootvensters, contactformulieren en kennisbankaccordions delen nu het staalblauwe verloop met petrolondertoon. Velden en lichte kaarten gebruiken #E8F0F4; actieve vlakken #BFD9CD. Media- en modalbovenbalken en primaire formulierknoppen zijn donkerblauw.
+- De kleurvariabelen staan centraal in interactive-pearl.css. De drie verfijnde interfaces gebruiken diezelfde variabelen zonder hun bestaande indeling te wijzigen. Ook de achtergrond achter rapportvoorbeelden is lichtblauw.
+- Screenshots, video, PDF-bestanden, inhoud, routes en JavaScript blijven ongewijzigd. De witte achtergronden in de afdrukstijl blijven behouden.
+- Desktop en 320 pixels mobiel gecontroleerd: softwarekaders en vergrootvenster, formulier en optionele velden, pop-upformulier met vooraf ingevulde analysekeuze en sluitknop, gesloten en geopende kennisbankvragen. Er zijn geen testaanvragen verstuurd. De drie bestaande interfaces houden hun verloop en petrolgroene selectie; de homepagelezer wisselt van rapport. Geen horizontale pagina-overloop of JavaScript-fouten waargenomen. Sluitknoppen hebben een lichte focusring tegen de donkerblauwe kopbalk.
+- De build en controle van alle 47 HTML-bestanden slagen. Gegenereerde HTML verschilt uitsluitend in stylesheetversies; alle overige inhoud, scripts en mediabestanden zijn bytegelijk gebleven. Er zijn 18 gewijzigde en 114 ongewijzigde repositorybestanden.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
+
 ## Wijziging van 5 november 2026 — homepagelezer aangesloten op het gedeelde palet
 
 - Ook de PDF-lezer op de homepage gebruikt nu het gedeelde staalblauwe kader, de petrolondertoon, lichtere blauwe rapportkeuzes en een petrolgroene selectie met vinkje. De bovenbalk toont VARIANA en Voorbeeldrapporten.

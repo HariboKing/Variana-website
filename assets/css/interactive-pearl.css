@@ -1,13 +1,23 @@
-/* White interiors for interactive screens, with dark text and teal selection. */
+/* Shared steel-blue surfaces with a petrol undertone across the website. */
 :is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog, .image-viewer, .product-frame, .faq-list details) {
-  --pearl-base: #fff;
-  --pearl-ink: #18333c;
-  --pearl-muted: #425c65;
-  --pearl-accent: #216771;
-  --pearl-line: #a9b8ba;
-  --pearl-surface: #fff;
-  --pearl-card: #fff;
-  --pearl-selected: #fff;
+  --pearl-base: #E8F0F4;
+  --pearl-ink: #18313E;
+  --pearl-muted: #38525E;
+  --pearl-accent: #235759;
+  --pearl-line: #AFC4CD;
+  --pearl-frame: #C6D7E0;
+  --pearl-frame-line: #A6BEC7;
+  --pearl-selected-line: #568276;
+  --pearl-hover: #DCE8ED;
+  --interface-navy: #102738;
+  --interface-navy-hover: #1b3a4c;
+  --interface-background:
+    radial-gradient(ellipse at 96% 1%, #d6e6f0a6 0%, transparent 48%),
+    radial-gradient(ellipse at 1% 100%, #adc9c8b8 0%, transparent 58%),
+    linear-gradient(120deg, #C6D7E0 0%, #BED1D9 46%, #D1E0E7 100%);
+  --pearl-surface: var(--interface-background);
+  --pearl-card: #E8F0F4;
+  --pearl-selected: #BFD9CD;
   --text: var(--pearl-ink);
   --muted: var(--pearl-muted);
   --teal-bright: var(--pearl-accent);
@@ -24,11 +34,11 @@
 :is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog) .button {
   color: var(--pearl-ink);
   background: var(--pearl-card);
-  border-color: #6e8d92;
+  border-color: var(--pearl-line);
 }
-:is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog) .button.primary { background: var(--pearl-selected); border-color: var(--pearl-accent); }
+:is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog) .button.primary { background: var(--interface-navy); border-color: var(--interface-navy); color: #fff; }
 :is(.application-matcher, .system-explorer, .home-report-reader-shell, .contact-form-panel, .contact-dialog) .button:hover { color: #123e48; background: var(--pearl-selected); border-color: var(--pearl-accent); }
-:is(.contact-form-panel, .contact-dialog) .button:disabled { opacity: 1; color: #5a6a70; background: #eceff0; border-color: #aebabc; }
+:is(.contact-form-panel, .contact-dialog) .button:disabled { opacity: 1; color: var(--pearl-muted); background: #D5E3EA; border-color: var(--pearl-line); }
 
 /* A/B/C application chooser, including its output and research route. */
 .application-matcher .matcher-screen { background: var(--pearl-surface); border-color: var(--pearl-line); }
@@ -90,11 +100,11 @@
 .contact-dialog .contact-dialog-close:hover { color: #123e48; background: var(--pearl-selected); border-color: var(--pearl-accent); }
 :is(.contact-form-panel, .contact-dialog) .form-intro { border-left-color: var(--pearl-accent); }
 :is(.contact-form-panel, .contact-dialog) :is(.field label span, .field small, .form-privacy) { color: var(--pearl-muted); }
-:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea) { color: var(--pearl-ink); background: #fff; border-color: #8ba1a5; }
+:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea) { color: var(--pearl-ink); background: var(--pearl-card); border-color: #829CA8; }
 :is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea):hover { border-color: var(--pearl-accent); }
-:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea):disabled { color: #52666d; background: #eceff0; border-color: #aebabc; }
-:is(.contact-form-panel, .contact-dialog) .field :is(input, textarea)::placeholder { color: #5e7179; }
-:is(.contact-form-panel, .contact-dialog) .field select option { color: var(--pearl-ink); background: #fff; }
+:is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea):disabled { color: var(--pearl-muted); background: #D5E3EA; border-color: var(--pearl-line); }
+:is(.contact-form-panel, .contact-dialog) .field :is(input, textarea)::placeholder { color: #4A626F; }
+:is(.contact-form-panel, .contact-dialog) .field select option { color: var(--pearl-ink); background: var(--pearl-card); }
 :is(.contact-form-panel, .contact-dialog) .field :is(input, select, textarea):user-invalid,
 :is(.contact-form-panel, .contact-dialog) .field [aria-invalid=true] { border-color: #913844; }
 :is(.contact-form-panel, .contact-dialog) .form-status { color: var(--pearl-accent); }
@@ -102,7 +112,7 @@
 :is(.contact-form-panel, .contact-dialog) form[data-contact-state=success] .form-status { color: #255f4d; }
 :is(.contact-form-panel, .contact-dialog) form[data-contact-state=unavailable] .form-status { color: #75521d; }
 
-/* White zoom and media controls. */
+/* Steel-blue zoom and media controls, preserving the original media. */
 .image-viewer, .product-frame { background: var(--pearl-surface); border-color: var(--pearl-line); }
 .image-viewer .viewer-heading, .product-frame .product-frame-bar { background: var(--pearl-surface); color: var(--pearl-ink); border-color: var(--pearl-line); }
 .image-viewer .viewer-heading p, .product-frame .product-caption { color: var(--pearl-muted); }
@@ -119,9 +129,29 @@
 .faq-list details { padding-inline: 20px; }
 .faq-list details { background: var(--pearl-surface); border-color: var(--pearl-line); }
 .faq-list details:last-child { border-bottom-color: var(--pearl-line); }
-.faq-list details[open] { background: var(--pearl-card); }
+.faq-list details[open] { background: var(--pearl-selected); border-color: var(--pearl-selected-line); }
 .faq-list details summary { color: var(--pearl-ink); }
 .faq-list details summary::after { color: var(--pearl-accent); }
 .faq-list details summary:hover { color: var(--pearl-accent); }
 .faq-list details p { color: var(--pearl-muted); }
 .faq-list details a:not(.button) { color: var(--pearl-accent); }
+
+/* Navy media headers match the three main interactive screens. */
+.product-frame .product-frame-bar,
+.image-viewer .viewer-heading,
+.contact-dialog .contact-dialog-heading {
+  background: var(--interface-navy);
+  color: #fff;
+  border-color: var(--pearl-frame-line);
+}
+.image-viewer .viewer-heading p,
+.contact-dialog .contact-dialog-heading h2 { color: #fff; }
+.image-viewer .viewer-heading button:focus-visible,
+.contact-dialog .contact-dialog-heading button:focus-visible { outline-color: var(--pearl-card); }
+.product-frame .product-caption { background: transparent; }
+:is(.contact-form-panel, .contact-dialog) .button.primary:not(:disabled):hover {
+  color: #fff;
+  background: var(--interface-navy-hover);
+  border-color: var(--interface-navy-hover);
+}
+.application-matcher .matcher-example-page img { background: var(--pearl-card); }
