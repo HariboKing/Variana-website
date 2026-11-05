@@ -1,5 +1,13 @@
 # Controle Variana — actuele wijzigingen
 
+## Wijziging van 5 november 2026 — onderschrift bij het merk
+
+- Onder het logo en VARIANA staat in bovenbalk en footer exact: Virtual Assistant for Research, Intelligence And Navigational Advice. De zin is klein en cursief, met Engelse taalmarkering.
+- Het merkblok wordt gedeeld gerenderd. De zin mag over meerdere regels lopen en laat op mobiel ruimte vrij voor de menuknop. De header kan met de inhoud meegroeien.
+- Desktop, de overgang rond 1061px en 320px mobiel zijn gecontroleerd: de merkzin blijft volledig zichtbaar, overlapt de navigatie niet en de mobiele menuknop opent het menu. De bovenbalk gebruikt het onderschrift ook als toegankelijke beschrijving van de home-link. Bestaande pagina-inhoud, scripts en media zijn behouden.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
+
 ## Wijziging van 5 november 2026 — blauwdrukachtergrond op Hoe het werkt
 
 - De aangeleverde Organization blueprint-afbeelding staat als achtergrond in de opening van Hoe het werkt. Tekst en knop blijven links; rechts blijft het beeld zichtbaar. Een geleidelijke zijdelingse schaduw en de onderste verlooplaag sluiten aan op #081322.

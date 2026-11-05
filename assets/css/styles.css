@@ -79,10 +79,11 @@ strong { color: var(--text); font-weight: 600; }
 
 /* Header and footer */
 .site-header { position: sticky; top: 0; z-index: 30; border-bottom: 1px solid #223448; background: #081322f7; backdrop-filter: blur(16px); }
-.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; min-height: 88px; }
-.brand { display: inline-flex; align-items: center; gap: 12px; white-space: nowrap; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; min-height: 88px; padding-block: 8px; }
+.brand { display: inline-grid; grid-template-columns: auto minmax(0,1fr); align-items: center; column-gap: 12px; row-gap: 4px; width: 300px; max-width: 100%; min-width: 0; }
 .brand img { width: 38px; height: 38px; object-fit: contain; }
-.brand span { font-weight: 500; font-size: 23px; letter-spacing: .17em; }
+.brand span { font-weight: 500; font-size: 23px; letter-spacing: .17em; white-space: nowrap; }
+.brand .brand-tagline { grid-column: 1 / -1; display: block; color: var(--muted); font: italic 400 11px/1.4 var(--font); letter-spacing: normal; white-space: normal; text-wrap: balance; }
 #main-navigation { display: flex; align-items: center; gap: 28px; }
 #main-navigation > a:not(.button) { font-size: 13px; color: #b9c9d7; transition: color .2s; position: relative; padding-block: 9px; }
 #main-navigation > a:hover, #main-navigation > a[aria-current] { color: #fff; }
@@ -349,6 +350,7 @@ a:hover .card-link .icon { transform: translateX(3px); }
 }
 @media (max-width: 1060px) {
  .nav-inner { min-height: 76px; flex-wrap: wrap; gap: 0; }
+ .site-header .brand { max-width: calc(100% - 100px); }
  .js .menu-toggle { display: inline-flex; }
  #main-navigation { width: 100%; flex-wrap: wrap; padding-bottom: 20px; justify-content: flex-start; }
  .js #main-navigation { display: none; }
@@ -437,7 +439,7 @@ a:hover .card-link .icon { transform: translateX(3px); }
  .nav-inner { min-height: 70px; }
  .brand img { width: 32px; height: 32px; }
  .brand span { font-size: 19px; }
- .brand { gap: 9px; }
+ .brand { column-gap: 9px; }
  .menu-toggle { padding: 9px 11px; }
  #main-navigation { flex-direction: column; align-items: stretch; gap: 5px; }
  #main-navigation > a:not(.button) { padding: 10px 5px; }

@@ -169,3 +169,6 @@ Zie beheer/CONTROLE.md voor de controle van deze versie.
 
 
 De opening van Hoe het werkt gebruikt de aangeleverde Organization blueprint-afbeelding als geoptimaliseerde WebP in assets/images/variana-organisatieblauwdruk-achtergrond.webp. De eigen section-hero--blueprint-variant in assets/css/section-heroes.css plaatst het beeld rechts, met een zijdelingse en onderste overgang naar #081322. Op mobiel staat het beeld boven de tekst. De oorspronkelijke openingsteksten en systeemlink blijven behouden; de illustratie is een decoratieve achtergrond. De build laadt de afbeelding vooraf op deze pagina.
+
+
+Het merkblok in de bovenbalk en footer wordt gezamenlijk gerenderd door brand() in beheer/build.py. Onder het beeldmerk en VARIANA staat de Engelse zin Virtual Assistant for Research, Intelligence And Navigational Advice, klein en cursief. De zin loopt op smalle schermen om, met ruimte voor de menuknop; de woorden en hoofdletters blijven exact behouden.
