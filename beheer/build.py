@@ -123,6 +123,9 @@ for filename, page in pages.items():
     if any(marker in source_body for marker in ['<!-- REPORT_READER -->','<!-- APPLICATION_MATCHER -->','<!-- SYSTEM_EXPLORER -->']) or any(marker in body for marker in ['id="contact-form"','data-image-zoom','<details','<video','<iframe']):
         pearl_css_version=hashlib.sha256((SITE/'assets/css/interactive-pearl.css').read_bytes()).hexdigest()[:12]
         extra_scripts+=f'<link rel="stylesheet" href="assets/css/interactive-pearl.css?v={pearl_css_version}">'
+    if any(marker in source_body for marker in ['<!-- APPLICATION_MATCHER -->','<!-- SYSTEM_EXPLORER -->']):
+        refined_css_version=hashlib.sha256((SITE/'assets/css/refined-interface.css').read_bytes()).hexdigest()[:12]
+        extra_scripts+=f'<link rel="stylesheet" href="assets/css/refined-interface.css?v={refined_css_version}">'
     config_version=hashlib.sha256((SITE/'assets/js/config.js').read_bytes()).hexdigest()[:12]
     contact_script=''
     if 'id="contact-form"' in body:

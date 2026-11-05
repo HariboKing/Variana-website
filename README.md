@@ -40,6 +40,8 @@ De algemene vormgeving staat in assets/css/styles.css. De homepage gebruikt ook 
 
 De binnenkant van de interactieve schermen gebruikt assets/css/interactive-pearl.css: effen witte vlakken met donkere tekst, turquoise selectieranden en zichtbare focus. De keuzehulp, systeemverkenner, PDF-lezer, formulieren, uitklapblokken en de bediening rond vergrootbare softwarebeelden delen dit palet. De build laadt het stylesheet na de bestaande componentvormgeving en alleen op pagina’s met deze onderdelen. De keuzehulp heeft één omvattend matcher-screen met buitenrand en afgeronde buitenhoeken; de tabbladen staan daarbinnen en sluiten zonder tussenruimte op de hoekloze inhoud aan. De interactielogica en de inhoud van afbeeldingen, video’s en PDF’s blijven hun eigen bron gebruiken.
 
+De keuzehulp op Toepassingen en Verken het systeem op Hoe het werkt gebruiken aanvullend assets/css/refined-interface.css. Alleen deze twee onderdelen hebben het verfijnde kader met 20px hoeken, een donkerblauwe Variana-bovenbalk en het opgegeven parelmoerverloop op hun gedeelde interface-content. De onderliggende navigatie- en inhoudspanelen zijn transparant, zodat het verloop doorloopt. Kaarten zijn warmwit; actieve kaarten zijn lichtgroen met een gevuld vinkrondje. De A/B/C-stappen gebruiken ronde letterlabels en een donkerblauwe actieve stap. De build laadt dit stylesheet als laatste, uitsluitend bij APPLICATION_MATCHER en SYSTEM_EXPLORER. Bestaande teksten, routes, IDs en ARIA-statussen blijven behouden.
+
 ## Publieke adressen en offline bekijken
 
 - De homepage gebruikt https://variana.nl/; andere pagina’s gebruiken bijvoorbeeld https://variana.nl/software/ en https://variana.nl/hoe-het-werkt/. GitHub Pages serveert daarvoor de index.html in de betreffende map.

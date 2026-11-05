@@ -1,5 +1,17 @@
 # Controle Variana — actuele wijzigingen
 
+## Wijziging van 5 november 2026 — verfijnde keuzehulp en systeemverkenner
+
+- Beide schermen gebruiken een kader met 20px hoeken, rand #CFD7D3 en schaduw 0 16px 40px #0E233014. Hun bovenbalk is #102738, met VARIANA links en de onderdeelnaam rechts.
+- Het voorgeschreven parelmoerverloop staat op één gedeelde interface-content onder de bovenbalk. Navigatie- en inhoudspanelen zijn transparant; kaarten hebben #FFFEFA met rand #D4DAD6 en 10px hoeken. Actieve kaarten hebben #E0EFEA met rand #61998B en een gevuld rondje met vinkje. Bestaande klassen en ARIA-statussen sturen deze vormgeving aan.
+- Hoofdtekst is #18313E, toelichting #50626B en accenten #286F65. Primaire knoppen zijn donkerblauw met witte tekst. De A/B/C-stappen hebben ronde letterlabels en een donkerblauwe actieve stap. Binnenruimte, kaartafstanden en minimale kaarthoogten zijn compacter gemaakt; langere teksten worden volledig weergegeven.
+- Nieuwe vormgeving staat in assets/css/refined-interface.css en wordt alleen op Toepassingen en Hoe het werkt na de bestaande thema-CSS geladen. De schermen blijven op hun eigen pagina; de overige interactieve onderdelen behouden hun witte vormgeving.
+- De exacte kader-, kaart-, selectie-, tekst- en knopkleuren zijn in de browser gecontroleerd. De inhoudspanelen zijn daadwerkelijk transparant; het opgegeven verloop blijft zichtbaar. De vinkjes zijn decoratief en de bestaande ARIA-statussen blijven de selectie aankondigen.
+- Lokaal getest op desktop en op 390 en 320 pixels: A/B/C, bedrijf en overheid, analyseresultaat, specialistische scenariovergelijking, onderzoeksroute en contactvenster met juist onderwerp; systeemcategorieën, detailinhoud en toetsenbordbediening. Klassen en aria-checked/aria-selected/aria-pressed komen overeen. Langere kaartteksten worden volledig weergegeven en er is geen horizontale overloop. Er zijn geen aanvragen verstuurd.
+- De build, 49 routecontroles en statische controle van alle 47 HTML-bestanden slagen. Alle 122 bestaande bestanden buiten deze wijziging zijn bytegelijk gebleven. Bestaande schermteksten en JSON-inhoud zijn gecontroleerd op behoud; alleen de gevraagde bovenbalkteksten zijn toegevoegd.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
+
 ## Wijziging van 5 november 2026 — wit en één aansluitend keuzescherm
 
 - Alle eerder parelmoeren binnenvlakken zijn effen wit. Dit geldt ook voor de keuzeknoppen en geselecteerde vlakken; turquoise randen en donkere tekst houden selectie en focus zichtbaar. Formuliervelden en optielijsten zijn wit, uitgeschakelde bediening heeft een neutrale grijstint.
