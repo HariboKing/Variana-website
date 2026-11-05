@@ -1,5 +1,14 @@
 # Controle Variana — actuele wijzigingen
 
+## Wijziging van 5 november 2026 — homepagelezer aangesloten op het gedeelde palet
+
+- Ook de PDF-lezer op de homepage gebruikt nu het gedeelde staalblauwe kader, de petrolondertoon, lichtere blauwe rapportkeuzes en een petrolgroene selectie met vinkje. De bovenbalk toont VARIANA en Voorbeeldrapporten.
+- De downloadknop sluit aan bij de donkerblauwe primaire acties. De achtergrond loopt door onder de transparante selector en het rapportpaneel. De rapportinhoud en de bronbestanden blijven hun bestaande vorm behouden.
+- De build laadt refined-interface.css nu ook bij REPORT_READER. De lezer gebruikt dezelfde kleuren en kaderregels als de keuzehulp en systeemverkenner; toekomstige wijzigingen in dat palet worden daardoor op alle drie toegepast.
+- Desktop en 320 pixels mobiel gecontroleerd: beide rapportkeuzes, geselecteerde kleur en vinkje, transparante inhoudspanelen, downloadnaam en PDF-verwijzing. De pijltjestoets wisselt tussen de rapporten; er blijft één PDF-frame. De browsercontrole toont geen horizontale overloop. De ingebouwde PDF-weergave zelf is afhankelijk van de PDF-ondersteuning van de browser.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
+
 ## Wijziging van 5 november 2026 — staalblauw met petrolondertoon
 
 - De twee verfijnde interfaces gebruiken nu licht staalblauw met een petrolondertoon. Het gedeelde inhoudsverloop gebruikt #C6D7E0, #BED1D9 en #D1E0E7, met subtiele blauwe en petrolkleurige radiale nuances.
