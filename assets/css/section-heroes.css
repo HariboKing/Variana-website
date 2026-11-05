@@ -1,4 +1,4 @@
-/* Supplied photography in the Software and Applications opening sections. */
+/* Supplied imagery in the Software, Applications and How it works openings. */
 .section-hero.page-intro { position: relative; isolation: isolate; overflow: clip; min-height: 720px; display: flex; align-items: center; padding: 80px 0 105px; background: var(--bg); }
 .section-hero::before, .section-hero::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .section-hero::before { background-size: cover; background-repeat: no-repeat; }
@@ -43,4 +43,20 @@
   .section-hero .section-hero-copy .lead { font-size: 17px; }
   .section-hero .actions { align-items: stretch; gap: 12px; }
   .section-hero .actions .button { width: 100%; }
+}
+
+/* Organization blueprint: text left, supplied illustration right. */
+.section-hero--blueprint::before {
+  background-image:
+    linear-gradient(to right, #081322 0%, #081322fa 32%, #081322f5 43%, #081322e8 50%, #08132266 66%, #08132200 86%),
+    url('../images/variana-organisatieblauwdruk-achtergrond.webp');
+  background-position: 67% center;
+}
+@media (max-width: 800px) {
+  .section-hero--blueprint::before {
+    background-image:
+      linear-gradient(to bottom, #0813220d 0%, #08132226 35%, #081322b3 70%, #081322 100%),
+      url('../images/variana-organisatieblauwdruk-achtergrond.webp');
+    background-position: 68% top;
+  }
 }

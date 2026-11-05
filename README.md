@@ -166,3 +166,6 @@ De tarieven staan in beheer/paginas/samenwerken.html. Deze wijziging verandert g
 Bewaar de CNAME. Interne bron-PDF’s, Worddocumenten, geëxtraheerde brontekst, werkmappen, back-ups en aanvraagbestanden horen niet in de websitebron. Oudere ZIP-bestanden zijn geen bron voor deze GitHub-wijzigingen.
 
 Zie beheer/CONTROLE.md voor de controle van deze versie.
+
+
+De opening van Hoe het werkt gebruikt de aangeleverde Organization blueprint-afbeelding als geoptimaliseerde WebP in assets/images/variana-organisatieblauwdruk-achtergrond.webp. De eigen section-hero--blueprint-variant in assets/css/section-heroes.css plaatst het beeld rechts, met een zijdelingse en onderste overgang naar #081322. Op mobiel staat het beeld boven de tekst. De oorspronkelijke openingsteksten en systeemlink blijven behouden; de illustratie is een decoratieve achtergrond. De build laadt de afbeelding vooraf op deze pagina.

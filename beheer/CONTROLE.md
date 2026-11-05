@@ -1,5 +1,15 @@
 # Controle Variana — actuele wijzigingen
 
+## Wijziging van 5 november 2026 — blauwdrukachtergrond op Hoe het werkt
+
+- De aangeleverde Organization blueprint-afbeelding staat als achtergrond in de opening van Hoe het werkt. Tekst en knop blijven links; rechts blijft het beeld zichtbaar. Een geleidelijke zijdelingse schaduw en de onderste verlooplaag sluiten aan op #081322.
+- Op mobiel staat het beeld boven de tekst en verloopt het naar beneden in dezelfde paginakleur. De illustratie wordt als WebP geladen en vooraf opgehaald. De eigen CSS-variant raakt de andere hero-opmaken niet.
+- De openingstekst, systeemlink en overige pagina-inhoud zijn behouden. De afbeelding heeft geen inhoudelijke bewerking gekregen; het verloop wordt in CSS aangebracht.
+- Visueel gecontroleerd op 1440px desktop en 390px mobiel; ook op 320px is er geen horizontale pagina-overloop. Op desktop is de linker schaduw verdiept om de paginatekst van de tekst in de illustratie te scheiden. De bestaande systeemknop navigeert naar het systeemscherm. Geen JavaScript-fouten waargenomen.
+- De build en controle van 47 HTML-bestanden slagen. De teksten zijn gelijk gebleven en de oorspronkelijke hero-regels voor Software en Toepassingen zijn behouden. De nieuwe WebP is 1672 × 941 pixels en circa 224 kB; 121 bestaande repositorybestanden blijven bytegelijk.
+
+De onderdelen hieronder beschrijven eerdere wijzigingen en controles.
+
 ## Wijziging van 5 november 2026 — overige lichte vlakken in dezelfde staalblauwe tint
 
 - Screenshotkaders, onderschriften, vergrootvensters, contactformulieren en kennisbankaccordions delen nu het staalblauwe verloop met petrolondertoon. Velden en lichte kaarten gebruiken #E8F0F4; actieve vlakken #BFD9CD. Media- en modalbovenbalken en primaire formulierknoppen zijn donkerblauw.
